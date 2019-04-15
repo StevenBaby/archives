@@ -2,6 +2,7 @@
 
 [annotation]: <id> (9034ba44-2ccf-46f7-8951-3f8a32bf522c)
 [annotation]: <status> (public)
+[annotation]: <comments> (true)
 
 这是一个博客测试页面，并无实际价值。
 

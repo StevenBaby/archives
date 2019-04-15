@@ -3,7 +3,7 @@
 ## 欢迎访问我的博客
 
 [annotation]: <id> (a671d7a3-0cc4-431d-bcd2-1448e573fa5b)
-[annotation]: <status> (protect)
+[annotation]: <status> (static)
 
 <img class="ui centered image circular" style="width: 200px; height: 200px; margin-top: 50px;" 
  src="/static/images/favicon.jpg">
