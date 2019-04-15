@@ -1,0 +1,128 @@
+# 七线阁 Cubase 视频教程
+
+[annotation]: <id> (846b24a2-adf8-4b63-a48a-f9a67222f503)
+[annotation]: <status> (public)
+[annotation]: <create_time> (2019-04-10 20:43:16)
+[annotation]: <category> (音乐理论)
+[annotation]: <tags> (Cubase) 
+
+<http://www.howzhi.com/course/2216/>
+
+## 1 Cubase 简介
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTUxMjg0"></iframe>
+
+
+## 2 Cubase 工程文件
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTQ5MDUy"></iframe>
+
+
+## 3 创建轨道和导入音频文件
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTUyMjIw"></iframe>
+
+
+## 4 左右定位器
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTUwOTIw"></iframe>
+
+
+## 5 录音
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTUzNzMy"></iframe>
+
+
+## 6 录音纠错，传入传出，循环等等
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTU2MDQw"></iframe>
+
+## 7 音轨基本操作，音频导出、检查器
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTU0OTk2"></iframe>
+
+## 8 乐器与MIDI
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTU2MTAw"></iframe>
+
+## 9 取消和替换乐器 虚拟键盘
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTU2NzY4"></iframe>
+
+## 10 MIDI录制 钢琴卷帘
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MTU3Mzc2"></iframe>
+
+## 11 钢琴卷帘 输入音符
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MzgzNjIw"></iframe>
+
+## 12 复制音符，调节音符力度
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ2MzgzMzk2"></iframe>
+
+## 13 修剪工具，调节音符时值
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ3MDM4NTk2"></iframe>
+
+## 14 输入MIDI音符量化
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ3MDM5NDAw"></iframe>
+
+## 15 步进输入音符
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ3MzcxMjM2"></iframe>
+
+## 16 踏板调节 MIDI控制器 64
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ3MzcwNjgw"></iframe>
+
+
+## 17 盗版 CD (导入音频CD) 音频混缩
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ3MzcxMTky"></iframe>
+
+
+## 18 偷 (从视频文件中导入音频)
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ3Mzc1MzUy"></iframe>
+
+## 19 抢（声道分离）
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ3Mzc1MzAw"></iframe>
+
+## 20 潜入 (音频淡入淡出)
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ4ODgwNTY4"></iframe>
+
+
+## 21
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 22
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 23
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 24
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 25
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 26
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 27
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 28
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 29
+<iframe class="video" width="640" height="360" src=""></iframe>
+
+## 30 音频转调
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDUwMjY2Nzg0"></iframe>

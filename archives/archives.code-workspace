@@ -1,0 +1,40 @@
+{
+	"folders": [
+        {
+            "name": "archives",
+            "path": "Z:\\gitlab\\archives"
+        },
+        {
+            "name": "计算机科学",
+            "path": "计算机科学"
+        },
+        {
+            "name": "计算机技术",
+            "path": "计算机技术"
+        },
+        {
+            "name": "音乐理论",
+            "path": "音乐理论"
+        },
+        {
+            "name": "数学理论",
+            "path": "数学理论"
+        },
+        {
+            "name": "读书笔记",
+            "path": "读书笔记"
+        },
+        {
+            "name": "心情随笔",
+            "path": "心情随笔"
+        },
+    ],
+    "settings": {
+        "files.exclude": {
+            "**/*.xmind": true,
+            "**/*.zip": true,
+            "**/about": true,
+            "**/archives": true
+        }
+    }
+}
