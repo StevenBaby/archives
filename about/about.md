@@ -6,7 +6,7 @@
 [annotation]: <status> (protect)
 
 <img class="ui centered image circular" style="width: 200px; height: 200px; margin-top: 50px;" 
- src="http://blog.ccyg.studio/static/images/favicon.jpg">
+ src="/static/images/favicon.jpg">
 <div class="ui centered header">追求卓越，是一种态度</div>
 
 ### 联系邮箱 **<kangweibaby@163.com>**
