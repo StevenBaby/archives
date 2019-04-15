@@ -55,6 +55,11 @@ int main()
 ![](test-001.png)
 
 
+## 测试svg重定向
+
+![](test-002.svg?sanitize=true)
+
+
 ## 测试基本公式
 
 $$2 + 3 = \sqrt{5 + 7} \int_{-\infty}^{+\infty } f(x)dx$$
