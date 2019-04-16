@@ -5,6 +5,7 @@
 [annotation]: <create_time> (2019-04-10 20:43:16)
 [annotation]: <category> (音乐理论)
 [annotation]: <tags> (Cubase) 
+[annotation]: <comments> (true) 
 
 <http://www.howzhi.com/course/2216/>
 
@@ -96,8 +97,9 @@
 <iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ4ODgwNTY4"></iframe>
 
 
-## 21
-<iframe class="video" width="640" height="360" src=""></iframe>
+## 21 无缝歌曲剪辑 <sub>2019-04-16</sub>
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ4ODkxMjg4"></iframe>
 
 ## 22
 <iframe class="video" width="640" height="360" src=""></iframe>
