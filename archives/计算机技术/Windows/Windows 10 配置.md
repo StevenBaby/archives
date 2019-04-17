@@ -9,6 +9,8 @@
 
 > 原文链接：<http://blog.ccyg.studio/article/009f0e39-37f5-4932-bde8-1ad01483df64>
 
+---
+
 ## 去除计算机文件夹
 
 打开注册表编辑器删除下面的所有值，除 DelegateFolders
