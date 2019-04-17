@@ -34,6 +34,7 @@
             "**/*.xmind": true,
             "**/*.zip": true,
             "**/*.vsdx": true,
+            "**/*.svg": true,
             "**/about": true,
             "**/archives": true
         }
