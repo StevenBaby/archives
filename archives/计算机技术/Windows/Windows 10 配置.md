@@ -5,7 +5,7 @@
 [annotation]: <tags> (Windows)
 [annotation]: <status> (public)
 [annotation]: <create_time> (2018-01-11 17:52:07)
-<!-- [annotation]: <comments> (true) -->
+[annotation]: <comments> (true)
 
 > 原文链接：<http://blog.ccyg.studio/article/009f0e39-37f5-4932-bde8-1ad01483df64>
 
@@ -259,5 +259,3 @@ chcp 936
 新建一个 DWORD 32 位值，再将该值命名为 ShowSecondsInSystemClock = 1
 
 重启Windows 资源管理器就可以了
-
-# zVirtualDesktop
