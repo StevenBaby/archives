@@ -58,7 +58,7 @@ int main()
 
 ## 测试svg重定向
 
-<img src='test-002.svg?sanitize=true' width=150 />
+<img src='test-002.svg?sanitize=true' width=150 height=150/>
 
 
 ## 测试基本公式
