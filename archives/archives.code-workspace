@@ -1,10 +1,6 @@
 {
 	"folders": [
         {
-            "name": "archives",
-            "path": "Z:\\github\\archives"
-        },
-        {
             "name": "计算机科学",
             "path": "计算机科学"
         },
@@ -28,6 +24,9 @@
             "name": "心情随笔",
             "path": "心情随笔"
         },
+        {
+            "path": "Z:\\github\\archives\\tests"
+        }
     ],
     "settings": {
         "files.exclude": {
