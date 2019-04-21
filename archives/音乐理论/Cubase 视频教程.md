@@ -105,29 +105,36 @@
 
 <iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ4ODkxMjg4"></iframe>
 
-## 22
-<iframe class="video" width="640" height="360" src=""></iframe>
+## 22 擦除工具 缩放工具 静音工具 手型工具 画笔工具 直线工具 播放工具
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ4ODgwNTUy"></iframe>
 
-## 23
-<iframe class="video" width="640" height="360" src=""></iframe>
+## 23 节拍计算器
 
-## 24
-<iframe class="video" width="640" height="360" src=""></iframe>
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ4ODkwODEy"></iframe>
 
-## 25
-<iframe class="video" width="640" height="360" src=""></iframe>
+## 24 速度检测
 
-## 26
-<iframe class="video" width="640" height="360" src=""></iframe>
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDQ4ODg2MjA4"></iframe>
 
-## 27
-<iframe class="video" width="640" height="360" src=""></iframe>
+## 25 变速
 
-## 28
-<iframe class="video" width="640" height="360" src=""></iframe>
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDUwMjU5ODIw"></iframe>
 
-## 29
-<iframe class="video" width="640" height="360" src=""></iframe>
+## 26 时间拉伸
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDUwMjYwMDY4"></iframe>
+
+## 27 单轨音乐模式速度绑定
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDUwMjY0OTE2"></iframe>
+
+## 28 渐快和渐慢
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDUwMjY2MTA0"></iframe>
+
+## 29 变调
+
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XNDUwMjY0NzIw"></iframe>
 
 ## 30 音频转调
 
