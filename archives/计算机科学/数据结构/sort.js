@@ -115,7 +115,7 @@ var sort = function (sketch) {
 
         let size = sketch.get_box_width();
         let height = sketch.temp_value * sketch.height / 100;
-        sketch.fill(sketch.second_color);
+        sketch.fill(sketch.purple_color);
         sketch.rect(0, 0, height, size);
         sketch.fill(255);
         sketch.textSize(size * 0.9);

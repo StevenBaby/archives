@@ -33,6 +33,7 @@
     <script src="static/index.js"></script>
     <script src="../archives/计算机科学/数据结构/sort.js"></script>
 
+
     <script>
         $(document).ready(function () {
             sketch.algorithm = async function (array, start, end) {
@@ -53,7 +54,7 @@
                     if (!sketch.running) {
                         return;
                     }
-                    await sketch.set(array, low, array[high]);
+                    await sketch.swap(array, low, high);
                     while (sketch.running && low < high && await sketch.compare(array, low, array
                             .length)) {
                         low++;
@@ -61,9 +62,8 @@
                     if (!sketch.running) {
                         return;
                     }
-                    await sketch.set(array, high, array[low]);
+                    await sketch.swap(array, low, high);
                 }
-                await sketch.set(array, low, sketch.temp_value);
                 if (!sketch.running) {
                     return;
                 }
