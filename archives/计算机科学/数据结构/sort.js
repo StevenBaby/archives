@@ -9,7 +9,8 @@ var sort = function (sketch) {
     sketch.delay = 300;
     sketch.running = false;
 
-    sketch.grey_color = sketch.color(130, 160, 185)
+    sketch.break_color = sketch.color(130, 160, 185);
+    sketch.grey_color = sketch.color(118,118,118);
     sketch.red_color = sketch.color(219, 40, 40);
     sketch.orange_color = sketch.color(242, 113, 28);
     sketch.blue_color = sketch.color(3, 133, 208);
@@ -18,11 +19,15 @@ var sort = function (sketch) {
 
 
     sketch.default_color = sketch.grey_color;
+    sketch.activate_color = sketch.break_color;
     sketch.compare_color = sketch.yellow_color;
-    sketch.activate_first_color = sketch.blue_color;
-    sketch.activate_second_color = sketch.red_color;
+    sketch.first_color = sketch.blue_color;
+    sketch.second_color = sketch.red_color;
+    sketch.indices = [];
     sketch.activate = [];
     sketch.swaping = false;
+
+    sketch.temp_value = null;
 
     sketch.generate = function () {
         let set = [];
@@ -63,15 +68,25 @@ var sort = function (sketch) {
     };
 
     sketch.fill_box = function (index) {
-        if (sketch.activate.length < 2) {
-            sketch.fill(sketch.default_color);
-        } else if (index == sketch.activate[0]) {
-            sketch.fill(sketch.activate_first_color);
-        } else if (index == sketch.activate[1]) {
-            sketch.fill(sketch.activate_second_color);
-        } else {
-            sketch.fill(sketch.default_color);
+        if (sketch.indices.length != 2){
+            sketch.fill(sketch.activate_color);
         }
+        else if (index == sketch.indices[0]) {
+            sketch.fill(sketch.first_color);
+            return;
+        } else if (index == sketch.indices[1]) {
+            sketch.fill(sketch.second_color);
+            return;
+        }
+
+        if(sketch.activate[0] > index){
+            sketch.fill(sketch.default_color);
+        }else if(sketch.activate[1] < index){
+            sketch.fill(sketch.default_color);
+        }else{
+            sketch.fill(sketch.activate_color);
+        }
+
     };
 
     sketch.draw_box = function (index) {
@@ -93,11 +108,23 @@ var sort = function (sketch) {
         sketch.fill(255);
         sketch.textSize(w * 0.9);
         sketch.text(t, x, y, w, h);
-    }
+    };
+
+    sketch.draw_temp = function(){
+        if (sketch.temp_value == null) return;
+
+        let size = sketch.get_box_width();
+        let height = sketch.temp_value * sketch.height / 100;
+        sketch.fill(sketch.second_color);
+        sketch.rect(0, 0, height, size);
+        sketch.fill(255);
+        sketch.textSize(size * 0.9);
+        sketch.text(sketch.temp_value, 0, 0, height, size);
+    };
 
     sketch.draw = function () {
         sketch.clear();
-
+        sketch.draw_temp();
         for (let index = 0; index < sketch.array.length; index++) {
             sketch.draw_box(index);
         }
@@ -114,27 +141,50 @@ var sort = function (sketch) {
     sketch.swap = async function (array, first, second) {
         console.log('swap ' + first + " " + second);
         sketch.swaping = true;
-        sketch.activate = [first, second];
-        sketch.activate_first_color = sketch.blue_color;
-        sketch.activate_second_color = sketch.red_color;
+        sketch.indices = [first, second];
+        sketch.first_color = sketch.blue_color;
+        sketch.second_color = sketch.red_color;
 
         await sketch.wait();
         let temp = array[first];
         array[first] = array[second];
         array[second] = temp;
+
         await sketch.wait();
-        sketch.activate = [];
+        sketch.indices = [];
         sketch.swaping = false;
     };
 
-    sketch.compare = async function (array, first, second) {
-        sketch.activate = [first, second];
-
-        sketch.activate_first_color = sketch.compare_color;
-        sketch.activate_second_color = sketch.compare_color;
+    sketch.set = async function(array, index, value){
+        sketch.swaping = true;
+        sketch.indices = [index, array.length];
+        sketch.first_color = sketch.blue_color;
+        sketch.second_color = sketch.red_color;
 
         await sketch.wait();
-        if (array[first] < array[second]) {
+        array[index] = value;
+
+        await sketch.wait();
+        sketch.indices = [];
+        sketch.swaping = false;
+    }
+
+    sketch.compare = async function (array, first, second) {
+        sketch.indices = [first, second];
+
+        sketch.first_color = sketch.compare_color;
+        sketch.second_color = sketch.compare_color;
+
+        let first_value = array[first];
+        let second_value = null;
+        if (second == array.length){
+            second_value = sketch.temp_value;
+        }else{
+            second_value = array[second];
+        }
+
+        await sketch.wait();
+        if (first_value < second_value) {
             return true;
         } else {
             return false;
@@ -142,26 +192,15 @@ var sort = function (sketch) {
     };
 
     sketch.algorithm = async function (array, start, end) {
-        console.log('start algorithm');
-        for (let i = start; i < end; i++) {
-            for (let j = start + 1; j < end - i; j++) {
-                if (!sketch.running) {
-                    return;
-                }
-                let first = j - 1;
-                let second = j;
-
-                if (await sketch.compare(array, first, second))
-                    continue;
-                await sketch.swap(array, first, second);
-            }
-        }
     };
 
     sketch.run = async function () {
         sketch.running = true;
         await sketch.algorithm(sketch.array, 0, sketch.length);
-        sketch.activate = [];
+        sketch.indices = [];
+        sketch.activate = [0, sketch.length - 1];
+        console.log(sketch.array);
+        
     };
 
     sketch.stop = function () {
@@ -173,16 +212,20 @@ var sort = function (sketch) {
     };
 };
 
+var sketch = null;
+
 $(document).ready(function () {
-    var sketch = new p5(sort, document.getElementById('content'));
+    sketch = new p5(sort, document.getElementById('content'));
 
     $('.start.button').click(function () {
         sketch.run();
     });
 
     $('.reset.button').click(function () {
+        let algorithm = sketch.algorithm;
         sketch.remove();
         sketch = new p5(sort, document.getElementById('content'));
+        sketch.algorithm = algorithm;
     });
 
     $('.stop.button').click(function () {
