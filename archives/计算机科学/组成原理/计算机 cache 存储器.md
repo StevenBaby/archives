@@ -1,4 +1,4 @@
-# 计算机存储器
+# 计算机 cache 存储器
 
 [annotation]: <id> (ebdf0ad2-dc01-47e6-b203-43d8d37baab7)
 [annotation]: <status> (protect)
