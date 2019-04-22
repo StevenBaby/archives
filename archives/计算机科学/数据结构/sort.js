@@ -3,7 +3,7 @@
 var sort = function (sketch) {
     sketch.ratio = 1.77;
 
-    sketch.length = 32;
+    sketch.length = 100;
     sketch.array = new Array(length);
 
     sketch.delay = 300;
@@ -31,7 +31,7 @@ var sort = function (sketch) {
 
     sketch.generate = function () {
         let set = [];
-        for (let index = 5; index < 100; index++) {
+        for (let index = 0; index < 100; index++) {
             set.push(index);
         }
 
