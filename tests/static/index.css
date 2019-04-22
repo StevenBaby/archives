@@ -1,0 +1,16 @@
+html body{
+    height: 100%;
+    /*background: url(https://gitlab.com/StevenKang/file/raw/master/images/1.jpg);*/
+    /*background-size: cover;*/
+    background-color: #EEEEEE;
+}
+
+body .header{
+   
+}
+
+body .wrapper{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    min-height: 100%;
+}
