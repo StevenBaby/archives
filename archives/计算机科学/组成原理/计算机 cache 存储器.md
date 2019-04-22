@@ -1,7 +1,7 @@
 # 计算机 cache 存储器
 
 [annotation]: <id> (ebdf0ad2-dc01-47e6-b203-43d8d37baab7)
-[annotation]: <status> (protect)
+[annotation]: <status> (public)
 [annotation]: <create_time> (2019-04-22 11:46:41)
 [annotation]: <category> (计算机科学)
 [annotation]: <tags> (组成原理)
