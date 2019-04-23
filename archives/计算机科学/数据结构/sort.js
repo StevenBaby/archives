@@ -351,6 +351,7 @@ $(document).ready(function () {
         if (sort_type == 'bubble_sort'){
             sketch.algorithm = sketch.bubble_sort;
         }else if (sort_type == 'quick_sort'){
+            sketch.random_pivot = false;
             sketch.algorithm = sketch.quick_sort;
         }else if (sort_type == 'random_quick_sort'){
             sketch.algorithm = sketch.random_quick_sort;
