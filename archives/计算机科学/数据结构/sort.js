@@ -337,7 +337,7 @@ var sort = function (sketch) {
         while (size >= 1) {
             console.log('shell_sort size ' + size);
 
-            for (let i = start + size; i <= 2 * size; i++) {
+            for (let i = start + size; i < 2 * size; i++) {
                 sketch.activate = [];
                 for (let k = i - size; k <= end; k += size) {
                     sketch.activate.push(k);
