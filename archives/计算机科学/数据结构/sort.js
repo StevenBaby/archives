@@ -490,6 +490,7 @@ var sort = function (sketch) {
         let buckets = sketch.buckets;
         let radix = 1;
         for (let times = 1; times <= max_bit; times++) {
+            if (!sketch.running) return;
             for (let i = 0; i < 10; i++) {
                 buckets[i] = [];
             }
@@ -497,7 +498,6 @@ var sort = function (sketch) {
                 const value = array[i];
                 let index = parseInt(value / radix) % 10;
                 buckets[index].push(value);
-
             }
             radix *= 10;
 
@@ -505,6 +505,7 @@ var sort = function (sketch) {
             for (let i = 0; i < buckets.length; i++) {
                 const bucket = buckets[i];
                 for (let j = 0; j < bucket.length; j++) {
+                    if (!sketch.running) return;
                     const value = bucket[j];
                     await sketch.set(sketch, index, value);
                     index += 1;
