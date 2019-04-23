@@ -22,6 +22,12 @@
                     <button class='ui red stop button'>停止</button>
                     <button class='ui teal speed down button'>减速</button>
                     <button class='ui pink speed up button'>加速</button>
+                    <select class="ui dropdown" id="sort_type">
+                        <option value="bubble_sort">冒泡排序</option>
+                        <option value="quick_sort">快速排序</option>
+                        <option value="random_quick_sort">随机快速排序</option>
+                        <option value="merge_sort">归并排序</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -32,54 +38,6 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@0.8.0/lib/p5.min.js"></script>
     <script src="static/index.js"></script>
     <script src="../archives/计算机科学/数据结构/sort.js"></script>
-
-
-    <script>
-        $(document).ready(function () {
-            sketch.algorithm = async function (array, start, end) {
-                if (start >= end) return;
-
-                console.log('start algorithm');
-                sketch.activate = [start, end - 1];
-                sketch.temp_value = array[start];
-
-                let low = start;
-                let high = end - 1;
-
-                while (low < high) {
-                    while (sketch.running && low < high && !await sketch.compare(array, high, array
-                            .length)) {
-                        high--;
-                    }
-                    if (!sketch.running) {
-                        return;
-                    }
-                    await sketch.swap(array, low, high);
-                    while (sketch.running && low < high && await sketch.compare(array, low, array
-                            .length)) {
-                        low++;
-                    }
-                    if (!sketch.running) {
-                        return;
-                    }
-                    await sketch.swap(array, low, high);
-                }
-                if (!sketch.running) {
-                    return;
-                }
-                await sketch.algorithm(array, start, low);
-                if (!sketch.running) {
-                    return;
-                }
-                await sketch.algorithm(array, low + 1, end);
-                if (!sketch.running) {
-                    return;
-                }
-                sketch.activate = [];
-                sketch.temp_value = null;
-            };
-        });
-    </script>
 </body>
 
 </html>

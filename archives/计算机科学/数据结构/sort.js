@@ -3,14 +3,14 @@
 var sort = function (sketch) {
     sketch.ratio = 1.77;
 
-    sketch.length = 100;
+    sketch.length = 32;
     sketch.array = new Array(length);
 
     sketch.delay = 300;
     sketch.running = false;
 
     sketch.break_color = sketch.color(130, 160, 185);
-    sketch.grey_color = sketch.color(118,118,118);
+    sketch.grey_color = sketch.color(118, 118, 118);
     sketch.red_color = sketch.color(219, 40, 40);
     sketch.orange_color = sketch.color(242, 113, 28);
     sketch.blue_color = sketch.color(3, 133, 208);
@@ -27,11 +27,13 @@ var sort = function (sketch) {
     sketch.activate = [];
     sketch.swaping = false;
 
+    sketch.random_pivot = false;
+
     sketch.temp_value = null;
 
     sketch.generate = function () {
         let set = [];
-        for (let index = 0; index < 100; index++) {
+        for (let index = 10; index < 100; index++) {
             set.push(index);
         }
 
@@ -68,10 +70,9 @@ var sort = function (sketch) {
     };
 
     sketch.fill_box = function (index) {
-        if (sketch.indices.length != 2){
+        if (sketch.indices.length != 2) {
             sketch.fill(sketch.activate_color);
-        }
-        else if (index == sketch.indices[0]) {
+        } else if (index == sketch.indices[0]) {
             sketch.fill(sketch.first_color);
             return;
         } else if (index == sketch.indices[1]) {
@@ -79,11 +80,11 @@ var sort = function (sketch) {
             return;
         }
 
-        if(sketch.activate[0] > index){
+        if (sketch.activate[0] > index) {
             sketch.fill(sketch.default_color);
-        }else if(sketch.activate[1] < index){
+        } else if (sketch.activate[1] < index) {
             sketch.fill(sketch.default_color);
-        }else{
+        } else {
             sketch.fill(sketch.activate_color);
         }
 
@@ -110,7 +111,7 @@ var sort = function (sketch) {
         sketch.text(t, x, y, w, h);
     };
 
-    sketch.draw_temp = function(){
+    sketch.draw_temp = function () {
         if (sketch.temp_value == null) return;
 
         let size = sketch.get_box_width();
@@ -138,8 +139,11 @@ var sort = function (sketch) {
         await sketch.sleep(sketch.delay);
     };
 
-    sketch.swap = async function (array, first, second) {
+    sketch.swap = async function (sketch, first, second) {
         console.log('swap ' + first + " " + second);
+        if (first == second) return;
+
+        let array = sketch.array;
         sketch.swaping = true;
         sketch.indices = [first, second];
         sketch.first_color = sketch.blue_color;
@@ -155,7 +159,9 @@ var sort = function (sketch) {
         sketch.swaping = false;
     };
 
-    sketch.set = async function(array, index, value){
+    sketch.set = async function (sketch, index, value) {
+        let array = sketch.array;
+
         sketch.swaping = true;
         sketch.indices = [index, array.length];
         sketch.first_color = sketch.blue_color;
@@ -167,9 +173,11 @@ var sort = function (sketch) {
         await sketch.wait();
         sketch.indices = [];
         sketch.swaping = false;
-    }
+    };
 
-    sketch.compare = async function (array, first, second) {
+    sketch.compare = async function (sketch, first, second) {
+        let array = sketch.array;
+
         sketch.indices = [first, second];
 
         sketch.first_color = sketch.compare_color;
@@ -177,9 +185,9 @@ var sort = function (sketch) {
 
         let first_value = array[first];
         let second_value = null;
-        if (second == array.length){
+        if (second == array.length) {
             second_value = sketch.temp_value;
-        }else{
+        } else {
             second_value = array[second];
         }
 
@@ -191,16 +199,134 @@ var sort = function (sketch) {
         }
     };
 
-    sketch.algorithm = async function (array, start, end) {
+    sketch.algorithm = async function (sketch, start, end) {
+
+    };
+
+    sketch.bubble_sort = async function (sketch, start, end) {
+        for (let i = start; i <= end; i++) {
+            sketch.activate = [start, end - i];
+
+            for (let j = start + 1; j <= end - i; j++) {
+                if (!sketch.running) return;
+
+                let first = j - 1;
+                let second = j;
+
+                if (await sketch.compare(sketch, first, second))
+                    continue;
+                await sketch.swap(sketch, first, second);
+            }
+        }
+    };
+
+    sketch.quick_sort = async function (sketch, start, end) {
+        if (start >= end) return;
+        if (!sketch.running) return;
+
+        console.log('start algorithm');
+        let array = sketch.array;
+        sketch.activate = [start, end];
+
+        if (sketch.random_pivot) {
+            let index = parseInt(Math.random() * (end - start) + start);
+            console.log('random index ' + index + ' ' + start + " " + end);
+            await sketch.swap(sketch, start, index);
+        }
+        sketch.temp_value = array[start];
+
+        let low = start;
+        let high = end;
+
+        while (low < high) {
+            while (low < high && !await sketch.compare(sketch, high, array.length)) {
+                if (!sketch.running) return;
+                high--;
+            }
+            await sketch.swap(sketch, low, high);
+
+            while (sketch.running && low < high && await sketch.compare(sketch, low, array.length)) {
+                if (!sketch.running) return;
+                low++;
+            }
+            await sketch.swap(sketch, low, high);
+        }
+        console.log('array low ' + low + ' high ' + high);
+        
+        if (!sketch.running) return;
+        await sketch.algorithm(sketch, start, low - 1);
+
+        if (!sketch.running) return;
+        await sketch.algorithm(sketch, low + 1, end);
+
+        if (!sketch.running) return;
+    };
+
+    sketch.random_quick_sort = async function(sketch, start, end){
+        sketch.random_pivot = true;
+        await sketch.quick_sort(sketch, start, end);
+    };
+
+    sketch.merge_sort = async function(sketch, start, end){
+        if (start >= end) return;
+        if (!sketch.running) return;
+        let mid = parseInt((end - start) / 2) + start;
+        sketch.activate = [start, end];
+        await sketch.wait();
+        await sketch.merge_sort(sketch, start, mid);
+        await sketch.merge_sort(sketch, mid + 1, end);
+        if (!sketch.running) return;
+
+        sketch.activate = [start, end];
+        sketch.activate_color = sketch.yellow_color;
+        await sketch.wait();
+
+        sketch.activate_color = sketch.break_color;
+        let array = sketch.array;
+        let left = array.slice(start, mid + 1);
+        let right = array.slice(mid + 1, end + 1);
+        
+        let i = 0;
+        let j = 0;
+
+        let index = start;
+
+        while(i < left.length && j < right.length){
+            if (!sketch.running) return;
+            if(left[i] < right[j]){
+                await sketch.set(sketch, index, left[i]);
+                i++;
+                index++;
+            }else{
+                await sketch.set(sketch, index, right[j]);
+                j++;
+                index++;
+            }
+        }
+        while (i < left.length){
+            if (!sketch.running) return;
+            await sketch.set(sketch, index, left[i]);
+            i ++;
+            index++;
+        }
+
+        while (j < right.length){
+            if (!sketch.running) return;
+            await sketch.set(sketch, index, right[j]);
+            j ++;
+            index++;
+        }
     };
 
     sketch.run = async function () {
         sketch.running = true;
-        await sketch.algorithm(sketch.array, 0, sketch.length);
+        await sketch.algorithm(sketch, 0, sketch.length - 1);
+
         sketch.indices = [];
         sketch.activate = [0, sketch.length - 1];
+        sketch.temp_value = null;
+        sketch.running = false;
         console.log(sketch.array);
-        
     };
 
     sketch.stop = function () {
@@ -215,28 +341,45 @@ var sort = function (sketch) {
 var sketch = null;
 
 $(document).ready(function () {
+
     sketch = new p5(sort, document.getElementById('content'));
 
     $('.start.button').click(function () {
+        if (sketch.running) return;
+        let sort_type = $('#sort_type').val();
+        console.log(sort_type);
+        if (sort_type == 'bubble_sort'){
+            sketch.algorithm = sketch.bubble_sort;
+        }else if (sort_type == 'quick_sort'){
+            sketch.algorithm = sketch.quick_sort;
+        }else if (sort_type == 'random_quick_sort'){
+            sketch.algorithm = sketch.random_quick_sort;
+        }else if (sort_type == 'merge_sort'){
+            sketch.algorithm = sketch.merge_sort;
+        }
         sketch.run();
     });
 
     $('.reset.button').click(function () {
-        let algorithm = sketch.algorithm;
+        sketch.stop();
         sketch.remove();
         sketch = new p5(sort, document.getElementById('content'));
-        sketch.algorithm = algorithm;
     });
 
     $('.stop.button').click(function () {
         sketch.stop();
     });
 
-    $('.speed.up.button').click(function () {
-        sketch.delay -= 50;
+    $('.speed.down.button').click(function () {
+        sketch.delay += 100;
     });
 
-    $('.speed.down.button').click(function () {
-        sketch.delay += 50;
+    $('.speed.up.button').click(function () {
+        if (sketch.delay <= 0) {
+            sketch.delay = 0;
+        }
+        sketch.delay /= 1.5;
     });
+
+    $('.ui .dropdown').dropdown();
 });
