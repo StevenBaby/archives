@@ -567,9 +567,11 @@ $(document).ready(function () {
     });
 
     $('.reset.button').click(function () {
+        let delay = sketch.delay;
         sketch.stop();
         sketch.remove();
         sketch = new p5(sort, document.getElementById('content'));
+        sketch.delay = delay;
     });
 
     $('.stop.button').click(function () {
