@@ -57,6 +57,8 @@ var sort = function (sketch) {
         sketch.olive_color,
     ];
 
+    sketch.layers = [];
+
     sketch.generate = function () {
         let set = [];
         for (let index = sketch.min_num; index < sketch.max_num; index++) {
@@ -131,6 +133,20 @@ var sort = function (sketch) {
                 }
             }
         }
+
+        if (sketch.layers.length > 0) {
+            for (let i = 0; i < sketch.layers.length; i++) {
+                const layer = sketch.layers[i];
+                if (layer.some(is_index)) {
+                    sketch.fill(sketch.buckets_color[i]);
+                }
+            }
+            if (!sketch.activate.some(is_index)) {
+                sketch.fill(sketch.default_color);
+            }
+        }
+        
+        
     };
 
     sketch.draw_box = function (index) {
@@ -189,12 +205,12 @@ var sort = function (sketch) {
         await sketch.sleep(sketch.delay);
     };
 
-    sketch.is_running = async function(){
+    sketch.is_running = async function () {
         if (sketch.running == 0)
             return false;
         else if (sketch.running == 1)
             return true;
-        while(sketch.running == 2){
+        while (sketch.running == 2) {
             await sketch.wait();
         }
         return true;
@@ -269,7 +285,7 @@ var sort = function (sketch) {
             sketch.set_activate(start, end - i);
 
             for (let j = start + 1; j <= end - i; j++) {
-                if (! await sketch.is_running()) return;
+                if (!await sketch.is_running()) return;
 
                 let first = j - 1;
                 let second = j;
@@ -288,7 +304,7 @@ var sort = function (sketch) {
         while (left < right) {
             sketch.set_activate(left, right);
             for (let i = left; i < right; i++) {
-                if (! await sketch.is_running()) return;
+                if (!await sketch.is_running()) return;
 
                 let first = i;
                 let second = i + 1;
@@ -300,7 +316,7 @@ var sort = function (sketch) {
             right--;
             sketch.set_activate(left, right);
             for (let i = right; i > left; i--) {
-                if (! await sketch.is_running()) return;
+                if (!await sketch.is_running()) return;
 
                 let first = i;
                 let second = i - 1;
@@ -320,13 +336,54 @@ var sort = function (sketch) {
             sketch.set_activate(start, i);
             max_index = start;
             for (let j = start + 1; j <= i; j++) {
-                if (! await sketch.is_running()) return;
+                if (!await sketch.is_running()) return;
                 if (await sketch.compare(sketch, j, max_index))
                     continue;
                 max_index = j;
             }
             await sketch.swap(sketch, max_index, i);
         }
+    };
+
+    sketch.adjust_heap = async function (sketch, start, end) {
+        let array = sketch.array;
+
+        let index = parseInt(((end - start) + 1) / 2) + 1;
+
+        for(; index >=start; index--){
+            sketch.indices = [index];
+
+            let left = index * 2 + 1;
+            let right = left + 1;
+    
+            if(right <= end && await sketch.compare(sketch, index, right)){
+                await sketch.swap(sketch, index, right);
+            }
+            if (left <= end && await sketch.compare(sketch, index, left)){
+                await sketch.swap(sketch, index, left);
+            }
+        }
+    };
+
+    sketch.heap_sort = async function (sketch, start, end) {
+        let layer = 0;
+        let index = start;
+
+        sketch.layers = [];
+        while (index <= end) {
+            sketch.layers[layer] = [];
+            for (; index < Math.pow(2, layer + 1) - 1; index++) {
+                sketch.layers[layer].push(index);
+            }
+            layer++;
+        }
+
+        for (let j = end; j > start; j--) {
+            sketch.set_activate(start, j);
+            await sketch.adjust_heap(sketch, start, j);
+            await sketch.swap(sketch, start, j);
+        }
+        sketch.layers = [];
     };
 
     sketch.insert_sort = async function (sketch, start, end) {
@@ -337,7 +394,7 @@ var sort = function (sketch) {
 
             let j = i - 1;
             for (; j >= start; j--) {
-                if (! await sketch.is_running()) return;
+                if (!await sketch.is_running()) return;
                 if (await sketch.compare(sketch, j, sketch.length)) {
                     break;
                 }
@@ -347,14 +404,14 @@ var sort = function (sketch) {
         }
     };
 
-    sketch.gnome_sort = async function (sketch, start, end){
+    sketch.gnome_sort = async function (sketch, start, end) {
         let pos = start;
 
-        while(start < end){
+        while (start < end) {
             // if () pos ++;
-            if (pos == start || !await sketch.compare(sketch, pos, pos-1)) pos ++;
-            else{
-                await sketch.swap(sketch, pos, pos-1);
+            if (pos == start || !await sketch.compare(sketch, pos, pos - 1)) pos++;
+            else {
+                await sketch.swap(sketch, pos, pos - 1);
                 pos--;
             }
         }
@@ -375,7 +432,7 @@ var sort = function (sketch) {
                 let j = i - size;
 
                 for (; j >= start; j -= size) {
-                    if (! await sketch.is_running()) return;
+                    if (!await sketch.is_running()) return;
                     if (await sketch.compare(sketch, j, sketch.length)) {
                         break;
                     }
@@ -404,7 +461,7 @@ var sort = function (sketch) {
                     let j = k - size;
 
                     for (; j >= start; j -= size) {
-                        if (! await sketch.is_running()) return;
+                        if (!await sketch.is_running()) return;
                         if (await sketch.compare(sketch, j, sketch.length)) {
                             break;
                         }
@@ -419,7 +476,7 @@ var sort = function (sketch) {
 
     sketch.quick_sort = async function (sketch, start, end) {
         if (start >= end) return;
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
 
         console.log('start algorithm');
         let array = sketch.array;
@@ -437,26 +494,26 @@ var sort = function (sketch) {
 
         while (low < high) {
             while (low < high && !await sketch.compare(sketch, high, array.length)) {
-                if (! await sketch.is_running()) return;
+                if (!await sketch.is_running()) return;
                 high--;
             }
             await sketch.swap(sketch, low, high);
 
             while (sketch.running && low < high && await sketch.compare(sketch, low, array.length)) {
-                if (! await sketch.is_running()) return;
+                if (!await sketch.is_running()) return;
                 low++;
             }
             await sketch.swap(sketch, low, high);
         }
         console.log('array low ' + low + ' high ' + high);
 
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
         await sketch.algorithm(sketch, start, low - 1);
 
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
         await sketch.algorithm(sketch, low + 1, end);
 
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
     };
 
     sketch.random_quick_sort = async function (sketch, start, end) {
@@ -466,19 +523,19 @@ var sort = function (sketch) {
 
     sketch.merge_sort = async function (sketch, start, end) {
         if (start >= end) return;
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
         let mid = parseInt((end - start) / 2) + start;
         sketch.set_activate(start, end);
         await sketch.wait();
         await sketch.merge_sort(sketch, start, mid);
         await sketch.merge_sort(sketch, mid + 1, end);
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
 
         sketch.set_activate(start, end);
         sketch.activate_color = sketch.yellow_color;
         await sketch.wait();
 
-        if (await sketch.compare(sketch, mid, mid+1)){
+        if (await sketch.compare(sketch, mid, mid + 1)) {
             return;
         }
 
@@ -493,7 +550,7 @@ var sort = function (sketch) {
         let index = start;
 
         while (i < left.length && j < right.length) {
-            if (! await sketch.is_running()) return;
+            if (!await sketch.is_running()) return;
             if (left[i] < right[j]) {
                 await sketch.set(sketch, index, left[i]);
                 i++;
@@ -505,14 +562,14 @@ var sort = function (sketch) {
             }
         }
         while (i < left.length) {
-            if (! await sketch.is_running()) return;
+            if (!await sketch.is_running()) return;
             await sketch.set(sketch, index, left[i]);
             i++;
             index++;
         }
 
         while (j < right.length) {
-            if (! await sketch.is_running()) return;
+            if (!await sketch.is_running()) return;
             await sketch.set(sketch, index, right[j]);
             j++;
             index++;
@@ -520,23 +577,23 @@ var sort = function (sketch) {
     };
 
 
-    sketch.reverse_array = async function (sketch, start, end){
-        while( start < end){
+    sketch.reverse_array = async function (sketch, start, end) {
+        while (start < end) {
             await sketch.swap(sketch, start, end);
-            start ++;
-            end --;
+            start++;
+            end--;
         }
     };
 
-    sketch.in_place_merge_sort = async function(sketch, start, end){
+    sketch.in_place_merge_sort = async function (sketch, start, end) {
         if (start >= end) return;
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
         let mid = parseInt((end - start) / 2) + start;
         sketch.set_activate(start, end);
         await sketch.wait();
         await sketch.in_place_merge_sort(sketch, start, mid);
         await sketch.in_place_merge_sort(sketch, mid + 1, end);
-        if (! await sketch.is_running()) return;
+        if (!await sketch.is_running()) return;
         sketch.set_activate(start, end);
 
         sketch.activate_color = sketch.yellow_color;
@@ -544,7 +601,7 @@ var sort = function (sketch) {
 
         sketch.activate_color = sketch.break_color;
 
-        if (await sketch.compare(sketch, mid, mid+1)){
+        if (await sketch.compare(sketch, mid, mid + 1)) {
             return;
         }
 
@@ -552,18 +609,18 @@ var sort = function (sketch) {
         let j = mid + 1;
 
 
-        while(i < j && j <= end){
-            while(i < j && await sketch.compare(sketch, i, j)){
+        while (i < j && j <= end) {
+            while (i < j && await sketch.compare(sketch, i, j)) {
                 i++;
             }
-    
+
             let index = j;
             let step = 0;
-            while(j <= end && await sketch.compare(sketch, j, i)){
-                j ++;
-                step ++;
+            while (j <= end && await sketch.compare(sketch, j, i)) {
+                j++;
+                step++;
             }
-    
+
             await sketch.reverse_array(sketch, i, index - 1);
             await sketch.reverse_array(sketch, index, j - 1);
             await sketch.reverse_array(sketch, i, j - 1);
@@ -609,7 +666,7 @@ var sort = function (sketch) {
         let buckets = sketch.buckets;
         let radix = 1;
         for (let times = 1; times <= max_bit; times++) {
-            if (! await sketch.is_running()) return;
+            if (!await sketch.is_running()) return;
             for (let i = 0; i < 10; i++) {
                 buckets[i] = [];
             }
@@ -625,7 +682,7 @@ var sort = function (sketch) {
             for (let i = 0; i < buckets.length; i++) {
                 const bucket = buckets[i];
                 for (let j = 0; j < bucket.length; j++) {
-                    if (! await sketch.is_running()) return;
+                    if (!await sketch.is_running()) return;
                     const value = bucket[j];
                     await sketch.set(sketch, index, value);
                     index += 1;
@@ -642,7 +699,7 @@ var sort = function (sketch) {
         let array = sketch.array;
         for (let i = start; i < array.length; i++) {
             sketch.set_activate(i, end);
-            if (! await sketch.is_running()) return;
+            if (!await sketch.is_running()) return;
             await sketch.wait();
             const value = array[i];
             if (count[value] >= 1) {
@@ -655,12 +712,12 @@ var sort = function (sketch) {
         let index = 0;
 
         for (let i = 0; i < count.length; i++) {
-            if (! await sketch.is_running()) return;
+            if (!await sketch.is_running()) return;
             if (!count[i]) continue;
             while (count[i] > 0) {
                 await sketch.set(sketch, index, i);
-                count[i] --;
-                index ++;
+                count[i]--;
+                index++;
             }
         }
 
@@ -682,7 +739,7 @@ var sort = function (sketch) {
         sketch.running = 0;
     };
 
-    sketch.pause = function(){
+    sketch.pause = function () {
         sketch.running = 2;
     };
 
@@ -696,10 +753,10 @@ $(document).ready(function () {
     sketch = new p5(sort, document.getElementById('content'));
 
     $('.start.button').click(function () {
-        if (sketch.running == 1) 
+        if (sketch.running == 1)
             return;
 
-        if (sketch.running == 2){
+        if (sketch.running == 2) {
             sketch.running = 1;
             return;
         }
@@ -731,6 +788,8 @@ $(document).ready(function () {
             sketch.algorithm = sketch.gnome_sort;
         } else if (sort_type == 'in_place_merge_sort') {
             sketch.algorithm = sketch.in_place_merge_sort;
+        } else if (sort_type == 'heap_sort') {
+            sketch.algorithm = sketch.heap_sort;
         }
         sketch.run();
     });
@@ -774,6 +833,10 @@ $(document).ready(function () {
         {
             name: '选择排序',
             value: 'select_sort'
+        },
+        {
+            name: '堆排序',
+            value: 'heap_sort'
         },
         {
             name: '插入排序',
