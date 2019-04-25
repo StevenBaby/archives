@@ -10,7 +10,7 @@ var sort = function (sketch) {
     sketch.array = new Array(length);
 
     sketch.delay = 300;
-    sketch.running = false;
+    sketch.running = 0;
 
     sketch.break_color = sketch.color(130, 160, 185);
     sketch.grey_color = sketch.color(118, 118, 118);
@@ -189,6 +189,17 @@ var sort = function (sketch) {
         await sketch.sleep(sketch.delay);
     };
 
+    sketch.is_running = async function(){
+        if (sketch.running == 0)
+            return false;
+        else if (sketch.running == 1)
+            return true;
+        while(sketch.running == 2){
+            await sketch.wait();
+        }
+        return true;
+    };
+
     sketch.swap = async function (sketch, first, second) {
         console.log('swap ' + first + " " + second);
         if (first == second) return;
@@ -258,7 +269,7 @@ var sort = function (sketch) {
             sketch.set_activate(start, end - i);
 
             for (let j = start + 1; j <= end - i; j++) {
-                if (!sketch.running) return;
+                if (! await sketch.is_running()) return;
 
                 let first = j - 1;
                 let second = j;
@@ -277,7 +288,7 @@ var sort = function (sketch) {
         while (left < right) {
             sketch.set_activate(left, right);
             for (let i = left; i < right; i++) {
-                if (!sketch.running) return;
+                if (! await sketch.is_running()) return;
 
                 let first = i;
                 let second = i + 1;
@@ -289,7 +300,7 @@ var sort = function (sketch) {
             right--;
             sketch.set_activate(left, right);
             for (let i = right; i > left; i--) {
-                if (!sketch.running) return;
+                if (! await sketch.is_running()) return;
 
                 let first = i;
                 let second = i - 1;
@@ -309,7 +320,7 @@ var sort = function (sketch) {
             sketch.set_activate(start, i);
             max_index = start;
             for (let j = start + 1; j <= i; j++) {
-                if (!sketch.running) return;
+                if (! await sketch.is_running()) return;
                 if (await sketch.compare(sketch, j, max_index))
                     continue;
                 max_index = j;
@@ -326,7 +337,7 @@ var sort = function (sketch) {
 
             let j = i - 1;
             for (; j >= start; j--) {
-                if (!sketch.running) return;
+                if (! await sketch.is_running()) return;
                 if (await sketch.compare(sketch, j, sketch.length)) {
                     break;
                 }
@@ -364,7 +375,7 @@ var sort = function (sketch) {
                 let j = i - size;
 
                 for (; j >= start; j -= size) {
-                    if (!sketch.running) return;
+                    if (! await sketch.is_running()) return;
                     if (await sketch.compare(sketch, j, sketch.length)) {
                         break;
                     }
@@ -393,7 +404,7 @@ var sort = function (sketch) {
                     let j = k - size;
 
                     for (; j >= start; j -= size) {
-                        if (!sketch.running) return;
+                        if (! await sketch.is_running()) return;
                         if (await sketch.compare(sketch, j, sketch.length)) {
                             break;
                         }
@@ -408,7 +419,7 @@ var sort = function (sketch) {
 
     sketch.quick_sort = async function (sketch, start, end) {
         if (start >= end) return;
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
 
         console.log('start algorithm');
         let array = sketch.array;
@@ -426,26 +437,26 @@ var sort = function (sketch) {
 
         while (low < high) {
             while (low < high && !await sketch.compare(sketch, high, array.length)) {
-                if (!sketch.running) return;
+                if (! await sketch.is_running()) return;
                 high--;
             }
             await sketch.swap(sketch, low, high);
 
             while (sketch.running && low < high && await sketch.compare(sketch, low, array.length)) {
-                if (!sketch.running) return;
+                if (! await sketch.is_running()) return;
                 low++;
             }
             await sketch.swap(sketch, low, high);
         }
         console.log('array low ' + low + ' high ' + high);
 
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
         await sketch.algorithm(sketch, start, low - 1);
 
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
         await sketch.algorithm(sketch, low + 1, end);
 
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
     };
 
     sketch.random_quick_sort = async function (sketch, start, end) {
@@ -455,13 +466,13 @@ var sort = function (sketch) {
 
     sketch.merge_sort = async function (sketch, start, end) {
         if (start >= end) return;
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
         let mid = parseInt((end - start) / 2) + start;
         sketch.set_activate(start, end);
         await sketch.wait();
         await sketch.merge_sort(sketch, start, mid);
         await sketch.merge_sort(sketch, mid + 1, end);
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
 
         sketch.set_activate(start, end);
         sketch.activate_color = sketch.yellow_color;
@@ -482,7 +493,7 @@ var sort = function (sketch) {
         let index = start;
 
         while (i < left.length && j < right.length) {
-            if (!sketch.running) return;
+            if (! await sketch.is_running()) return;
             if (left[i] < right[j]) {
                 await sketch.set(sketch, index, left[i]);
                 i++;
@@ -494,14 +505,14 @@ var sort = function (sketch) {
             }
         }
         while (i < left.length) {
-            if (!sketch.running) return;
+            if (! await sketch.is_running()) return;
             await sketch.set(sketch, index, left[i]);
             i++;
             index++;
         }
 
         while (j < right.length) {
-            if (!sketch.running) return;
+            if (! await sketch.is_running()) return;
             await sketch.set(sketch, index, right[j]);
             j++;
             index++;
@@ -519,13 +530,13 @@ var sort = function (sketch) {
 
     sketch.in_place_merge_sort = async function(sketch, start, end){
         if (start >= end) return;
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
         let mid = parseInt((end - start) / 2) + start;
         sketch.set_activate(start, end);
         await sketch.wait();
         await sketch.in_place_merge_sort(sketch, start, mid);
         await sketch.in_place_merge_sort(sketch, mid + 1, end);
-        if (!sketch.running) return;
+        if (! await sketch.is_running()) return;
         sketch.set_activate(start, end);
 
         sketch.activate_color = sketch.yellow_color;
@@ -598,7 +609,7 @@ var sort = function (sketch) {
         let buckets = sketch.buckets;
         let radix = 1;
         for (let times = 1; times <= max_bit; times++) {
-            if (!sketch.running) return;
+            if (! await sketch.is_running()) return;
             for (let i = 0; i < 10; i++) {
                 buckets[i] = [];
             }
@@ -614,7 +625,7 @@ var sort = function (sketch) {
             for (let i = 0; i < buckets.length; i++) {
                 const bucket = buckets[i];
                 for (let j = 0; j < bucket.length; j++) {
-                    if (!sketch.running) return;
+                    if (! await sketch.is_running()) return;
                     const value = bucket[j];
                     await sketch.set(sketch, index, value);
                     index += 1;
@@ -631,6 +642,7 @@ var sort = function (sketch) {
         let array = sketch.array;
         for (let i = start; i < array.length; i++) {
             sketch.set_activate(i, end);
+            if (! await sketch.is_running()) return;
             await sketch.wait();
             const value = array[i];
             if (count[value] >= 1) {
@@ -643,6 +655,7 @@ var sort = function (sketch) {
         let index = 0;
 
         for (let i = 0; i < count.length; i++) {
+            if (! await sketch.is_running()) return;
             if (!count[i]) continue;
             while (count[i] > 0) {
                 await sketch.set(sketch, index, i);
@@ -654,19 +667,23 @@ var sort = function (sketch) {
     };
 
     sketch.run = async function () {
-        sketch.running = true;
+        sketch.running = 1;
         await sketch.algorithm(sketch, 0, sketch.length - 1);
 
         sketch.indices = [];
         sketch.set_activate(0, sketch.length - 1);
         sketch.activate_color = sketch.break_color;
         sketch.temp_value = null;
-        sketch.running = false;
+        sketch.running = 0;
         console.log(sketch.array);
     };
 
     sketch.stop = function () {
-        sketch.running = false;
+        sketch.running = 0;
+    };
+
+    sketch.pause = function(){
+        sketch.running = 2;
     };
 
     sketch.windowResized = function () {
@@ -679,7 +696,14 @@ $(document).ready(function () {
     sketch = new p5(sort, document.getElementById('content'));
 
     $('.start.button').click(function () {
-        if (sketch.running) return;
+        if (sketch.running == 1) 
+            return;
+
+        if (sketch.running == 2){
+            sketch.running = 1;
+            return;
+        }
+
         let sort_type = $("#sort_type").val();
         console.log(sort_type);
         if (sort_type == 'bubble_sort') {
@@ -722,6 +746,11 @@ $(document).ready(function () {
     $('.stop.button').click(function () {
         sketch.stop();
     });
+
+    $('.pause.button').click(function () {
+        sketch.pause();
+    });
+
 
     $('.speed.down.button').click(function () {
         sketch.delay += 100;
