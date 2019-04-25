@@ -20,12 +20,12 @@ var sort = function (sketch) {
     sketch.purple_color = sketch.color(163, 51, 200);
     sketch.yellow_color = sketch.color(251, 189, 8);
 
-    sketch.green_color = sketch.color(33,186,69);
-    sketch.teal_color = sketch.color(0,181,173);
-    sketch.pink_color = sketch.color(224,57,151);
-    sketch.brown_color = sketch.color(165,103,63);
-    sketch.violet_color = sketch.color(100,53,201);
-    sketch.olive_color = sketch.color(167,189,13);
+    sketch.green_color = sketch.color(33, 186, 69);
+    sketch.teal_color = sketch.color(0, 181, 173);
+    sketch.pink_color = sketch.color(224, 57, 151);
+    sketch.brown_color = sketch.color(165, 103, 63);
+    sketch.violet_color = sketch.color(100, 53, 201);
+    sketch.olive_color = sketch.color(167, 189, 13);
 
     sketch.default_color = sketch.grey_color;
     sketch.activate_color = sketch.break_color;
@@ -45,16 +45,16 @@ var sort = function (sketch) {
     sketch.buckets = [];
 
     sketch.buckets_color = [
-        25,
-        50,
-        75,
-        100,
-        125,
-        150,
-        175,
-        200,
-        225,
-        255,
+        sketch.red_color,
+        sketch.pink_color,
+        sketch.brown_color,
+        sketch.orange_color,
+        sketch.yellow_color,
+        sketch.purple_color,
+        sketch.violet_color,
+        sketch.teal_color,
+        sketch.green_color,
+        sketch.olive_color,
     ];
 
     sketch.generate = function () {
@@ -111,7 +111,7 @@ var sort = function (sketch) {
         }
 
 
-        function is_value(item, iter, array){
+        function is_value(item, iter, array) {
             return sketch.array[index] == item;
         }
 
@@ -270,6 +270,38 @@ var sort = function (sketch) {
         }
     };
 
+    sketch.cocktail_sort = async function (sketch, start, end) {
+        let left = start;
+        let right = end;
+
+        while (left < right) {
+            sketch.set_activate(left, right);
+            for (let i = left; i < right; i++) {
+                if (!sketch.running) return;
+
+                let first = i;
+                let second = i + 1;
+
+                if (await sketch.compare(sketch, first, second))
+                    continue;
+                await sketch.swap(sketch, first, second);
+            }
+            right--;
+            sketch.set_activate(left, right);
+            for (let i = right; i > left; i--) {
+                if (!sketch.running) return;
+
+                let first = i;
+                let second = i - 1;
+
+                if (!await sketch.compare(sketch, first, second))
+                    continue;
+                await sketch.swap(sketch, first, second);
+            }
+            left++;
+        }
+    };
+
     sketch.select_sort = async function (sketch, start, end) {
         let max_index = null;
 
@@ -301,6 +333,19 @@ var sort = function (sketch) {
                 await sketch.set(sketch, j + 1, array[j]);
             }
             await sketch.set(sketch, j + 1, sketch.temp_value);
+        }
+    };
+
+    sketch.gnome_sort = async function (sketch, start, end){
+        let pos = start;
+
+        while(start < end){
+            // if () pos ++;
+            if (pos == start || !await sketch.compare(sketch, pos, pos-1)) pos ++;
+            else{
+                await sketch.swap(sketch, pos, pos-1);
+                pos--;
+            }
         }
     };
 
@@ -422,6 +467,10 @@ var sort = function (sketch) {
         sketch.activate_color = sketch.yellow_color;
         await sketch.wait();
 
+        if (await sketch.compare(sketch, mid, mid+1)){
+            return;
+        }
+
         sketch.activate_color = sketch.break_color;
         let array = sketch.array;
         let left = array.slice(start, mid + 1);
@@ -460,6 +509,60 @@ var sort = function (sketch) {
     };
 
 
+    sketch.reverse_array = async function (sketch, start, end){
+        while( start < end){
+            await sketch.swap(sketch, start, end);
+            start ++;
+            end --;
+        }
+    };
+
+    sketch.in_place_merge_sort = async function(sketch, start, end){
+        if (start >= end) return;
+        if (!sketch.running) return;
+        let mid = parseInt((end - start) / 2) + start;
+        sketch.set_activate(start, end);
+        await sketch.wait();
+        await sketch.in_place_merge_sort(sketch, start, mid);
+        await sketch.in_place_merge_sort(sketch, mid + 1, end);
+        if (!sketch.running) return;
+        sketch.set_activate(start, end);
+
+        sketch.activate_color = sketch.yellow_color;
+        await sketch.wait();
+
+        sketch.activate_color = sketch.break_color;
+
+        if (await sketch.compare(sketch, mid, mid+1)){
+            return;
+        }
+
+        let i = start;
+        let j = mid + 1;
+
+
+        while(i < j && j <= end){
+            while(i < j && await sketch.compare(sketch, i, j)){
+                i++;
+            }
+    
+            let index = j;
+            let step = 0;
+            while(j <= end && await sketch.compare(sketch, j, i)){
+                j ++;
+                step ++;
+            }
+    
+            await sketch.reverse_array(sketch, i, index - 1);
+            await sketch.reverse_array(sketch, index, j - 1);
+            await sketch.reverse_array(sketch, i, j - 1);
+
+            i += step;
+        }
+
+
+    };
+
     sketch.get_bit = function (num) {
         let p = 10;
         let b = 1;
@@ -470,16 +573,21 @@ var sort = function (sketch) {
         return b;
     };
 
-    sketch.base_sort = async function (sketch, start, end) {
+    sketch.radix_sort = async function (sketch, start, end) {
         let array = sketch.array;
         let max_bit = function () {
             let bit = 1;
             let p = 10;
-            for (let i = 0; i < array.length; i++) {
-                while (array[i] > p) {
-                    p *= 10;
-                    bit++;
+            let max_num = array[0];
+            for (let i = 1; i < array.length; i++) {
+                if (max_num < array[i]) {
+                    max_num = array[i];
                 }
+            }
+            while (max_num > p) {
+                // p *= 10; // maybe overflow
+                max_num /= 10;
+                bit++;
             }
             return bit;
         }();
@@ -498,6 +606,7 @@ var sort = function (sketch) {
                 const value = array[i];
                 let index = parseInt(value / radix) % 10;
                 buckets[index].push(value);
+                await sketch.wait();
             }
             radix *= 10;
 
@@ -517,12 +626,40 @@ var sort = function (sketch) {
         sketch.buckets = [];
     };
 
+    sketch.count_sort = async function (sketch, start, end) {
+        const count = [];
+        let array = sketch.array;
+        for (let i = start; i < array.length; i++) {
+            sketch.set_activate(i, end);
+            await sketch.wait();
+            const value = array[i];
+            if (count[value] >= 1) {
+                count[value]++;
+            } else {
+                count[value] = 1;
+            }
+        }
+
+        let index = 0;
+
+        for (let i = 0; i < count.length; i++) {
+            if (!count[i]) continue;
+            while (count[i] > 0) {
+                await sketch.set(sketch, index, i);
+                count[i] --;
+                index ++;
+            }
+        }
+
+    };
+
     sketch.run = async function () {
         sketch.running = true;
         await sketch.algorithm(sketch, 0, sketch.length - 1);
 
         sketch.indices = [];
         sketch.set_activate(0, sketch.length - 1);
+        sketch.activate_color = sketch.break_color;
         sketch.temp_value = null;
         sketch.running = false;
         console.log(sketch.array);
@@ -560,8 +697,16 @@ $(document).ready(function () {
             sketch.algorithm = sketch.insert_sort;
         } else if (sort_type == 'shell_sort') {
             sketch.algorithm = sketch.shell_sort;
-        } else if (sort_type == 'base_sort') {
-            sketch.algorithm = sketch.base_sort;
+        } else if (sort_type == 'radix_sort') {
+            sketch.algorithm = sketch.radix_sort;
+        } else if (sort_type == 'cocktail_sort') {
+            sketch.algorithm = sketch.cocktail_sort;
+        } else if (sort_type == 'count_sort') {
+            sketch.algorithm = sketch.count_sort;
+        } else if (sort_type == 'gnome_sort') {
+            sketch.algorithm = sketch.gnome_sort;
+        } else if (sort_type == 'in_place_merge_sort') {
+            sketch.algorithm = sketch.in_place_merge_sort;
         }
         sketch.run();
     });
@@ -594,12 +739,20 @@ $(document).ready(function () {
             value: 'bubble_sort'
         },
         {
+            name: '鸡尾酒排序',
+            value: 'cocktail_sort'
+        },
+        {
             name: '选择排序',
             value: 'select_sort'
         },
         {
             name: '插入排序',
             value: 'insert_sort'
+        },
+        {
+            name: '侏儒排序',
+            value: 'gnome_sort'
         },
         {
             name: '希尔排序',
@@ -618,8 +771,16 @@ $(document).ready(function () {
             value: 'merge_sort'
         },
         {
+            name: '原地归并排序',
+            value: 'in_place_merge_sort'
+        },
+        {
             name: '基数排序',
-            value: 'base_sort'
+            value: 'radix_sort'
+        },
+        {
+            name: '计数排序',
+            value: 'count_sort'
         }
     ];
 
