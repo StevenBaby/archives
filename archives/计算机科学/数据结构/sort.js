@@ -351,6 +351,8 @@ var sort = function (sketch) {
         let index = parseInt(((end - start) + 1) / 2) + 1;
 
         for(; index >=start; index--){
+            if (!await sketch.is_running()) return;
+
             sketch.indices = [index];
 
             let left = index * 2 + 1;
@@ -379,6 +381,7 @@ var sort = function (sketch) {
         }
 
         for (let j = end; j > start; j--) {
+            if (!await sketch.is_running()) return;
             sketch.set_activate(start, j);
             await sketch.adjust_heap(sketch, start, j);
             await sketch.swap(sketch, start, j);
@@ -709,11 +712,14 @@ var sort = function (sketch) {
             }
         }
 
+        sketch.activate = [];
+
         let index = 0;
 
         for (let i = 0; i < count.length; i++) {
             if (!await sketch.is_running()) return;
             if (!count[i]) continue;
+            sketch.set_activate(index, end);
             while (count[i] > 0) {
                 await sketch.set(sketch, index, i);
                 count[i]--;
