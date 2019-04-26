@@ -13,9 +13,11 @@
 
 ## 去除计算机文件夹
 
-打开注册表编辑器删除下面的所有值，除 DelegateFolders
+打开注册表编辑器删除下面的所有值，除了 DelegateFolders
 
->HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace
+```reg
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace
+```
 
 ----
 
@@ -23,7 +25,9 @@
 
 打开注册表编辑器定位到下面
 
->HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\
+```reg
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders\
+```
 
 将下面的 **{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}** 重命名为 **-{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}**，也就是在前面加上一个 **-**， U盘就消失了，想要的话还可以改回来
 
@@ -43,7 +47,9 @@ mountvol X:\ /D
 ## 应用程序无法打开共享文件夹
 打开注册表，定位到下面
 
->HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+```reg
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+```
 
 新建DWORD值，命名为 **EnableLinkedConnections**，赋值为 **1**，然后重新启动操作系统
 
@@ -53,7 +59,9 @@ mountvol X:\ /D
 
 打开注册表，删除下面的键，重新登陆就可以了
 
->HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount
+```reg
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount
+```
 
 ----
 
@@ -70,6 +78,7 @@ resultui\index.css
 ----
 
 ## Potplayer Windows10皮肤
+
 <https://github.com/stevenkangwei/blogfile/tree/master/software/potplayer%20skins>
 
 
@@ -83,7 +92,9 @@ resultui\index.css
 
 编辑注册表，根据需要删除该键下面的值
 
->HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+```reg
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+```
 
 ----
 
@@ -91,7 +102,9 @@ resultui\index.css
 
 编辑注册表，根据需要删除该键下面的值
 
-> HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Map Network Drive MRU
+```reg
+HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Map Network Drive MRU
+```
 
 ----
 
@@ -99,13 +112,15 @@ resultui\index.css
 
 编辑注册表，根据需要删除该键下面的值
 
-> Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
+```reg
+Computer\HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
+```
 
 ----
 
 ## 关闭Firefox截图功能
 
-地址栏输入 `about.config` 进入Firefox配置
+地址栏输入 `about:config` 进入Firefox配置
 
 将 `extensions.screenshots.disabled` 改成 true
 
@@ -113,7 +128,9 @@ resultui\index.css
 
 ## Windows 自启动注册表位置
 
-> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+```reg
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+```
 
 ----
 
@@ -150,7 +167,9 @@ resultui\index.css
 
 进入注册表编辑器下面得位置，选择性得删除扩展菜单
 
->HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt
+```reg
+HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\MenuExt
+```
 
 ----
 
@@ -166,21 +185,29 @@ resultui\index.css
 
 修改注册表
 
->HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider
+```reg
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\NetworkProvider
+```
 
 创建DWORD  **RestoreConnection** = 0
 
 修改注册表
 
->HKEY_CURRENT_USER\Network
+```reg
+HKEY_CURRENT_USER\Network
+```
 
 创建DWORD  **RestoreDiskChecked** = 0
+
+---
 
 ## 去掉Python 右键 **Edit With IDLE**
 
 修改注册表
 
->HKEY_CLASSES_ROOT\Python.File\Shell
+```reg
+HKEY_CLASSES_ROOT\Python.File\Shell
+```
 
 自行删除下面的Key
 
@@ -211,14 +238,17 @@ HKEY_CLASSES_ROOT\Directory\shell\AnyCode
 
 ## Windows 10 锁频壁纸位置
 
-> C:\Users\username\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
-
+```reg
+C:\Users\username\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
+```
 
 ## 去掉 右键 Windows Defender 扫描
 
-> regsvr32 /i "C:\Program Files\Windows Defender\shellext.dll"
+```reg
+regsvr32 /i "C:\Program Files\Windows Defender\shellext.dll"
 
-> regsvr32 /u "C:\Program Files\Windows Defender\shellext.dll"
+regsvr32 /u "C:\Program Files\Windows Defender\shellext.dll"
+```
 
 ## chrome 离线安装包
 
@@ -236,9 +266,11 @@ PYTHONIOENCODING = utf8
 
 编辑注册表 
 
-`HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe`
+```reg
+HKEY_CURRENT_USER\Console\%SystemRoot%_system32_cmd.exe
+```
 
-添加值 `CodePage = fde9`  类型为 DWORD > hexadecimal
+添加值 `CodePage = fde9`  类型为 `DWORD` > `hexadecimal`
 
 如果需要临时修改 cmd 的字符编码，则可以执行，转换为 UTF-8
 
@@ -256,8 +288,17 @@ chcp 936
 
 编辑注册表
 
-`HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced`
+```reg
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+```
 
-新建一个 DWORD 32 位值，再将该值命名为 ShowSecondsInSystemClock = 1
+新建一个 `DWORD` 32 位值，再将该值命名为 `ShowSecondsInSystemClock` = 1
 
-重启Windows 资源管理器就可以了
+重启 Windows 资源管理器就可以了
+
+> 怎么重启 Windows 资源管理器？
+>
+> 随便打开一个文件夹
+> 按住键盘 `CTRL` + `SHIFT` + `ESC`，就会弹出任务管理器
+> 在应用里找到 Windows Explorer
+> 然后 点击鼠标右键 -> 重新启动
