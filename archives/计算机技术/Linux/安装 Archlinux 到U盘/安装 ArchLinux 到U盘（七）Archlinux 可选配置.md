@@ -5,6 +5,13 @@
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (操作系统|Linux)
 [annotation]: <status> (public)
+[annotation]: <topic> (安装 ArchLinux 到U盘)
+[annotation]: <index> (7)
+[annotation]: <comments> (true)
+
+> 原文链接：<http://blog.ccyg.studio/article/5c3a4435-dec5-4a15-b30c-3dea4ae35e40>
+
+---
 
 ![Archlinux](https://upload-images.jianshu.io/upload_images/406169-19f0ce024e64575c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
 

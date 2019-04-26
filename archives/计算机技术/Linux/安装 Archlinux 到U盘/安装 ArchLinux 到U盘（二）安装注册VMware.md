@@ -5,6 +5,14 @@
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (操作系统|Linux)
 [annotation]: <status> (public)
+[annotation]: <topic> (安装 ArchLinux 到U盘)
+[annotation]: <index> (2)
+[annotation]: <comments> (true)
+
+> 原文链接：<http://blog.ccyg.studio/article/e4f4c621-b53d-4775-ae2a-e0f380788fce>
+
+---
+
 
 经过上一篇文章的描述 [准备工作](./55ffae4e-64e2-4b8e-bb9d-3ae759b3e223)，应该已经下载了Vmware，这篇文章就写一下如何安装 Vmware， 如果已经安装好了 VMware 请移步 [新建虚拟机](./206f744b-1d67-4afa-b25b-76d66c78e95f)
 

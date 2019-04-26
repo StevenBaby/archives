@@ -5,6 +5,14 @@
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (操作系统|Linux)
 [annotation]: <status> (public)
+[annotation]: <topic> (安装 ArchLinux 到U盘)
+[annotation]: <index> (6)
+[annotation]: <comments> (true)
+
+> 原文链接：<http://blog.ccyg.studio/article/255f0ebd-a9af-40a2-ba94-d45e10baeff1>
+
+---
+
 
 ## 安装 gnome
 
