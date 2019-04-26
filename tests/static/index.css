@@ -1,16 +1,18 @@
-html body{
+html body {
     height: 100%;
     /*background: url(https://gitlab.com/StevenKang/file/raw/master/images/1.jpg);*/
     /*background-size: cover;*/
     background-color: #EEEEEE;
 }
 
-body .header{
-   
-}
+body .header {}
 
-body .wrapper{
+body .wrapper {
     margin-top: 2rem;
     margin-bottom: 2rem;
     min-height: 100%;
+}
+
+.jp-audio .ui.progress {
+    margin: 0;    
 }
