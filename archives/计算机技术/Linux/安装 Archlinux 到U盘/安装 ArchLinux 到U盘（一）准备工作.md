@@ -64,3 +64,4 @@ Arch Linux是起源于加拿大的一份致力于使用简单、系统轻量、�
 
 3. ~~附上百度软件中心 [最新下载链接 14.0.0.24051](http://sw.bos.baidu.com/sw-search-sp/software/ca7ad8c6d3103/VMware-workstation-full-14.0.0.24051.exe)~~  百度软件中心已经下线 <sub>2019-04-26 更新</sub>
 
+4. 附上腾讯软件中心的地址 [VMware Workstation Pro](https://pc.qq.com/detail/0/detail_21600.html)
