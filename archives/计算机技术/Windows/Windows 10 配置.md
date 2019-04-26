@@ -211,6 +211,8 @@ HKEY_CLASSES_ROOT\Python.File\Shell
 
 自行删除下面的Key
 
+---
+
 ## 去掉右键 **Open in Visual Studio**
 
 删除以下两个注册表项：
@@ -218,6 +220,8 @@ HKEY_CLASSES_ROOT\Python.File\Shell
 HKEY_CLASSES_ROOT\Directory\Background\shell\AnyCode
 HKEY_CLASSES_ROOT\Directory\shell\AnyCode
 ```
+
+---
 
 ## 配置多机器鼠标键盘共享
 
@@ -230,17 +234,22 @@ HKEY_CLASSES_ROOT\Directory\shell\AnyCode
 
 7B76313B70726F3B53746576656E3B313B3B3B303B307D
 
+---
+
 ## 出现文件 C:\AppData\Roaming\miniconfig\history.ini
 
 - 终结正在运行的 FlashHelperService.exe 服务
 - 重命名FlashHelperService.exe为任意名
 - 新建记事本改名为 FlashHelperService.exe，设置为只读
 
+---
+
 ## Windows 10 锁频壁纸位置
 
 ```reg
 C:\Users\username\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets
 ```
+---
 
 ## 去掉 右键 Windows Defender 扫描
 
@@ -249,10 +258,13 @@ regsvr32 /i "C:\Program Files\Windows Defender\shellext.dll"
 
 regsvr32 /u "C:\Program Files\Windows Defender\shellext.dll"
 ```
+---
 
 ## chrome 离线安装包
 
 <https://www.google.com/chrome/?standalone=1>
+
+---
 
 ## 修改python字符编码为 UTF-8
 
@@ -261,6 +273,7 @@ regsvr32 /u "C:\Program Files\Windows Defender\shellext.dll"
 ```python
 PYTHONIOENCODING = utf8
 ```
+---
 
 ## 修改 cmd.exe 的字符编码为 UTF-8
 
@@ -283,6 +296,7 @@ chcp 65001
 ```cmd
 chcp 936 
 ```
+---
 
 ## 修改任务栏时间显示秒
 
@@ -302,3 +316,5 @@ HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 > 按住键盘 `CTRL` + `SHIFT` + `ESC`，就会弹出任务管理器
 > 在应用里找到 Windows Explorer
 > 然后 点击鼠标右键 -> 重新启动
+
+---
