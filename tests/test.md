@@ -81,7 +81,7 @@ $$
 
 ## 测试 Jplayer 播放器
 
-<div class='ui jplayer audio' data-url="https://rawcdn.githack.com/StevenKangWei/blogfile/TAG-2019-04-27/her.mp3">这里是播放器</div>
+<div class='ui jplayer audio' data-url="http://other.web.ra01.sycdn.kuwo.cn/resource/n3/128/9/64/2690960309.mp3" format='mp3'>这里是播放器</div>
 
 
 ## 测试网易云音乐

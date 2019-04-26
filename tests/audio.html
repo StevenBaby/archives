@@ -15,9 +15,9 @@
         <div class="ui container">
             <div class="ui segments">
                 <div class="ui segment" id="content">
-                    <div class='ui audio' id="jp_player_1"
+                    <div ancestor="#jp_container_0" class='ui audio' id="jp_player_1"
                         data-url="https://rawcdn.githack.com/StevenKangWei/blogfile/TAG-2019-04-27/her.mp3"></div>
-                    <div id="jp_container_1" class="jp-audio">
+                    <div id="jp_container_0" class="jp-audio">
                         <table class="ui basic unstackable table">
                             <tr>
                                 <td class="ui one wide">
@@ -80,16 +80,25 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#jp_player_1").jPlayer({
-                ready: function () {
-                    let url = $(this).attr('data-url')
-                    $(this).jPlayer("setMedia", {
-                        mp3: url,
-                    });
-                },
-                supplied: "mp3"
-            });
+            var format = 'mp3';
 
+            var player = $("#jp_player_1");
+            var url = player.attr('data-url')
+            var format = player.attr('format');
+            if (!format) {
+                format = url.substring(url.lastIndexOf(".") + 1, url.length);
+            }
+            var ancestor = player.attr('ancestor');
+
+            player.jPlayer({
+                cssSelectorAncestor: ancestor,
+                ready: function () {
+                    var data = {}
+                    data[format] = url;
+                    $(this).jPlayer("setMedia", data);
+                },
+                supplied: format
+            });
         });
     </script>
 </body>
