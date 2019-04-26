@@ -5,6 +5,12 @@
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (操作系统|Linux)
 [annotation]: <status> (public)
+[annotation]: <comments> (true)
+
+> 原文链接：<http://blog.ccyg.studio/article/55ffae4e-64e2-4b8e-bb9d-3ae759b3e223>
+
+---
+
 
 ## 关于这篇文章
 
@@ -53,7 +59,7 @@ Arch Linux是起源于加拿大的一份致力于使用简单、系统轻量、�
 
 1. 可以去 [VMware官网](https://www.vmware.com)，不过这种方式略显麻烦
 
-2. 可以去 [百度软件中心](http://rj.baidu.com/soft/detail/13808.html) ，点击普通下载即可下载
+2. ~~可以去 [百度软件中心](http://rj.baidu.com/soft/detail/13808.html) ，点击普通下载即可下载~~
 
-3. 附上百度软件中心 [最新下载链接 14.0.0.24051](http://sw.bos.baidu.com/sw-search-sp/software/ca7ad8c6d3103/VMware-workstation-full-14.0.0.24051.exe)
+3. ~~附上百度软件中心 [最新下载链接 14.0.0.24051](http://sw.bos.baidu.com/sw-search-sp/software/ca7ad8c6d3103/VMware-workstation-full-14.0.0.24051.exe)~~  百度软件中心已经下线 <sub>2019-04-26 更新</sub>
 

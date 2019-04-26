@@ -317,4 +317,6 @@ HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 > 在应用里找到 Windows Explorer
 > 然后 点击鼠标右键 -> 重新启动
 
+![1556250555(1).jpg](https://upload-images.jianshu.io/upload_images/406169-f4b51eee6efd187a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ---
