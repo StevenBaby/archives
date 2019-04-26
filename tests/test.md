@@ -51,19 +51,33 @@ int main()
 
 > 时间没有等我 是你 忘了带走我 我左手是过目不忘的萤火 右手是十年一个漫长的打坐 命运没有留我 是我 遗弃自己在角落 我左边空想翻腾的生活 右边跌落五年一瞬短暂的因果
 
+
+## 测试删除线
+
+~~时光在静静的流淌，离开了家乡，追逐的梦到了远方，却始终捉不住月亮。~~
+
 ## 测试图片重定向
 
-![](test-001.png)
+![](static/test-001.png)
 
 
 ## 测试svg重定向
 
-<img src='test-002.svg?sanitize=true' width=150 height=150/>
+<img src='static/test-002.svg?sanitize=true' width=150 height=150/>
 
 
 ## 测试基本公式
 
 $$2 + 3 = \sqrt{5 + 7} \int_{-\infty}^{+\infty } f(x)dx$$
+
+$$\left\{
+\begin{aligned}
+\sqrt{a^2 - x^2}  \rightarrow x &= asin\ t, \ (|t| < \frac{\pi}{2})\\
+\sqrt{a^2 + x^2}  \rightarrow x &= atan\ t, \ (|t| < \frac{\pi}{2})\\
+\sqrt{x^2 - a^2}  \rightarrow x &= asec\ t, \ (0 < t < \frac{\pi}{2})\\
+\end{aligned}
+\right.
+$$
 
 ## 测试网易云音乐
 
