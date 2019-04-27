@@ -84,6 +84,10 @@ $$
 <div class='ui jplayer audio' data-url="http://other.web.ra01.sycdn.kuwo.cn/resource/n3/128/9/64/2690960309.mp3" format='mp3'>这里是播放器</div>
 
 
+<div class='ui jplayer video' data-url="http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm" format='webmv'>这里是播放器</div>
+
+
+
 ## 测试网易云音乐
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=516719755&height=66"></iframe>
