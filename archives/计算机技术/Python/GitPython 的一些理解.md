@@ -14,18 +14,18 @@
 - object
 - tree
 - blob
-  - abspath
-  - binsha
-  - commit_id
-  - data_stream
-  - hexsha
-  - mode
-  - name
-  - path
-  - size
-  - symlink_id
-  - tree_id
-  - type
+    - abspath
+    - binsha
+    - commit_id
+    - data_stream
+    - hexsha
+    - mode
+    - name
+    - path
+    - size
+    - symlink_id
+    - tree_id
+    - type
 
 
 ## 参考资料
