@@ -79,6 +79,7 @@ $$\left\{
 \right.
 $$
 
+
 ## 测试 Jplayer 播放器 音频
 
 <div class='ui jplayer audio' data-url="http://other.web.ra01.sycdn.kuwo.cn/resource/n3/128/9/64/2690960309.mp3" format='mp3'></div>
@@ -86,7 +87,7 @@ $$
 
 ## 测试 Jplayer 播放器 视频
 
-<div class='ui jplayer video' data-url="http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm" format='webmv'></div>
+<div class='ui jplayer video' data-url="http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm" data-placeholder="http://www.jplayer.org/video/poster/Finding_Nemo_Teaser_640x352.png" format='webmv'></div>
 
 
 ## 测试网易云音乐
