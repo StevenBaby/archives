@@ -8,6 +8,7 @@ const int LENGTH = 32;
 
 void print_array(int array[], int begin, int end)
 {
+    std::cout << "print array: ";
     for (int i = begin; i <= end; ++i)
         std::cout << array[i] << " ";
     std::cout << std::endl;
@@ -90,20 +91,24 @@ void select_sort(int array[], int begin, int end)
 
 void quick_sort(int array[], int begin, int end)
 {
-    if (begin >= end) return;
+    if (begin >= end)
+        return;
     auto pivot = array[begin];
 
     auto left = begin;
     auto right = end;
 
-    while (left < right) {
-        while (left < right && array[right] >= pivot) {
-            right --;
+    while (left < right)
+    {
+        while (left < right && array[right] >= pivot)
+        {
+            right--;
         }
         array[left] = array[right];
 
-        while (left < right && array[left] < pivot) {
-            left ++;
+        while (left < right && array[left] < pivot)
+        {
+            left++;
         }
         array[right] = array[left];
     }
@@ -114,7 +119,8 @@ void quick_sort(int array[], int begin, int end)
 
 void random_quick_sort(int array[], int begin, int end)
 {
-    if (begin >= end) return;
+    if (begin >= end)
+        return;
 
     std::default_random_engine engine(time(nullptr));
     std::uniform_int_distribution<> dis(begin, end);
@@ -125,20 +131,117 @@ void random_quick_sort(int array[], int begin, int end)
     auto left = begin;
     auto right = end;
 
-    while (left < right) {
-        while (left < right && array[right] >= pivot) {
-            right --;
+    while (left < right)
+    {
+        while (left < right && array[right] >= pivot)
+        {
+            right--;
         }
         array[left] = array[right];
 
-        while (left < right && array[left] < pivot) {
-            left ++;
+        while (left < right && array[left] < pivot)
+        {
+            left++;
         }
         array[right] = array[left];
     }
     array[left] = pivot;
     random_quick_sort(array, begin, left - 1);
     random_quick_sort(array, left + 1, end);
+}
+
+void merge_sort_recursive(int array[], int begin, int end)
+{
+    if (begin >= end)
+        return;
+    auto length = end - begin + 1;
+    auto mid = (end - begin) / 2 + begin;
+
+    merge_sort_recursive(array, begin, mid);
+    merge_sort_recursive(array, mid + 1, end);
+
+    auto list = new int[length];
+    std::copy(array + begin, array + end + 1, list);
+
+    auto begin1 = 0;
+    auto end1 = mid - begin;
+    auto begin2 = end1 + 1;
+    auto end2 = length - 1;
+
+    int index = begin;
+
+    while (begin1 <= end1 && begin2 <= end2)
+    {
+        if (list[begin1] < list[begin2])
+        {
+            array[index++] = list[begin1++];
+        }
+        else
+        {
+            array[index++] = list[begin2++];
+        }
+    }
+    while (begin1 <= end1)
+    {
+        array[index++] = list[begin1++];
+    }
+    while (begin2 <= end2)
+    {
+        array[index++] = list[begin2++];
+    }
+    delete[] list;
+}
+
+void merge_sort_iterate(int array[], int begin, int end)
+{
+    if (begin >= end)
+        return;
+
+    auto source = array;
+    auto length = end - begin + 1;
+
+    array = new int[length];
+    auto list = source;
+
+    for (auto segment = 1; segment < length; segment *= 2)
+    {
+        for (auto i = begin; i <= end; i += segment * 2)
+        {
+            auto begin1 = i;
+            auto begin2 = i + segment;
+            auto end1 = begin2 - 1;
+            auto end2 = end1 + segment;
+            int index = begin1;
+
+            while (begin1 <= end1 && begin2 <= end2)
+            {
+                if (list[begin1] < list[begin2])
+                {
+                    array[index++] = list[begin1++];
+                }
+                else
+                {
+                    array[index++] = list[begin2++];
+                }
+            }
+            while (begin1 <= end1)
+            {
+                array[index++] = list[begin1++];
+            }
+            while (begin2 <= end2)
+            {
+                array[index++] = list[begin2++];
+            }
+        }
+        auto temp = array;
+        array = list;
+        list = temp;
+    }
+    if (array != source){
+        std::copy(list + begin, list + end + 1, source);
+        list = array;
+    }
+    delete[] list;
 }
 
 int main()
@@ -153,6 +256,8 @@ int main()
     // cocktail_sort(array, begin, end);
     // select_sort(array, begin, end);
     // quick_sort(array, begin, end);
-    random_quick_sort(array, begin, end);
+    // random_quick_sort(array, begin, end);
+    // merge_sort_recursive(array, begin, end);
+    merge_sort_iterate(array, begin, end);
     print_array(array, begin, end);
 }

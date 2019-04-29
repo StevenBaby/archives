@@ -145,8 +145,8 @@ var sort = function (sketch) {
                 sketch.fill(sketch.default_color);
             }
         }
-        
-        
+
+
     };
 
     sketch.draw_box = function (index) {
@@ -350,18 +350,18 @@ var sort = function (sketch) {
 
         let index = parseInt(((end - start) + 1) / 2) + 1;
 
-        for(; index >=start; index--){
+        for (; index >= start; index--) {
             if (!await sketch.is_running()) return;
 
             sketch.indices = [index];
 
             let left = index * 2 + 1;
             let right = left + 1;
-    
-            if(right <= end && await sketch.compare(sketch, index, right)){
+
+            if (right <= end && await sketch.compare(sketch, index, right)) {
                 await sketch.swap(sketch, index, right);
             }
-            if (left <= end && await sketch.compare(sketch, index, left)){
+            if (left <= end && await sketch.compare(sketch, index, left)) {
                 await sketch.swap(sketch, index, left);
             }
         }
@@ -579,10 +579,44 @@ var sort = function (sketch) {
         }
     };
 
+    sketch.merge_sort_iterate = async function (sketch, start, end) {
+        if (start >= end) return;
+        if (!await sketch.is_running()) return;
+
+        let length = end - start + 1;
+
+        for (let segment = 1; segment < length; segment *= 2) {
+            let list = sketch.array.concat();
+            for (let i = 0; i < end; i += segment * 2) {
+                let begin1 = i;
+                let begin2 = i + segment;
+                let end1 = begin2 - 1;
+                let end2 = end1 + segment;
+                let index = begin1;
+                sketch.set_activate(begin1, end2);
+
+                while (begin1 <= end1 && begin2 <= end2) {
+                    if (list[begin1] < list[begin2]) {
+                        await sketch.set(sketch, index++, list[begin1++]);
+                    } else {
+                        await sketch.set(sketch, index++, list[begin2++]);
+                    }
+                }
+                while (begin1 <= end1) {
+                    await sketch.set(sketch, index++, list[begin1++]);
+                }
+                while (begin2 <= end2) {
+                    await sketch.set(sketch, index++, list[begin2++]);
+                }
+            }
+        }
+    };
+
 
     sketch.reverse_array = async function (sketch, start, end) {
         while (start < end) {
             await sketch.swap(sketch, start, end);
+            if (!await sketch.is_running()) return;
             start++;
             end--;
         }
@@ -614,24 +648,71 @@ var sort = function (sketch) {
 
         while (i < j && j <= end) {
             while (i < j && await sketch.compare(sketch, i, j)) {
+                if (!await sketch.is_running()) return;
                 i++;
             }
 
             let index = j;
             let step = 0;
             while (j <= end && await sketch.compare(sketch, j, i)) {
+                if (!await sketch.is_running()) return;
                 j++;
                 step++;
             }
 
             await sketch.reverse_array(sketch, i, index - 1);
+            if (!await sketch.is_running()) return;
             await sketch.reverse_array(sketch, index, j - 1);
+            if (!await sketch.is_running()) return;
             await sketch.reverse_array(sketch, i, j - 1);
+            if (!await sketch.is_running()) return;
 
             i += step;
         }
 
 
+    };
+
+    sketch.in_place_merge_sort_iterate = async function (sketch, start, end) {
+        if (start >= end) return;
+        if (!await sketch.is_running()) return;
+
+        let length = end - start + 1;
+
+        for (let segment = 1; segment < length; segment *= 2) {
+            if (!await sketch.is_running()) return;
+            for (let i = 0; i < end; i += segment * 2) {
+                if (!await sketch.is_running()) return;
+
+                let begin1 = i;
+                let begin2 = i + segment;
+                let end1 = begin2 - 1;
+                let end2 = end1 + segment;
+
+                sketch.set_activate(begin1, end2);
+
+                while (begin1 < begin2 && begin2 <= end2) {
+                    while (begin1 < begin2 && await sketch.compare(sketch, begin1, begin2)) {
+                        if (!await sketch.is_running()) return;
+                        begin1++;
+                    }
+        
+                    let index = begin2;
+                    let step = 0;
+                    while (begin2 <= end2 && await sketch.compare(sketch, begin2, begin1)) {
+                        if (!await sketch.is_running()) return;
+                        begin2++;
+                        step++;
+                    }
+        
+                    await sketch.reverse_array(sketch, begin1, index - 1);
+                    await sketch.reverse_array(sketch, index, begin2 - 1);
+                    await sketch.reverse_array(sketch, begin1, begin2 - 1);
+        
+                    begin1 += step;
+                }
+            }
+        }
     };
 
     sketch.get_bit = function (num) {
@@ -796,6 +877,10 @@ $(document).ready(function () {
             sketch.algorithm = sketch.in_place_merge_sort;
         } else if (sort_type == 'heap_sort') {
             sketch.algorithm = sketch.heap_sort;
+        } else if (sort_type == 'merge_sort_iterate') {
+            sketch.algorithm = sketch.merge_sort_iterate;
+        } else if (sort_type == 'in_place_merge_sort_iterate') {
+            sketch.algorithm = sketch.in_place_merge_sort_iterate;
         }
         sketch.run();
     });
@@ -865,12 +950,20 @@ $(document).ready(function () {
             value: 'random_quick_sort'
         },
         {
-            name: '归并排序',
+            name: '归并排序-递归',
             value: 'merge_sort'
         },
         {
-            name: '原地归并排序',
+            name: '归并排序-非递归',
+            value: 'merge_sort_iterate'
+        },
+        {
+            name: '归并排序-原地递归',
             value: 'in_place_merge_sort'
+        },
+        {
+            name: '归并排序-原地非递归',
+            value: 'in_place_merge_sort_iterate'
         },
         {
             name: '基数排序',
