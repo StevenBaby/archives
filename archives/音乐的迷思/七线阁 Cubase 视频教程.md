@@ -3,7 +3,7 @@
 [annotation]: <id> (846b24a2-adf8-4b63-a48a-f9a67222f503)
 [annotation]: <status> (public)
 [annotation]: <create_time> (2019-04-10 20:43:16)
-[annotation]: <category> (音乐理论)
+[annotation]: <category> (音乐的迷思)
 [annotation]: <tags> (Cubase) 
 [annotation]: <comments> (true) 
 
