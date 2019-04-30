@@ -4,6 +4,8 @@
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Linux)
 [annotation]: <create_time> (2010-04-04 18:03:07)
+[annotation]: <comments> (true)
+[annotation]: <status> (public)
 
 ## 将vim置于后台
 
