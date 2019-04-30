@@ -1,10 +1,15 @@
 # Django 故障排除
 
-[annotation]: <id> (f2085639-d146-4768-a601-6acdb48019d3)
+[annotation]: <id> (e6355db6-91d9-40b7-9cbd-6f3494bc2e81)
 [annotation]: <status> (public)
 [annotation]: <create_time> (2019-04-11 11:00:22)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Python|Django)
+
+
+> 原文链接：<http://blog.ccyg.studio/article/e6355db6-91d9-40b7-9cbd-6f3494bc2e81>
+
+---
 
 
 ## Django 时区操作

@@ -1,10 +1,15 @@
 # 提高 Python 代码质量的技巧
 
-[annotation]: <id> (1b22c40d-c037-47ff-9f97-f95fc3932509)
+[annotation]: <id> (b2a1f807-946f-4542-809e-7922ea93d0d8)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Python)
 [annotation]: <status> (public)
 [annotation]: <create_time> (2018-05-11 16:20:36)
+
+
+> 原文链接：<http://blog.ccyg.studio/article/b2a1f807-946f-4542-809e-7922ea93d0d8>
+
+---
 
 
 我一直觉得编程某种意义上是一门『手艺』，因为优雅而高效的代码，就如同完美的手工艺品一样让人赏心悦目。
