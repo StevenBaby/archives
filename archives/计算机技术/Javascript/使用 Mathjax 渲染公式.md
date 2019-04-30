@@ -42,7 +42,7 @@ $$
 将 MathJax 添加到页面中是很简单的。
 
 1. 添加js引用
-```markdown
+```html
 <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 ```
 2. 添加Latex设置
