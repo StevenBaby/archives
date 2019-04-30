@@ -5,6 +5,7 @@
 [annotation]: <create_time> (2018-08-06 14:32:50)
 [annotation]: <tags> (Linux)
 [annotation]: <comments> (true)
+[annotation]: <status> (public)
 
 > 原文链接：<http://blog.ccyg.studio/article/857e3554-a019-44cc-986b-3023d17386be>
 
