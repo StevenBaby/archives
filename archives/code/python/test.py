@@ -7,7 +7,7 @@ import dandan
 
 dirname = os.path.dirname(os.path.abspath(__file__))
 
-markdown = '安装 ArchLinux 到U盘（五）配置系统'
+markdown = '安装 ArchLinux 到U盘（六）安装gnome图形界面'
 
 path = '../../计算机技术/Linux/安装 Archlinux 到U盘/{}.md'.format(markdown)
 
@@ -15,9 +15,7 @@ filename = os.path.abspath(os.path.join(dirname, path))
 
 images = []
 
-pattern = re.compile(r'\((https://upload-images.jianshu.io/.*)\)')
-
-print(filename)
+pattern = re.compile(r'\((http.*upload-images.jianshu.io/.*)\)')
 
 with open(filename, encoding='utf8') as file:
     content = file.read()
@@ -39,5 +37,3 @@ for line in content.splitlines():
 
 with open(filename, mode='w', encoding='utf8') as file:
     file.write(content)
-
-print(filename)

@@ -17,7 +17,7 @@
 
 输入 `pacman -Syu` 更新系统
 
-![01.jpg](http://upload-images.jianshu.io/upload_images/406169-d882a4e0b0546071.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![1](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%85%AD%EF%BC%89%E5%AE%89%E8%A3%85gnome%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-1.png)
 
 输入 `pacman -S gnome gnome-extra` 安装 gnome，出现选项之后点击 `Enter`，时间较长，请耐心等待
 
@@ -27,11 +27,11 @@
 
 然后在虚拟机中输入 `startx`，稍等片刻，就可以启动 gnome 图形界面了
 
-![02.jpg](http://upload-images.jianshu.io/upload_images/406169-449e2fde75259e78.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![2](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%85%AD%EF%BC%89%E5%AE%89%E8%A3%85gnome%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-2.png)
 
 如果等待好久，还是无法启动，请关闭虚拟机，把虚拟机内存调大再试
 
-![03.jpg](http://upload-images.jianshu.io/upload_images/406169-486b9e77a971daed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![3](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%85%AD%EF%BC%89%E5%AE%89%E8%A3%85gnome%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-3.png)
 
 
 注销之后，就又回到了tty命令行
