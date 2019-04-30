@@ -4,7 +4,7 @@
 [annotation]: <status> (public)
 [annotation]: <create_time> (2019-04-10 20:43:16)
 [annotation]: <category> (音乐的迷思)
-[annotation]: <tags> (Cubase) 
+[annotation]: <tags> (音乐制作|Cubase) 
 [annotation]: <comments> (true) 
 
 <http://www.howzhi.com/course/2216/>
