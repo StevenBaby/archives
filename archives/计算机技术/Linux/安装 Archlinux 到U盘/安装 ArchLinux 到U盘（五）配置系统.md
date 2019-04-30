@@ -17,19 +17,19 @@
 
 如前所述，Windows 会再插入U盘时，提示格式化，这时一定不能格式化
 
-![01.jpg](https://upload-images.jianshu.io/upload_images/406169-9b6fc4b05537c9e2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![1](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-1.png)
 
 想要去掉U盘中EFI分区和根分区在 Explorer 中的显示，发现Windows磁盘管理是无法删除盘符的
 
-![02.jpg](https://upload-images.jianshu.io/upload_images/406169-057312022b2b0b7f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![2](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-2.png)
 
 这时点击 Windows + X，选择管理员启动 PowerShell
 
-![03.jpg](https://upload-images.jianshu.io/upload_images/406169-ae2588990f8f9ead.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![3](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-3.png)
 
 输入  `.\mountvol.exe X:\ /D` 其中X为具体盘符
 
-![04.jpg](https://upload-images.jianshu.io/upload_images/406169-aa2f9378c5657ec5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![4](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-4.png)
 
 这样，就不会再出现EFI分区和根分区的显示，也不会出现格式化对话框了。不过如果换了新的计算机，还是会显示，同样做上面的操作就不会显示了。
 
@@ -47,15 +47,15 @@
 
 以root用户登陆，输入 `useradd -G root -m steven`，新建用户名为 steven，用户名可以自行修改，并且加入root用户组
 
-![05.jpg](https://upload-images.jianshu.io/upload_images/406169-4edd3d89a5965773.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![5](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-5.png)
 
 输入 `passwd steven` 修改 steven 用户的密码
 
-![06.jpg](https://upload-images.jianshu.io/upload_images/406169-9a91eedb7d477689.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![6](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-6.png)
 
 这样用户就新建完成了，可以试试输入 `exit` 退出登陆，然后以新用户登陆系统
 
-![07.jpg](https://upload-images.jianshu.io/upload_images/406169-55ba1d48470147b0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![7](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-7.png)
 
 ***
 
@@ -65,21 +65,21 @@
 
 以root用户登陆，输入 `chmod +w /etc/sudoers`，取消文件只读
 
-![08.jpg](https://upload-images.jianshu.io/upload_images/406169-a53f21f46f1a482b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![8](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-8.png)
 
 修改文件 `/etc/sudoers`，在 `root ALL=(ALL) ALL` 下加入一行 `steven ALL=(ALL) ALL`，其中steven为你新建的用户名，然后保存
 
-![09.jpg](https://upload-images.jianshu.io/upload_images/406169-8e07cb913d4a892c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![9](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-9.png)
 
 输入 `chmod -w /etc/sudoers`，文件只读
 
-![10.jpg](https://upload-images.jianshu.io/upload_images/406169-df9964d345b8bb9e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![10](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-10.png)
 
 这时就可以使用 `sudo` 来获取root权限了
 
 如果无法使用sudo，可以使用 `su` 命令，输入root密码，进入root账号
 
-![11.jpg](https://upload-images.jianshu.io/upload_images/406169-d7772ddd9d56e97a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![11](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-11.png)
 
 ***
 
@@ -87,7 +87,7 @@
 
 root用户输入 `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`
 
-![12.jpg](https://upload-images.jianshu.io/upload_images/406169-b5fab3142e518cc5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![12](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-12.png)
 
 然后输入 `reboot`, 重新启动 Archlinux
 
@@ -97,23 +97,23 @@ root用户输入 `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`
 
 不难发现现在还无法联网，在虚拟机中可以启动 dhcp 服务器自动获取IP地址
 
-![13.jpg](https://upload-images.jianshu.io/upload_images/406169-a2769851d226251d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![13](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-13.png)
 
 输入 `ifconfig -a` 查看网卡名，可以看到这里是 **ens33**
 
-![14.jpg](https://upload-images.jianshu.io/upload_images/406169-1b547188a1a9c70d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![14](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-14.png)
 
 输入 `systemctl start dhcpcd@ens33` 启动DHCP服务
 
-![15.jpg](https://upload-images.jianshu.io/upload_images/406169-dc91e8f90895f2eb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![15](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-15.png)
 
 输入 `ping www.baidu.com` 可以发现已经可以连接百度了
 
-![16.jpg](https://upload-images.jianshu.io/upload_images/406169-f07fb6ee1208327c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![16](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-16.png)
 
 输入 `systemctl enable dhcpcd@ens33` 设置开机启动DHCP服务
 
-![17.jpg](https://upload-images.jianshu.io/upload_images/406169-164a4dcf728eb068.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![17](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-17.png)
 
 这时，基本的配置已经完成，操作系统已经可以正常使用了，如果无法使用DHCP服务，可以参考WiKi来设置网络
 
@@ -143,15 +143,15 @@ systemctl enable NetworkManager
 
 输入 `pacman -S openssh` 安装 openssh
 
-![18.jpg](https://upload-images.jianshu.io/upload_images/406169-345cecdcf42702ef.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![18](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-18.png)
 
 输入 `systemctl start sshd` 启动ssh服务
 
-![19.jpg](https://upload-images.jianshu.io/upload_images/406169-f9f445927187b646.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![19](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-19.png)
 
 输入 `systemctl enable sshd` 设置开机启动ssh服务
 
-![20.jpg](https://upload-images.jianshu.io/upload_images/406169-2035d7b3845a7dda.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![20](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%94%EF%BC%89%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F-20.png)
 
 这时就可以使用ssh客户端来登陆Archlinux了，建议使用 Xshell 来登陆
 
