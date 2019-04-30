@@ -42,8 +42,8 @@ $$
 将 MathJax 添加到页面中是很简单的。
 
 1. 添加js引用
-```html
-<script src="https://cdn.bootcss.com/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
+```markdown
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 ```
 2. 添加Latex设置
 
@@ -69,9 +69,11 @@ MathJax.Hub.Config({
 });
 </script>
 ```
-这样正常的话，页面中的公式字符串就会被转化为公式了。不过现在公式支持还是不够友好，有些特别的公式无法正常渲染，以后再改进。
+~~这样正常的话，页面中的公式字符串就会被转化为公式了。不过现在公式支持还是不够友好，有些特别的公式无法正常渲染，以后再改进。~~
 
-需要在换行的时候，把双斜杠换成四斜杠。
+~~需要在换行的时候，把双斜杠换成四斜杠。~~ 
+
+在后端渲染 markdown 文件的时候，使用插件 `pymdownx.arithmatex` 可以解决很多问题。<sub><small>2019-04-30 更新</small></sub>
 
 ## 参考资料
 
