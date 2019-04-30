@@ -31,7 +31,7 @@ function plot() {
         width: $('#root').width(),
         height: $('#root').width() / 1.77,
         yAxis: {
-            domain: [-1, 9]
+            domain: [-5, 5]
         },
         tip: {
             renderer: function () {}
@@ -98,7 +98,7 @@ function plot() {
         width: $('#root').width(),
         height: $('#root').width() / 1.77,
         yAxis: {
-            domain: [-1, 9]
+            domain: [-5, 5]
         },
         tip: {
             renderer: function () {}
