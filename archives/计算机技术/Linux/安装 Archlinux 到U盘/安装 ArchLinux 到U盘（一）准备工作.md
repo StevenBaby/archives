@@ -41,7 +41,7 @@ Arch Linux是起源于加拿大的一份致力于使用简单、系统轻量、�
 
 附上我使用的U盘，并非做广告，只是为了有一张图，标题会好看一点而已。
 
-![SanDisk](https://upload-images.jianshu.io/upload_images/406169-39d2550bfab94541.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![SanDisk](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%B8%80%EF%BC%89%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C-1.jpg)
 
 
 ## 下载Archlinux镜像
