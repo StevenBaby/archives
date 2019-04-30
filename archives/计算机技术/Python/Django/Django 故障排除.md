@@ -5,6 +5,7 @@
 [annotation]: <create_time> (2019-04-11 11:00:22)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Python|Django)
+[annotation]: <comments> (true)
 
 
 > 原文链接：<http://blog.ccyg.studio/article/e6355db6-91d9-40b7-9cbd-6f3494bc2e81>
