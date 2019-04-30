@@ -198,6 +198,7 @@
 ## 安装系统
 
 输入 `pacstrap -i /mnt base base-devel ntfs-3g` 安装系统，然后点击 `Enter`
+
 ![36](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-36.png)
 
 点击 `Enter`
