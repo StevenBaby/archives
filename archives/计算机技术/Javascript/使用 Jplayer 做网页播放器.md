@@ -1,7 +1,7 @@
 # 使用 Jplayer 做网页播放器
 
 [annotation]: <id> (2290a310-0e99-415e-843f-7a71ba0eaab5)
-[annotation]: <status> (protect)
+[annotation]: <status> (public)
 [annotation]: <create_time> (2019-04-30 19:19:13)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Javascript)
