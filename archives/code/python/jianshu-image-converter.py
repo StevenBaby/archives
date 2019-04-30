@@ -7,7 +7,7 @@ import dandan
 
 dirname = os.path.dirname(os.path.abspath(__file__))
 
-markdown = '安装 ArchLinux 到U盘（七）Archlinux 可选配置'
+markdown = '安装 ArchLinux 到U盘（八）安装ArchLinux到硬盘'
 
 path = '../../计算机技术/Linux/安装 Archlinux 到U盘/{}.md'.format(markdown)
 
