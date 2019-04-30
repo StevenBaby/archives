@@ -305,16 +305,9 @@ $(document).ready(function () {
 
 ## 本网站页面中的播放器
 
-通过修改UI，使得播放器界面与网页中的主题契合，下面是相应的内容：
+通过修改UI，使得播放器界面与网页中的主题契合，下面是相应的内容，由于 Jplayer 的样式与网页的有冲突，所以还是去下面的测试页面看吧
 
-### 音频播放器
-
-<div class='ui jplayer audio' data-url="http://other.web.ra01.sycdn.kuwo.cn/resource/n3/128/9/64/2690960309.mp3" format='mp3'></div>
-
-
-### 视频播放器
-
-<div class='ui jplayer video' data-url="http://www.jplayer.org/video/webm/Finding_Nemo_Teaser.webm" data-placeholder="http://www.jplayer.org/video/poster/Finding_Nemo_Teaser_640x352.png" format='webmv'></div>
+> <http://blog.ccyg.studio/article/9034ba44-2ccf-46f7-8951-3f8a32bf522c>
 
 ## 参考资料
 
