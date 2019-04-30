@@ -1,7 +1,7 @@
 # Windows chkdsk 磁盘修复工具
 
 [annotation]: <id> (09d7bd9a-6b32-4f81-a93e-e746453c7ffc)
-[annotation]: <status> (protect)
+[annotation]: <status> (public)
 [annotation]: <create_time> (2019-04-30 18:26:07)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Windows)
