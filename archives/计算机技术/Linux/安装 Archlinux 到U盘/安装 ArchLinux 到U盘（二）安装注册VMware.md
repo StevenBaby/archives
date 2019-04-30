@@ -20,31 +20,40 @@
 ## 安装VMWare
 
 打开刚刚下载好的VMware软件，出现如下对话框，然后点击 Next
-![01](https://upload-images.jianshu.io/upload_images/406169-c3e60f4f1d6b95e7.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![01](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-1.png)
 
 勾选同意用户协议，然后点击 Next
-![02](https://upload-images.jianshu.io/upload_images/406169-2731de3a7a0fe944.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![02](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-2.png)
 
 选择安装位置和勾选键盘增强驱动，然后点击 Next
-![03](https://upload-images.jianshu.io/upload_images/406169-b8c883f91ede3e7e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![03](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-3.png)
 
 下面两项可以选择勾选，然后点击 Next
-![04](https://upload-images.jianshu.io/upload_images/406169-384a6789844d2f08.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![04](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-4.png)
 
 选择安装快捷方式的位置，然后点击 Next
-![05](https://upload-images.jianshu.io/upload_images/406169-b31068f948d7e5bb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![05](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-5.png)
 
 点击 Install
-![06](https://upload-images.jianshu.io/upload_images/406169-605919fe08249927.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![06](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-6.png)
 
 等待安装完成
-![07](https://upload-images.jianshu.io/upload_images/406169-4b5053fee8069aff.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![07](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-7.png)
 
 点击 Finish
-![08](https://upload-images.jianshu.io/upload_images/406169-ba3ccd19f7d9d9d2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600)
+
+![08](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-8.png)
 
 如果出现下面的对话框，说明VMWare在使用之前需要重启系统，根据需要自行选择。
-![09](https://upload-images.jianshu.io/upload_images/406169-f1cb390035a25c57.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400)
+
+![09](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-9.png)
 
 ## 注册VMWare
 
