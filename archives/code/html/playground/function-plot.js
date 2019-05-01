@@ -4,15 +4,20 @@
 function plot() {
     functionPlot({
         target: "#root",
+        // title: 'function plot',
         width: $('#root').width(),
+        labels: false,
         height: $('#root').width() / 1.77,
         yAxis: {
-            domain: [-1, 9]
+            domain: [-6 / 1.77, 6/ 1.77]
         },
-        tip: {
-            renderer: function () {}
+        xAxis: {
+            domain: [-6, 6]
         },
-        grid: true,
+        // tip: {
+        //     renderer: function () {}
+        // },
+        // grid: true,
         data: [{
                 fn: "x^2",
                 derivative: {
