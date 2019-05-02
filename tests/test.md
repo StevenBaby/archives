@@ -92,7 +92,7 @@ $$
 
 ## 测试网易云音乐
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=516719755&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="http://music.163.com/outchain/player?type=2&id=516719755&height=66"></iframe>
 
 ## 测试优酷视频
 
