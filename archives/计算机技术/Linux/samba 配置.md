@@ -5,6 +5,7 @@
 [annotation]: <tags> (Linux)
 [annotation]: <status> (public)
 [annotation]: <create_time> (2018-03-11 16:00:42)
+[annotation]: <comments> (true)
 
 ## 安装 samba
 
