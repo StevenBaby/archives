@@ -72,9 +72,9 @@ $$2 + 3 = \sqrt{5 + 7} \int_{-\infty}^{+\infty } f(x)dx$$
 
 $$\left\{
 \begin{aligned}
-\sqrt{a^2 - x^2}  \rightarrow x &= asin\ t, \ (|t| < \frac{\pi}{2})\\
-\sqrt{a^2 + x^2}  \rightarrow x &= atan\ t, \ (|t| < \frac{\pi}{2})\\
-\sqrt{x^2 - a^2}  \rightarrow x &= asec\ t, \ (0 < t < \frac{\pi}{2})\\
+\sqrt{a^2 - x^2}  \rightarrow x &= asin\ t\\
+\sqrt{a^2 + x^2}  \rightarrow x &= atan\ t\\
+\sqrt{x^2 - a^2}  \rightarrow x &= asec\ t\\
 \end{aligned}
 \right.
 $$
