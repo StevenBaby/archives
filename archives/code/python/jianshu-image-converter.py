@@ -7,9 +7,10 @@ import dandan
 
 dirname = os.path.dirname(os.path.abspath(__file__))
 
-markdown = '安装 ArchLinux 到U盘（八）安装ArchLinux到硬盘'
 
-path = '../../计算机技术/Linux/安装 Archlinux 到U盘/{}.md'.format(markdown)
+path = r"Y:\计算机技术\Windows\Windows chkdsk 磁盘修复工具.md"
+
+markdown, ext = os.path.splitext(os.path.basename(path))
 
 filename = os.path.abspath(os.path.join(dirname, path))
 
@@ -28,7 +29,8 @@ for line in content.splitlines():
     image = match.group(1)
     print(image)
     url = 'http://pqs8hg59d.bkt.clouddn.com/{}-{}.png'.format(parse.quote(markdown), index)
-    content = content.replace(line, '![{}]({})'.format(index, url))
+    basename = "{}-{}.png".format(markdown, index)
+    content = content.replace(line, '![{}]({})'.format(basename, url))
 
     imagefile = os.path.join(dirname, 'images/{}-{}.png'.format(markdown, index))
     dandan.traffic.download(image, imagefile)
