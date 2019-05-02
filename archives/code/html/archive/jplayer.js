@@ -1,3 +1,5 @@
+/* jshint esversion: 8 */
+
 $(document).ready(function () {
     $.each($('.ui.jplayer.audio'), function (index, audio) {
         var format = 'mp3';
@@ -18,9 +20,9 @@ $(document).ready(function () {
             ready: function () {
                 var data = {};
                 data[format] = url;
-                $(this).jPlayer("setMedia", data);
+                let player = $(this).jPlayer("setMedia", data);
                 if (autoplay) {
-                    $(this).jPlayer("play", true);
+                    player.jPlayer("play", true);
                 }
             },
             supplied: format,
@@ -51,7 +53,10 @@ $(document).ready(function () {
                 var data = {};
                 data[format] = url;
                 data.poster = placeholder;
-                $(this).jPlayer("setMedia", data);
+                let player = $(this).jPlayer("setMedia", data);
+                if (autoplay) {
+                    player.jPlayer("play", true);
+                }
             },
             supplied: format,
             swfPath: "/js",
