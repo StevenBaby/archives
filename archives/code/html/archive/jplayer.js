@@ -12,18 +12,21 @@ $(document).ready(function () {
         }
 
         var ancestor = player.attr('ancestor');
-
+        var autoplay = player.attr('autoplay');
         player.jPlayer({
             cssSelectorAncestor: ancestor,
             ready: function () {
                 var data = {};
                 data[format] = url;
                 $(this).jPlayer("setMedia", data);
+                if (autoplay) {
+                    $(this).jPlayer("play", true);
+                }
             },
             supplied: format,
             keyEnabled: true,
             remainingDuration: true,
-            toggleDuration: true,
+            toggleDuration: true
         });
     });
 
