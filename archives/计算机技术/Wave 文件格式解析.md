@@ -285,7 +285,7 @@ plt.show()
 
 由于我在代码里只花了前1000帧，所以看上去是这样的：
 
-![](http://pqs8hg59d.bkt.clouddn.com/Wave%20%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%90%201.jpg)
+![Wave 文件格式解析 波形](http://pqs8hg59d.bkt.clouddn.com/Wave%20%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%90%20%E6%B3%A2%E5%BD%A2.jpg)
 
 
 ## 参考资料
