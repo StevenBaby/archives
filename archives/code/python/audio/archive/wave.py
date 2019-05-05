@@ -2,7 +2,6 @@
 
 import os
 import struct
-import time
 from io import BytesIO
 
 import pyaudio
@@ -119,12 +118,10 @@ for data in wave.datas:
     io = BytesIO(data.data)
     print(wave.format.byte_rate)
     while True:
-
         chunk = io.read(wave.format.byte_rate)
         if not chunk:
             break
         stream.write(chunk)
-        time.sleep(0.01)
     print('data write finish')
 
 stream.stop_stream()

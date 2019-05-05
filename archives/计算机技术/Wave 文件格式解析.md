@@ -39,7 +39,7 @@ wave 是微软和IBM定义的PC机存储音频文件的标准，它使用 Resour
 | ChunkSize | 4 | 32 + Subchunk2Size  |
 | Format | 4 | ASCII 表示的 WAVE (0x57415645) |
 | Subchunk1ID | 4 | 新的数据块（格式信息说明块）ASCII码表示的 fmt (0x666d7420)，最后一个是空格 |
-| Subchunk1Size | 4 | 本块数据的大小，(对于PCM, 值为16 |
+| Subchunk1Size | 4 | 本块数据的大小，(对于PCM, 值为16) |
 | AudioFormat | 2 | PCM = 1 |
 | NumChannels | 2 | 声道数 1 = 单声道，2 = 立体声 |
 | SampleRate | 4 | 采样率 |
@@ -58,6 +58,142 @@ Subchunk1ID，Subchunk1Size，AudioFormat，NumChannels，SampleRate，ByteRate�
 
 Subchunk2ID，Subchunk2Size，data 就是实际的数据了
 
+## wave 数据解析
+
+下面是一个 72 字节的 wave 文件的解析，该文件采用PCM编码，音频双声道，每个样点进行16位量化编码，一个样点占4个字节，左右声道交替存储。
+
+```binary
+52 49 46 46 24 08 00 00 57 41 56 45 66 6d 74 20 10 00 00 00 01 00 02 00 
+22 56 00 00 88 58 01 00 04 00 10 00 64 61 74 61 00 08 00 00 00 00 00 00 
+24 17 1e f3 3c 13 3c 14 16 f9 18 f9 34 e7 23 a6 3c f2 24 f2 11 ce 1a 0d 
+```
+
+![](http://pqs8hg59d.bkt.clouddn.com/wave-bytes.gif)
+
+wave文件默认的字节序是小端存储的，如果文件使用大端存储，则需要使用 RIFX 替换 RIFF。
+
+再看数据格式，由于编码为位数为16，所以每个数据有两个字节组成，前两个字节为左声道，后两个字节为右声道。
+
+## 解析程序
+
+代码如下:
+
+```python
+# coding=utf-8
+
+import os
+import struct
+from io import BytesIO
+
+import pyaudio
+
+
+class RIFFChunk(object):
+
+    RIFF = "RIFF"
+    FORMAT = "WAVE"
+    STRUCT = '4sI4s'
+
+    def __init__(self, file):
+        data = file.read(12)
+        res = struct.unpack(self.STRUCT, data)
+        self.id = res[0].decode('utf8')
+        self.size = res[1]
+        self.format = res[2].decode('utf8')
+
+
+class FormatChunk(object):
+
+    STRUCT_INFO = "4sI"
+    STRUCT_FORMAT = 'hhIIhh'
+
+    def __init__(self, file):
+        data = file.read(8)
+        res = struct.unpack(self.STRUCT_INFO, data)
+        self.fmt = res[0].decode('utf8').strip()
+        self.size = res[1]
+
+        data = file.read(self.size)
+        res = struct.unpack(self.STRUCT_FORMAT, data)
+        self.audio_format = res[0]
+        self.num_channels = res[1]
+        self.sample_rate = res[2]
+        self.byte_rate = res[3]
+        self.block_align = res[4]
+        self.bits_per_sample = res[5]
+
+
+class DataChunk(object):
+
+    STRUCT = '4sI'
+    DATA = 'data'
+    LIST = 'LIST'
+
+    def __init__(self, file):
+        self.id = None
+        self.size = 0
+        self.data = None
+        data = file.read(8)
+        if len(data) < 8:
+            return
+        res = struct.unpack(self.STRUCT, data)
+        self.id = res[0].decode("utf8")
+        self.size = res[1]
+        self.data = file.read(self.size)
+
+
+class Wave(object):
+
+    def __init__(self, filename):
+        self.filename = filename
+        self.riff = None
+        self.format = None
+        self.datas = []
+        self.load()
+
+    def load(self):
+        with open(filename, 'rb') as file:
+            self.riff = RIFFChunk(file)
+            self.format = FormatChunk(file)
+            while True:
+                data = DataChunk(file)
+                if not data.size:
+                    break
+                if data.id != DataChunk.DATA:
+                    continue
+                self.datas.append(data)
+
+
+dirname = os.path.dirname(os.path.abspath(__file__))
+filename = os.path.join(dirname, 'input.wav')
+
+
+wave = Wave(filename)
+
+p = pyaudio.PyAudio()
+
+stream = p.open(format=p.get_format_from_width(wave.format.bits_per_sample // 8),
+                channels=wave.format.num_channels,
+                rate=wave.format.sample_rate,
+                output=True)
+
+for data in wave.datas:
+    io = BytesIO(data.data)
+    print(wave.format.byte_rate)
+    while True:
+        chunk = io.read(wave.format.byte_rate)
+        if not chunk:
+            break
+        stream.write(chunk)
+    print('data write finish')
+
+stream.stop_stream()
+stream.close()
+
+p.terminate()
+```
+
+通过我们自己写的程序读取wave文件，就可以使用pyaudio播放音乐了。而且可以更好的理解wave文件的结构，不过Python标准库已经有 wave 包了，所以，没有必要重复造轮子。
 
 
 ## 参考资料
