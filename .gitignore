@@ -1,2 +1,5 @@
+*.pyc
+__pycache__
 /archives/.vscode/ipch
 archives/code/python/audio/her.wav
+output.wav

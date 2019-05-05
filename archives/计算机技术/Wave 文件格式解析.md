@@ -238,7 +238,54 @@ wf.writeframes(io.read())
 wf.close()
 ```
 
+## 绘制波形图像
 
+把刚才生成的wav文件波形画出来，更加直观的看出正弦波的形状。
+
+```python
+# coding=utf-8
+
+import os
+import wave
+import matplotlib.pyplot as plt
+
+filename = 'output.wav'
+
+wf = wave.open(filename, 'rb')
+
+rate = wf.getframerate()
+channels = wf.getnchannels()
+width = wf.getsampwidth()
+frame_count = wf.getnframes()
+duration = frame_count / rate
+
+if channels == 1:
+    frames = [
+        int.from_bytes(wf.readframes(1), byteorder='little', signed=True)
+        for var in range(1000)
+    ]
+    plt.plot(frames)
+
+if channels == 2:
+    frames1 = []
+    frames2 = []
+    for var in range(1000):
+        frame = wf.readframes(1)
+        frames1.append(int.from_bytes(frame[0:2], byteorder='little', signed=True))
+        frames2.append(int.from_bytes(frame[2:4], byteorder='little', signed=True))
+
+    plt.subplot(211)
+    plt.plot(frames1)
+
+    plt.subplot(212)
+    plt.plot(frames2)
+
+plt.show()
+```
+
+由于我在代码里只花了前1000帧，所以看上去是这样的：
+
+![](http://pqs8hg59d.bkt.clouddn.com/Wave%20%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%90%201.jpg)
 
 
 ## 参考资料
