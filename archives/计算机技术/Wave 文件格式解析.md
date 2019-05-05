@@ -74,6 +74,8 @@ wave文件默认的字节序是小端存储的，如果文件使用大端存储�
 
 再看数据格式，由于编码为位数为16，所以每个数据有两个字节组成，前两个字节为左声道，后两个字节为右声道。
 
+这里的值是以short形式存储的，也就是 从 -32768 ~ 32767 直接的数。
+
 ## 解析程序
 
 代码如下:
@@ -194,6 +196,49 @@ p.terminate()
 ```
 
 通过我们自己写的程序读取wave文件，就可以使用pyaudio播放音乐了。而且可以更好的理解wave文件的结构，不过Python标准库已经有 wave 包了，所以，没有必要重复造轮子。
+
+
+## 生成正弦波
+
+了解了上面的这些内容，那么我们自己可以生成一个波形，最常见的有方波和正弦波，下面写代码生成正弦波。然后存储成 wav 文件。
+
+```python
+# coding=utf-8
+
+import struct
+import math
+from io import BytesIO
+
+import wave
+
+bit = 16
+channels = 1
+rate = 44100
+frequency = 440  # A4
+second = 5
+
+sample_size = (2 ** bit - 1) // 2
+
+
+wf = wave.open('output.wav', 'wb')
+wf.setnchannels(channels)
+wf.setsampwidth(bit // 8)
+wf.setframerate(rate)
+
+delta = rate // frequency
+
+io = BytesIO()
+for index in range(rate * second):
+    var = index * 2 * math.pi / delta
+    sample = int(math.sin(var) * sample_size)
+    io.write(struct.pack("h", sample))
+
+io.seek(0)
+wf.writeframes(io.read())
+wf.close()
+```
+
+
 
 
 ## 参考资料
