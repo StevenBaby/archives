@@ -4,7 +4,7 @@
 [annotation]: <status> (public)
 [annotation]: <create_time> (2019-05-04 00:26:39)
 [annotation]: <category> (计算机技术)
-[annotation]: <tags> (音频处理)
+[annotation]: <tags> (音频处理|Python)
 [annotation]: <comments> (false)
 
 > 原文链接：<http://blog.ccyg.studio/article/593eaa9a-7457-4561-ad97-7fabacb6c05d>
