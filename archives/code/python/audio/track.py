@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 
 class Track(object):
 
+    def __init__(self):
+        self.frames = []
+
     def button_press_event(self, event):
         print(event)
 
@@ -13,6 +16,10 @@ class Track(object):
 
     def draw(self):
         pass
+
+    def load(self):
+        import wave
+        wf = wave.open(self.filename, 'rb')
 
     def __init__(self, filename):
         self.filename = filename
