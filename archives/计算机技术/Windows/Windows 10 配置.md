@@ -320,3 +320,26 @@ HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 ![1556250555(1).jpg](http://pqs8hg59d.bkt.clouddn.com/Windows%2010%20%E9%85%8D%E7%BD%AE%20-6.png)
 
 ---
+
+## 目录右键添加 Open in command
+
+添加如下 key 如果没有则创建。
+
+```
+\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Open in command\command
+```
+
+Default 中写入:
+
+```reg
+"C:\Windows\System32\cmd.exe"
+```
+
+也可以在 
+
+```
+\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\Open in command
+```
+中添加 String Icon = C:\Windows\System32\cmd.exe, 这样就会有相应的图标。
+
+---
