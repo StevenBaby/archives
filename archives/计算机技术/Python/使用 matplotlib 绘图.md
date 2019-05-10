@@ -11,3 +11,16 @@
 
 ---
 
+## 安装 matplotlib
+
+安装 matplotlib 的方式很简单，可以使用 pip 直接安装：
+
+```sh
+pip install matplotlib
+```
+
+## 
+
+## 参考资料
+
+- <https://matplotlib.org/tutorials/index.html>
