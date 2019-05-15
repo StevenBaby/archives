@@ -346,24 +346,19 @@ var sort = function (sketch) {
     };
 
     sketch.adjust_heap = async function (sketch, start, end) {
-        let array = sketch.array;
+        let dad = start;
+        let son = dad * 2 + 1;
 
-        let index = parseInt(((end - start) + 1) / 2) + 1;
-
-        for (; index >= start; index--) {
+        while (son <= end) {
             if (!await sketch.is_running()) return;
+            if (son + 1 <= end && await sketch.compare(sketch, son, son + 1))
+                son++;
+            if (await sketch.compare(sketch, son, dad))
+                return;
 
-            sketch.indices = [index];
-
-            let left = index * 2 + 1;
-            let right = left + 1;
-
-            if (right <= end && await sketch.compare(sketch, index, right)) {
-                await sketch.swap(sketch, index, right);
-            }
-            if (left <= end && await sketch.compare(sketch, index, left)) {
-                await sketch.swap(sketch, index, left);
-            }
+            await sketch.swap(sketch, dad, son);
+            dad = son;
+            son = dad * 2 + 1;
         }
     };
 
@@ -379,12 +374,16 @@ var sort = function (sketch) {
             }
             layer++;
         }
+        await sketch.wait();
+
+        for (let i = (end - start + 1) / 2 - 1; i >= start; i--)
+            await sketch.adjust_heap(sketch, i, end);
 
         for (let j = end; j > start; j--) {
             if (!await sketch.is_running()) return;
             sketch.set_activate(start, j);
-            await sketch.adjust_heap(sketch, start, j);
             await sketch.swap(sketch, start, j);
+            await sketch.adjust_heap(sketch, start, j - 1);
         }
         sketch.layers = [];
     };
@@ -696,7 +695,7 @@ var sort = function (sketch) {
                         if (!await sketch.is_running()) return;
                         begin1++;
                     }
-        
+
                     let index = begin2;
                     let step = 0;
                     while (begin2 <= end2 && await sketch.compare(sketch, begin2, begin1)) {
@@ -704,11 +703,11 @@ var sort = function (sketch) {
                         begin2++;
                         step++;
                     }
-        
+
                     await sketch.reverse_array(sketch, begin1, index - 1);
                     await sketch.reverse_array(sketch, index, begin2 - 1);
                     await sketch.reverse_array(sketch, begin1, begin2 - 1);
-        
+
                     begin1 += step;
                 }
             }

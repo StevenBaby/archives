@@ -89,6 +89,41 @@ void select_sort(int array[], int begin, int end)
     }
 }
 
+void adjust_heap(int array[], int begin, int end)
+{
+    auto dad = begin;
+    auto son = dad * 2 + 1;
+
+    while (son <= end)
+    {
+        if (son + 1 <= end && array[son] < array[son + 1])
+            son++;
+        if (array[son] < array[dad])
+            return;
+
+        auto temp = array[dad];
+        array[dad] = array[son];
+        array[son] = temp;
+
+        dad = son;
+        son = dad * 2 + 1;
+    }
+}
+
+void heap_sort(int array[], int begin, int end)
+{
+    for (auto i = (end - begin + 1) / 2 - 1; i >= 0; i--)
+        adjust_heap(array, i, end);
+
+    for (auto i = end; i > begin; --i)
+    {   
+        auto temp = array[i];
+        array[i] = array[begin];
+        array[begin] = temp;
+        adjust_heap(array, begin, i - 1);
+    }
+}
+
 void quick_sort(int array[], int begin, int end)
 {
     if (begin >= end)
@@ -237,7 +272,8 @@ void merge_sort_iterate(int array[], int begin, int end)
         array = list;
         list = temp;
     }
-    if (array != source){
+    if (array != source)
+    {
         std::copy(list + begin, list + end + 1, source);
         list = array;
     }
@@ -255,9 +291,10 @@ int main()
     // bubble_sort(array, begin, end);
     // cocktail_sort(array, begin, end);
     // select_sort(array, begin, end);
+    heap_sort(array, begin, end);
     // quick_sort(array, begin, end);
     // random_quick_sort(array, begin, end);
     // merge_sort_recursive(array, begin, end);
-    merge_sort_iterate(array, begin, end);
+    // merge_sort_iterate(array, begin, end);
     print_array(array, begin, end);
 }
