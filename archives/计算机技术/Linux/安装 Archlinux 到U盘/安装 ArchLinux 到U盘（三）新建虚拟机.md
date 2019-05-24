@@ -5,7 +5,8 @@
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (操作系统|Linux)
 [annotation]: <status> (public)
-[annotation]: <topics> (安装 ArchLinux 到U盘)
+[annotation]: <topic> (安装 ArchLinux 到U盘)
+[annotation]: <index> (3)
 [annotation]: <comments> (true)
 
 > 原文链接：<http://blog.ccyg.studio/article/206f744b-1d67-4afa-b25b-76d66c78e95f>
