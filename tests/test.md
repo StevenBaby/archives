@@ -82,7 +82,7 @@ $$
 
 ## 测试 Jplayer 播放器 音频
 
-<div class='ui jplayer audio' data-url="http://other.web.ra01.sycdn.kuwo.cn/resource/n3/128/9/64/2690960309.mp3" format='mp3'></div>
+<div class='ui jplayer audio' data-url="https://link.hhtjim.com/kw/1027785.mp3" format='mp3'></div>
 
 
 ## 测试 Jplayer 播放器 视频
