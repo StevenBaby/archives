@@ -66,6 +66,14 @@ int main()
 <img src='static/test-002.svg?sanitize=true' width=150 height=150/>
 
 
+## 测试 ALT
+
+<sup class='ui pop'><small>[1]</small></sup>
+<span class="ui popup">This is a super link</span>
+
+<i class="ui pop heart circular small pink icon"></i>
+<span class="ui popup">This is a heart</span>
+
 ## 测试基本公式
 
 $$2 + 3 = \sqrt{5 + 7} \int_{-\infty}^{+\infty } f(x)dx$$
