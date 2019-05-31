@@ -22,39 +22,39 @@
 
 打开刚刚下载好的VMware软件，出现如下对话框，然后点击 Next
 
-![01](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-1.png)
+![01](images/install_archlinux_to_usb_2_1.png)
 
 勾选同意用户协议，然后点击 Next
 
-![02](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-2.png)
+![02](images/install_archlinux_to_usb_2_2.png)
 
 选择安装位置和勾选键盘增强驱动，然后点击 Next
 
-![03](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-3.png)
+![03](images/install_archlinux_to_usb_2_3.png)
 
 下面两项可以选择勾选，然后点击 Next
 
-![04](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-4.png)
+![04](images/install_archlinux_to_usb_2_4.png)
 
 选择安装快捷方式的位置，然后点击 Next
 
-![05](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-5.png)
+![05](images/install_archlinux_to_usb_2_5.png)
 
 点击 Install
 
-![06](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-6.png)
+![06](images/install_archlinux_to_usb_2_6.png)
 
 等待安装完成
 
-![07](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-7.png)
+![07](images/install_archlinux_to_usb_2_7.png)
 
 点击 Finish
 
-![08](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-8.png)
+![08](images/install_archlinux_to_usb_2_8.png)
 
 如果出现下面的对话框，说明VMWare在使用之前需要重启系统，根据需要自行选择。
 
-![09](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AE%89%E8%A3%85%E6%B3%A8%E5%86%8CVMware-9.png)
+![09](images/install_archlinux_to_usb_2_9.png)
 
 ## 注册VMWare
 

@@ -13,7 +13,7 @@
 
 ---
 
-![1](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%B8%83%EF%BC%89Archlinux%20%E5%8F%AF%E9%80%89%E9%85%8D%E7%BD%AE-1.png)
+![1](images/install_archlinux_to_usb_7_1.png)
 
 ## ibus输入法只能双拼
 如果ibus 输入法只能双拼的话 ，在终端输入 `ibus-daemon -drx` 重启即可
@@ -119,7 +119,7 @@ systemctl enable avahi-daemon
 
 ## 个性化 grub 启动界面
 默认的grub启动界面异常的丑陋，如下图所示
-![2](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%B8%83%EF%BC%89Archlinux%20%E5%8F%AF%E9%80%89%E9%85%8D%E7%BD%AE-2.png)
+![2](images/install_archlinux_to_usb_7_2.png)
 
 想要修改grub的默认启动界面，可以在下面的链接中寻找自己喜欢的主题，来配置grub的启动界面，使其变得好看，这部分属于强迫症选项，并不会对系统带来实质性的变化，仅仅就是为了好看。
 
@@ -142,7 +142,7 @@ GRUB_THEME=/boot/grub/themes/breeze/theme.txt
 ```
 重启就可以了
 
-![3](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%B8%83%EF%BC%89Archlinux%20%E5%8F%AF%E9%80%89%E9%85%8D%E7%BD%AE-3.png)
+![3](images/install_archlinux_to_usb_7_3.png)
 
 ----
 

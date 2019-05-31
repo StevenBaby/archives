@@ -14,7 +14,7 @@
 ---
 
 
-![1](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E4%B8%83%EF%BC%89Archlinux%20%E5%8F%AF%E9%80%89%E9%85%8D%E7%BD%AE-1.png)
+![1](images/install_archlinux_to_usb_7_1.png)
 
 前面写了如何将ArchLinux安装到U盘的全过程，有一个缺陷就是SecureBoot无法解决。如果将系统装入硬盘那么就可以解决这一问题，只不过不能像U盘一样随意移动。
 

@@ -18,7 +18,7 @@
 
 输入 `pacman -Syu` 更新系统
 
-![1](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%85%AD%EF%BC%89%E5%AE%89%E8%A3%85gnome%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-1.png)
+![1](images/install_archlinux_to_usb_6_1.png)
 
 输入 `pacman -S gnome gnome-extra` 安装 gnome，出现选项之后点击 `Enter`，时间较长，请耐心等待
 
@@ -28,11 +28,11 @@
 
 然后在虚拟机中输入 `startx`，稍等片刻，就可以启动 gnome 图形界面了
 
-![2](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%85%AD%EF%BC%89%E5%AE%89%E8%A3%85gnome%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-2.png)
+![2](images/install_archlinux_to_usb_6_2.png)
 
 如果等待好久，还是无法启动，请关闭虚拟机，把虚拟机内存调大再试
 
-![3](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%85%AD%EF%BC%89%E5%AE%89%E8%A3%85gnome%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2-3.png)
+![3](images/install_archlinux_to_usb_6_3.png)
 
 
 注销之后，就又回到了tty命令行

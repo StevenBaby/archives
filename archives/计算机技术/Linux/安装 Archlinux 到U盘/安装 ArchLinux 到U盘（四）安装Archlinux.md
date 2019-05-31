@@ -20,15 +20,15 @@
 
 点击 Power on this virtual machine 启动 Installer 虚拟机
 
-![1](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-1.png)
+![1](images/install_archlinux_to_usb_4_1.png)
 
 点击 Enter 启动Archlinux安装镜像
 
-![2](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-2.png)
+![2](images/install_archlinux_to_usb_4_2.png)
 
 等待启动完毕，输入 `lsblk` 应该显示下面的内容
 
-![3](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-3.png)
+![3](images/install_archlinux_to_usb_4_3.png)
 
 ****
 
@@ -36,11 +36,11 @@
 
 这时候U盘还没有连接至虚拟机，点击菜单VM > Removable Devices > USB Device > Connect(Disconnect from Host)，将U盘连接至虚拟机，其中 **USB Device** 是U盘的名称，U盘不同名称应该也是不同的。
 
-![4](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-4.png)
+![4](images/install_archlinux_to_usb_4_4.png)
 
 然后输入 `lsblk` 应该显示下面的内容，可以看到已经有 `sdb` 这个磁盘了
 
-![5](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-5.png)
+![5](images/install_archlinux_to_usb_4_5.png)
 
 ****
 
@@ -56,71 +56,71 @@
 
 输入 `fdisk /dev/sdb` 进入分区程序
 
-![6](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-6.png)
+![6](images/install_archlinux_to_usb_4_6.png)
 
 输入 `o` 开始分区
 
-![7](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-7.png)
+![7](images/install_archlinux_to_usb_4_7.png)
 
 输入 `n` 新建EFI分区
 
-![8](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-8.png)
+![8](images/install_archlinux_to_usb_4_8.png)
 
 点击 `Enter` 选择默认分区序号
 
-![9](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-9.png)
+![9](images/install_archlinux_to_usb_4_9.png)
 
 点击 `Enter` 选择默认起始扇区
 
-![10](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-10.png)
+![10](images/install_archlinux_to_usb_4_10.png)
 
 输入 `+128M` 新建EFI分区大小为128M
 
-![11](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-11.png)
+![11](images/install_archlinux_to_usb_4_11.png)
 
 输入 `n` 新建根分区
 
-![12](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-12.png)
+![12](images/install_archlinux_to_usb_4_12.png)
 
 点击 `Enter` 选择默认分区序号
 
-![13](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-13.png)
+![13](images/install_archlinux_to_usb_4_13.png)
 
 点击 `Enter` 选择默认起始扇区
 
-![14](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-14.png)
+![14](images/install_archlinux_to_usb_4_14.png)
 
 输入 `+20G` 新建根分区大小为20G，该分区容量可根据U盘容量自行决定，不一定非得是20G
 
-![15](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-15.png)
+![15](images/install_archlinux_to_usb_4_15.png)
 
 输入 `n` 新建根分区
 
-![16](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-16.png)
+![16](images/install_archlinux_to_usb_4_16.png)
 
 点击 `Enter` 选择默认分区序号
 
-![17](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-17.png)
+![17](images/install_archlinux_to_usb_4_17.png)
 
 点击 `Enter` 选择默认起始扇区
 
-![18](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-18.png)
+![18](images/install_archlinux_to_usb_4_18.png)
 
 点击 `Enter` 选择默认容量，剩余全部未分配分区
 
-![19](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-19.png)
+![19](images/install_archlinux_to_usb_4_19.png)
 
 输入 `p` 查看分区信息
 
-![20](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-20.png)
+![20](images/install_archlinux_to_usb_4_20.png)
 
 输入 `w` 写入分区信息
 
-![21](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-21.png)
+![21](images/install_archlinux_to_usb_4_21.png)
 
 输入 `lsblk` 可以看到已经有 `sdb` 磁盘，下面有 `sdb1`，`sdb2`，`sdb3` 三个分区
 
-![22](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-22.png)
+![22](images/install_archlinux_to_usb_4_22.png)
 
 ****
 
@@ -128,15 +128,15 @@
 
 输入 `mkfs.fat -F 32 /dev/sdb1` 格式化 `sdb1` 为FAT32格式
 
-![23](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-23.png)
+![23](images/install_archlinux_to_usb_4_23.png)
 
 输入 `mkfs.fat -F 32 /dev/sdb3` 格式化 `sdb3` 为FAT32格式
 
-![24](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-24.png)
+![24](images/install_archlinux_to_usb_4_24.png)
 
 输入 `mkfs.ext4 /dev/sdb2` 格式化 `sdb2` 为ext4格式，如果出现 *Proceed anyway?*，输入y继续格式化
 
-![25](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-25.png)
+![25](images/install_archlinux_to_usb_4_25.png)
 
 ****
 
@@ -144,15 +144,15 @@
 
 输入 `mount /dev/sdb2 /mnt` 挂载 `sdb2` 到 `/mnt`
 
-![26](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-26.png)
+![26](images/install_archlinux_to_usb_4_26.png)
 
 输入 `mkdir -p /mnt/boot/efi` 创建 `/mnt/boot/efi` 目录
 
-![27](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-27.png)
+![27](images/install_archlinux_to_usb_4_27.png)
 
 输入 `mount /dev/sdb1 /mnt/boot/efi` 挂载 `sdb1` 到 `/mnt/boot/efi`
 
-![28](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-28.png)
+![28](images/install_archlinux_to_usb_4_28.png)
 
 `sdb3` U盘分区无需挂载
 
@@ -166,33 +166,33 @@
 
 输入 `cd /etc/pacman.d` 选择目录
 
-![29](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-29.png)
+![29](images/install_archlinux_to_usb_4_29.png)
 
 输入 `cp mirrorlist mirrorlist.bk` 将 mirrorlist 拷贝到 mirrorlist.bk
 
-![30](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-30.png)
+![30](images/install_archlinux_to_usb_4_30.png)
 
 输入 `cat mirrorlist.bk | grep China -A 1 | grep -v '-' > mirrorlist` 将所有中国的镜像写入 mirrorlist
 
-![31](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-31.png)
+![31](images/install_archlinux_to_usb_4_31.png)
 
 输入 `nano mirrorlist` 编辑镜像列表
 
-![32](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-32.png)
+![32](images/install_archlinux_to_usb_4_32.png)
 
 经测试，清华和163的镜像是最快的，这里可以根据实际测试来决定选择哪一个。可以在 Server 前面写入 `#` 来注释掉该镜像。
 
-![33](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-33.png)
+![33](images/install_archlinux_to_usb_4_33.png)
 
 编辑完成之后 点击 `CTRL + X` 退出编辑
 
 点击 `y`
 
-![34](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-34.png)
+![34](images/install_archlinux_to_usb_4_34.png)
 
 点击 `Enter`，保存文件
 
-![35](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-35.png)
+![35](images/install_archlinux_to_usb_4_35.png)
 
 ****
 
@@ -200,19 +200,19 @@
 
 输入 `pacstrap -i /mnt base base-devel ntfs-3g` 安装系统，然后点击 `Enter`
 
-![36](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-36.png)
+![36](images/install_archlinux_to_usb_4_36.png)
 
 点击 `Enter`
 
-![37](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-37.png)
+![37](images/install_archlinux_to_usb_4_37.png)
 
 点击 `Enter`
 
-![38](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-38.png)
+![38](images/install_archlinux_to_usb_4_38.png)
 
 然后静静地等待安装完成。
 
-![39](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-39.png)
+![39](images/install_archlinux_to_usb_4_39.png)
 
 ****
 
@@ -222,74 +222,74 @@
 
 输入 `genfstab -U -p /mnt > /mnt/etc/fstab` 生成文件系统表
 
-![40](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-40.png)
+![40](images/install_archlinux_to_usb_4_40.png)
 
 输入 `arch-chroot /mnt` 进入新系统
 
-![41](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-41.png)
+![41](images/install_archlinux_to_usb_4_41.png)
 
 输入 `nano /etc/locale.gen` 选择文字编码
 
-![42](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-42.png)
+![42](images/install_archlinux_to_usb_4_42.png)
 
 将 zh_CN 开头的行全部取消注释，再找到 en_US.UTF-8 UTF-8也取消注释。 编辑完成之后保存。nano 的使用方法不再赘述
 
 输入 `locale-gen`
 
-![43](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-43.png)
+![43](images/install_archlinux_to_usb_4_43.png)
 
 输入 `nano /etc/locale.conf` 在文件中写入 `LANG=en_US.UTF-8` 保存
 
-![44](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-44.png)
+![44](images/install_archlinux_to_usb_4_44.png)
 
 输入 `rm /etc/localtime` 删除原 UTC 时区
 
-![45](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-45.png)
+![45](images/install_archlinux_to_usb_4_45.png)
 
 输入 `ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
 设置计算机系统时区为上海
 
-![46](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-46.png)
+![46](images/install_archlinux_to_usb_4_46.png)
 
 输入 `hwclock --systohc --localtime` 设置硬件时间为本地时间
 
-![47](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-47.png)
+![47](images/install_archlinux_to_usb_4_47.png)
 
 输入 `echo steven > /etc/hostname` 将主机名配置成 steven，这个名称可以自行更改
 
-![48](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-48.png)
+![48](images/install_archlinux_to_usb_4_48.png)
 
 输入 `nano /etc/mkinitcpio.conf` 找到下面这行
 
-![49](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-49.png)
+![49](images/install_archlinux_to_usb_4_49.png)
 
 将 `block` 写到 `udev` 之后，然后保存，这样做就是为了让usb在启动的之后首先加载
 
-![50](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-50.png)
+![50](images/install_archlinux_to_usb_4_50.png)
 
 输入 `mkinitcpio -p linux` ，生成启动镜像
 
 
-![51](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-51.png)
+![51](images/install_archlinux_to_usb_4_51.png)
 
 输入 `passwd` 设置 root 用户的密码，注意输入密码时没有回显。
 
-![52](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-52.png)
+![52](images/install_archlinux_to_usb_4_52.png)
 
 ### 配置网络
 
 输入 `pacman -S zd1211-firmware` 安装无线网卡驱动
 
-![53](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-53.png)
+![53](images/install_archlinux_to_usb_4_53.png)
 
 
 输入 `pacman -S iw wpa_supplicant wireless_tools net-tools` 安装网络工具
 
-![54](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-54.png)
+![54](images/install_archlinux_to_usb_4_54.png)
 
 输入 `pacman -S dialog` 安装终端对话框
 
-![55](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-55.png)
+![55](images/install_archlinux_to_usb_4_55.png)
 
 ## 配置引导
 
@@ -297,36 +297,36 @@
 
 输入 `pacman -S grub` 安装引导程序
 
-![56](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-56.png)
+![56](images/install_archlinux_to_usb_4_56.png)
 
 输入 `grub-install --target=i386-pc /dev/sdb` 安装BIOS引导
 
-![57](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-57.png)
+![57](images/install_archlinux_to_usb_4_57.png)
 
 输入 `blkid` , 将 sdb2 的 UUID 记下来 
 
-![58](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-58.png)
+![58](images/install_archlinux_to_usb_4_58.png)
 
 这里 UUID 是 97b5e415-46ab-4e35-a804-6ddaez5793ac，每个分区的UUID应该都是不同的，下面具体根据自己的UUID来做修改，这是为了用 UUID 做标识来启动操作系统，否则换了电脑硬盘标签变化就不能启动了
 
 输入 `nano /boot/grub/grub.cfg` , 修改grub配置文件
 
-![59](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-59.png)
+![59](images/install_archlinux_to_usb_4_59.png)
 
 将所有出现的UUID全部改成 sdb2 的UUID，过程略复杂，谨慎修改，然后保存
 
-![60](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-60.png)
+![60](images/install_archlinux_to_usb_4_60.png)
 
 
 ### 测试BIOS(legacy)引导
 
 输入 `exit` 退出新系统
 
-![61](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-61.png)
+![61](images/install_archlinux_to_usb_4_61.png)
 
 输入 `shutdown -h now` 关闭 Installer 虚拟机
 
-![62](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-62.png)
+![62](images/install_archlinux_to_usb_4_62.png)
 
 #### 新建测试虚拟机
 
@@ -334,41 +334,41 @@
 
 选择安装源时，选 I will install the operating system later.
 
-![63](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-63.png)
+![63](images/install_archlinux_to_usb_4_63.png)
 
 名称写成 Boot，或者可以自定义
 
-![64](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-64.png)
+![64](images/install_archlinux_to_usb_4_64.png)
 
 选择磁盘时，选择 Use a physical disk(for advanced users)
 
-![65](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-65.png)
+![65](images/install_archlinux_to_usb_4_65.png)
 
 然后选择 PhysicalDrive1，选择Use individual partitions
 
-![66](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-66.png)
+![66](images/install_archlinux_to_usb_4_66.png)
 
 勾选前两个分区
 
-![67](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-67.png)
+![67](images/install_archlinux_to_usb_4_67.png)
 
 如果发现分区信息不对，可以返回上一步，重新选择另一个PhysicalDrive，然后再试
 
 点击 Power on this virtual machine 启动测试虚拟机
 
-![68](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-68.png)
+![68](images/install_archlinux_to_usb_4_68.png)
 
 启动之后
 
-![69](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-69.png)
+![69](images/install_archlinux_to_usb_4_69.png)
 
 这时候输入 用户名 `root` 和 passwd 设置的密码就可以登陆了
 
-![70](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-70.png)
+![70](images/install_archlinux_to_usb_4_70.png)
 
 如果有USB的无线网卡，挂到虚拟机里，输入 `wifi-menu` 就可以选择无线网络了
 
-![71](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-71.png)
+![71](images/install_archlinux_to_usb_4_71.png)
 
 输入 `shutdown -h now` 关闭测试虚拟机
 
@@ -378,18 +378,18 @@
 
 如果关机之后，Windows 出现如下对话框，请点击 取消(Cancel)
 
-![72](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-72.png)
+![72](images/install_archlinux_to_usb_4_72.png)
 
 
 ### 配置UEFI引导
 
 编辑 Installer 虚拟机，点击 Edit virtual machine settings
 
-![73](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-73.png)
+![73](images/install_archlinux_to_usb_4_73.png)
 
 在Options选项卡，Advanced选项右侧，将Firmware type 改为UEFI，**不要勾选 Enable Secure Boot**，然后保存
 
-![74](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-74.png)
+![74](images/install_archlinux_to_usb_4_74.png)
 
 和前文一样
 
@@ -400,7 +400,7 @@
 
 输入 `grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable` 安装UEFI启动项
 
-![75](http://pqs8hg59d.bkt.clouddn.com/%E5%AE%89%E8%A3%85%20ArchLinux%20%E5%88%B0U%E7%9B%98%EF%BC%88%E5%9B%9B%EF%BC%89%E5%AE%89%E8%A3%85Archlinux-75.png)
+![75](images/install_archlinux_to_usb_4_75.png)
 
 ### 测试UEFI引导
 
