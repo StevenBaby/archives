@@ -17,7 +17,7 @@
 
 进去之后发现C盘，的容量整个变成了0，所以怀疑应该是分区坏了，打开分区工具，发现C盘里的内容还能读取，所以应该不是磁盘坏了。用磁盘工具检测磁盘坏道也是什么都没有。于是开始焦绿。这玩意儿之前还真没见过。
 
-![Windows chkdsk 磁盘修复工具-1.png](http://pqs8hg59d.bkt.clouddn.com/Windows%20chkdsk%20%E7%A3%81%E7%9B%98%E4%BF%AE%E5%A4%8D%E5%B7%A5%E5%85%B7-1.png)
+![Windows chkdsk 磁盘修复工具-1.png](images/feel-banana-green.png)
 
 然后便想到应该是磁盘什么地方出问题了，导致Windows不能读取，于是想到了磁盘修复工具，也就是 `chkdsk` 这个工具了。
 
