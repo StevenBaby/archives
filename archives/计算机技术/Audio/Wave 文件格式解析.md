@@ -29,7 +29,7 @@ wave 是微软和IBM定义的PC机存储音频文件的标准，它使用 Resour
 
 ## wave 文件头解析
 
-![wav-sound-format.gif](http://pqs8hg59d.bkt.clouddn.com/wav-sound-format.gif)
+![wav-sound-format.gif](images/wav-sound-format.gif)
 
 如图所示，wave文件头包含以下信息：
 
@@ -68,7 +68,7 @@ Subchunk2ID，Subchunk2Size，data 就是实际的数据了
 24 17 1e f3 3c 13 3c 14 16 f9 18 f9 34 e7 23 a6 3c f2 24 f2 11 ce 1a 0d 
 ```
 
-![](http://pqs8hg59d.bkt.clouddn.com/wave-bytes.gif)
+![](images/wave-bytes.gif)
 
 wave文件默认的字节序是小端存储的，如果文件使用大端存储，则需要使用 RIFX 替换 RIFF。
 
@@ -285,7 +285,7 @@ plt.show()
 
 由于我在代码里只花了前1000帧，所以看上去是这样的：
 
-![Wave 文件格式解析 波形](http://pqs8hg59d.bkt.clouddn.com/Wave%20%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%A7%A3%E6%9E%90%20%E6%B3%A2%E5%BD%A2.jpg)
+![Wave 文件格式解析 波形](images/wave_format_graph.jpg)
 
 
 ## 参考资料
