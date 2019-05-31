@@ -90,26 +90,26 @@ sudo systemctl enable smb nmb
 
 在Explorer地址栏中输入 ``//192.168.xxx.xxx``，其中 `192.168.xxx.xxx` 为 Linux IP地址，可以使用 `ifconfig` 命令查看
 
-![samba 配置-1.png](http://pqs8hg59d.bkt.clouddn.com/samba%20%E9%85%8D%E7%BD%AE-1.png)
+![samba 配置-1.png](images/samba_config-1.png)
 
 输入用户名和密码之后，就可以看到 /tmp 目录了
 
-![samba 配置-2.png](http://pqs8hg59d.bkt.clouddn.com/samba%20%E9%85%8D%E7%BD%AE-2.png)
+![samba 配置-2.png](images/samba_config-2.png)
 
 ## Windows 映射网络磁盘
 
 直接访问的方式有一种缺陷，就是无法在 cmd 命令行窗口中访问，这时可以将某个共享目录映射出网络磁盘。
 在计算机中 计算机选项卡下，点击 **Map network drive**
 
-![samba 配置-3.png](http://pqs8hg59d.bkt.clouddn.com/samba%20%E9%85%8D%E7%BD%AE-3.png)
+![samba 配置-3.png](images/samba_config-3.png)
 
 输入目录地址，点击完成就可以了，如果想要一直显示该目录，可以勾选 **Reconnect at sign-in**
 
-![samba 配置-4.png](http://pqs8hg59d.bkt.clouddn.com/samba%20%E9%85%8D%E7%BD%AE-4.png)
+![samba 配置-4.png](images/samba_config-4.png)
 
 然后计算机中就多出了一个网络磁盘
 
-![samba 配置-5.png](http://pqs8hg59d.bkt.clouddn.com/samba%20%E9%85%8D%E7%BD%AE-5.png)
+![samba 配置-5.png](images/samba_config-5.png)
 
 这时就可以在cmd控制台中正常访问了，如果不想用了，可以点击右键 > Disconnect
 
