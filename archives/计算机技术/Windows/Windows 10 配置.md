@@ -138,15 +138,15 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 
 以开机启动虚拟机为例，运行 **gpedit.msc**，左侧找到 Scripts
 
-![](http://pqs8hg59d.bkt.clouddn.com/Windows%2010%20%E9%85%8D%E7%BD%AE%20-1.png)
+![](images/Windows_10_config-1.png)
 
 双击右侧 **logon**
 
-![](http://pqs8hg59d.bkt.clouddn.com/Windows%2010%20%E9%85%8D%E7%BD%AE%20-2.png)
+![](images/Windows_10_config-2.png)
 
 点击 **Add**
 
-![](http://pqs8hg59d.bkt.clouddn.com/Windows%2010%20%E9%85%8D%E7%BD%AE%20-3.png)
+![](images/Windows_10_config-3.png)
 
 输入命令，上面为程序位置，下面为参数，保存即可。
 
@@ -159,7 +159,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 ```
 
 
-![](http://pqs8hg59d.bkt.clouddn.com/Windows%2010%20%E9%85%8D%E7%BD%AE%20-4.png)
+![](images/Windows_10_config-4.png)
 
 ----
 
@@ -228,7 +228,7 @@ HKEY_CLASSES_ROOT\Directory\shell\AnyCode
 今天我遇到了一个新的问题，具体的表现是：我有了一个新的笔记本，之前有一个Surface，两台笔记本同时工作的话，就需要有两套键盘和鼠标，这就造成了一个很严重的问题，桌子上摆不开，而且操作也不够方便，这就让我有了用一套键盘和鼠标操作两台电脑的想法了，根据这个需求就上网查资料，找到了Synergy，经过简单的安装配置，终于可以共享鼠标和键盘了。
 
 
-![](http://pqs8hg59d.bkt.clouddn.com/Windows%2010%20%E9%85%8D%E7%BD%AE%20-5.jpg)
+![](images/Windows_10_config-5.png)
 
 附上下载地址 <https://www.brahma.world/synergy-stable-builds/>
 
@@ -317,7 +317,7 @@ HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
 > 在应用里找到 Windows Explorer
 > 然后 点击鼠标右键 -> 重新启动
 
-![1556250555(1).jpg](http://pqs8hg59d.bkt.clouddn.com/Windows%2010%20%E9%85%8D%E7%BD%AE%20-6.png)
+![1556250555(1).jpg](images/Windows_10_config-6.png)
 
 ---
 
