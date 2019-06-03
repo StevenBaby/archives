@@ -15,3 +15,20 @@
 ```sh
 ffmpeg -i input.mp3 output.wav
 ```
+
+---
+
+## 将视频旋转 90 度 
+
+```sh
+ffmpeg -i input.mp4 -vf "transpose=1" out.mov output.mp4
+```
+
+可选参数：
+
+- 0 = 90CounterCLockwise and Vertical Flip (default)
+- 1 = 90Clockwise
+- 2 = 90CounterClockwise
+- 3 = 90Clockwise and Vertical Flip
+
+---
