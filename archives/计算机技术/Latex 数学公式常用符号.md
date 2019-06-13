@@ -16,7 +16,7 @@
 | $\beta$ | $\Beta$ | \beta |
 | $\gamma$ | $\Gamma$ | \gamma |
 | $\delta$ | $\Delta$ | \delta |
-| $\epsilon$ | $\Epsilon$ | \epsilon |
+| $\epsilon$ | $\Epsilon$ | \epsilon ($\varepsilon$ \varepsilon) |
 | $\zeta$ | $\Zeta$ | \zeta |
 | $\nu$ | $\Nu$ | \nu |
 | $\xi$ | $\Xi$ | \xi |
@@ -32,7 +32,7 @@
 | $\mu$ | $\Mu$ | \mu |
 | $\tau$ | $\Tau$ | \tau |
 | $\upsilon$ | $\Upsilon$ | \upsilon |
-| $\phi$ | $\Phi$ | \phi，（$\varphi$：\varphi） |
+| $\phi$ | $\Phi$ | \phi ($\varphi$ \varphi) |
 | $\chi$ | $\Chi$ | \chi |
 | $\psi$ | $\Psi$ | \psi |
 | $\omega$ | $\Omega$ | \omega |
