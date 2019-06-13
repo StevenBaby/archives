@@ -22,3 +22,14 @@
 - `192.168.1.1:2181,192.168.1.2:2181,192.168.1.3:2181` 是 Zookeeper 的相关地址。
 - `consume_group` 是消费组名
 - `topic_name` 是topic的名字
+
+## 消息过大
+
+修改 `server.properties`:
+
+```ini
+# broker能接收消息的最大字节数
+message.max.bytes=20000000
+# broker可复制的消息的最大字节数
+fetch.message.max.bytes=20485760
+```
