@@ -343,3 +343,50 @@ Default 中写入:
 中添加 String Icon = C:\Windows\System32\cmd.exe, 这样就会有相应的图标。
 
 ---
+
+## Windows 10 Hyper-V 与 VMWare 不兼容问题
+
+二者不兼容，只能用其中之一，下面写了开启 Hyper-V 之后，关闭 Hyper-V 的方式。
+
+1\. Hit the windows key+s for "Search" and type "windows security settings" and press enter. Navigate to:
+
+Windows Security -->> Device Security -->> Core Isolation -->> Memory Integrity -->> Select Off
+
+ 
+
+2\. Hit the windows key+r for "Run" and type "gpedit.msc" and press enter. Navigate to:
+
+Local Computer Policy ->> Computer Configuration ->> Administrative Templates ->> System - Device Guard ->> Turn on Virtualization
+
+Double click that .... and select "Disable" ...
+
+ 
+
+3\. Go to Control Panel ->> Uninstall a Program ->> Turn Windows features on or off ->> (uncheck/turn off): Hyper-V & Windows Sandbox.
+
+*Click OK
+
+*Select Do not restart.
+
+ 
+
+4\. Type the following cmds in cmd prompt.. to Delete the related EFI variables from the BCD file...
+
+Launch cmd as administrator...
+
+```sh
+bcdedit /create {0cb3b571-2f2e-4343-a879-d86a476d7215} /d "DebugTool" /application osloader
+
+bcdedit /set {0cb3b571-2f2e-4343-a879-d86a476d7215} path "\EFI\Microsoft\Boot\SecConfig.efi"
+
+bcdedit /set {bootmgr} bootsequence {0cb3b571-2f2e-4343-a879-d86a476d7215}
+
+bcdedit /set {0cb3b571-2f2e-4343-a879-d86a476d7215} loadoptions DISABLE-LSA-ISO,DISABLE-VBS
+
+bcdedit /set hypervisorlaunchtype off
+
+```
+
+1. Restart your system ...
+
+---
