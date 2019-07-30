@@ -7,9 +7,6 @@
 [annotation]: <tags> (音频处理|Python)
 [annotation]: <comments> (false)
 
-> 原文链接：<http://blog.ccyg.studio/article/593eaa9a-7457-4561-ad97-7fabacb6c05d>
-
----
 
 ## 基本概念
 

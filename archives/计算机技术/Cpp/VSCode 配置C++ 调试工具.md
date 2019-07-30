@@ -7,9 +7,6 @@
 [annotation]: <tags> (C/C++)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/1b1ed6ff-325b-4b79-afb6-b8b1e5b6899a>
-
----
 
 launch.json
 

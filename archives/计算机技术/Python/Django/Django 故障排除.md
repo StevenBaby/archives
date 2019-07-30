@@ -8,9 +8,6 @@
 [annotation]: <comments> (true)
 
 
-> 原文链接：<http://blog.ccyg.studio/article/e6355db6-91d9-40b7-9cbd-6f3494bc2e81>
-
----
 
 
 ## Django 时区操作

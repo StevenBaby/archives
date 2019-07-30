@@ -7,9 +7,6 @@
 [annotation]: <tags> (C/C++|Python)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/169a9f29-e1ef-4a6c-9b7c-8031dd0186dd>
-
----
 
 ## C
 

@@ -7,9 +7,6 @@
 [annotation]: <tags> (Javascript)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/a990ef39-a99d-4b8e-a96f-34e9db046366>
-
----
 
 ## 绘制图像
 

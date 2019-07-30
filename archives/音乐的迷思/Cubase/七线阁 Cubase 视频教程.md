@@ -9,9 +9,6 @@
 
 <http://www.howzhi.com/course/2216/>
 
-> 原文链接：<http://blog.ccyg.studio/article/846b24a2-adf8-4b63-a48a-f9a67222f503>
-
----
 
 ## 1 Cubase 简介
 

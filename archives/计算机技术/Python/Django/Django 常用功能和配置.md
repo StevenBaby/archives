@@ -7,9 +7,6 @@
 [annotation]: <tags> (Python|Django)
 [annotation]: <comments> (false)
 
-> 原文链接：<http://blog.ccyg.studio/article/67c9c264-e7b3-47e9-aa0a-7e10f4971c1e>
-
----
 
 ## sqlite 数据库配置
 

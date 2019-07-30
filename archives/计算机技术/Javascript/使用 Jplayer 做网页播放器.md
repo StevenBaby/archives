@@ -7,9 +7,6 @@
 [annotation]: <tags> (Javascript)
 [annotation]: <comments> (false)
 
-> 原文链接：<http://blog.ccyg.studio/article/2290a310-0e99-415e-843f-7a71ba0eaab5>
-
----
 
 下面是 Jplayer 音频播放器和视频播放器 标准的 Demo
 

@@ -7,9 +7,6 @@
 [annotation]: <tags> (C/C++)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/91e20a65-45d1-49e8-b28a-a33b6ac0f96b>
-
----
 
 一般来说，网上绝大多数的关于C++生成随机数的文章，写的都是使用C语言的 `rand()` 来生成的，比如像下面这样：
 

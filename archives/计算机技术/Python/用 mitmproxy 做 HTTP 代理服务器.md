@@ -7,9 +7,6 @@
 [annotation]: <tags> (Python)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/cbcfacca-45b5-44fa-b84f-c707fa60b17e>
-
----
 
 
 mitmproxy 是一个强大的代理工具，其中包括了:

@@ -7,9 +7,6 @@
 [annotation]: <tags> (Python|Git)
 [annotation]: <comments> (false)
 
-> 原文链接：<http://blog.ccyg.studio/article/a4d577ab-eed3-4257-893a-cf836e975b98>
-
----
 
 - object
 - tree

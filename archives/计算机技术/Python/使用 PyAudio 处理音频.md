@@ -7,9 +7,6 @@
 [annotation]: <tags> (Python|音频处理)
 [annotation]: <comments> (false)
 
-> 原文链接：<http://blog.ccyg.studio/article/57db86c0-786d-4df7-be4b-a5cf6ba48bb1>
-
----
 
 PyAudio 是 [PortAudio](http://www.portaudio.com/) 的 Python 绑定，跨平台的音频输入输出库。使用 PyAudio 可以很容易的在很多系统平台上用Python来播放和录音。下面是官方给出的例子：
 

@@ -7,9 +7,6 @@
 [annotation]: <tags> (Windows)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/09d7bd9a-6b32-4f81-a93e-e746453c7ffc>
-
----
 
 前两天，接到朋友的消息，说电脑坏了，让我帮他修一下。说具体的现象是，开机就蓝屏。应该是他自己强制关机造成的，遂去修电脑。
 

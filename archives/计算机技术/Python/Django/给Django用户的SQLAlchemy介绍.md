@@ -7,9 +7,6 @@
 [annotation]: <tags> (Python|Django|SQLAlchemy)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/016373cd-a7cf-49be-b9cc-b1f6126fb54a>
-
----
 
 
 ## SQLAlchemy是什么？

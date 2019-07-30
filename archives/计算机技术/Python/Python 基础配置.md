@@ -8,9 +8,6 @@
 [annotation]: <comments> (true)
 
 
-> 原文链接：<http://blog.ccyg.studio/article/8ced6520-d3b5-46b4-8823-14c5bf702ed2>
-
----
 
 
 ## 在 CentOS 上安装 Python 3.6

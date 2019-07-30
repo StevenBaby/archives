@@ -5,9 +5,6 @@
 [annotation]: <create_time> (2019-04-17 15:39:11)
 [annotation]: <category> (计算机技术)
 
-> 原文链接：<http://blog.ccyg.studio/article/440c89b7-cdcf-4328-ad3d-b35c454f7c7e>
-
----
 ## 希腊字母表
 
 | 小写 | 大写 | latex |

@@ -7,9 +7,6 @@
 [annotation]: <tags> (Kafka)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/64141d15-ad59-4b47-a7a6-4a7db241d865>
-
----
 
 ## 查看 TOPIC 消费情况
 

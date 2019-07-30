@@ -6,9 +6,6 @@
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (组成原理)
 
-> 原文链接：<http://blog.ccyg.studio/article/556e3c92-01da-468c-9a7d-f09492d289be>
-
----
 
 
 
