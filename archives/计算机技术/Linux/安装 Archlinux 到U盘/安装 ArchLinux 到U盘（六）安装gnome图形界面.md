@@ -9,10 +9,6 @@
 [annotation]: <index> (6)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/255f0ebd-a9af-40a2-ba94-d45e10baeff1>
-
----
-
 
 ## 安装 gnome
 

@@ -7,10 +7,6 @@
 [annotation]: <comments> (true)
 [annotation]: <status> (public)
 
-> 原文链接：<http://blog.ccyg.studio/article/857e3554-a019-44cc-986b-3023d17386be>
-
----
-
 
 CentOS7 中默认将原来的防火墙 **iptables** 升级成了 **firewalld**, firewalld和iptables比较起来有两大好处：
 

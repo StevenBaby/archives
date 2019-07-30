@@ -9,9 +9,6 @@
 [annotation]: <index> (7)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/5c3a4435-dec5-4a15-b30c-3dea4ae35e40>
-
----
 
 ![1](images/install_archlinux_to_usb_7_1.png)
 

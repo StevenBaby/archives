@@ -9,10 +9,6 @@
 [annotation]: <index> (5)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/973c0463-de5a-48d8-8463-ffde83dcb230>
-
----
-
 
 ## Windows Explorer 提示格式化
 

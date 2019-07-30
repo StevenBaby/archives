@@ -9,10 +9,6 @@
 [annotation]: <index> (4)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/4f6cfa0a-ad98-4adb-af08-79a8a5b1d674>
-
----
-
 
 >再次重申：安装过程会格式化U盘，内有资料，请先备份，如有遗失，概不负责！！！
 

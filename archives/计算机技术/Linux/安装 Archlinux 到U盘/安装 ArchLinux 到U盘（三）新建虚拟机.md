@@ -9,10 +9,6 @@
 [annotation]: <index> (3)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/206f744b-1d67-4afa-b25b-76d66c78e95f>
-
----
-
 
 ## 新建虚拟机
 

@@ -9,10 +9,6 @@
 [annotation]: <index> (1)
 [annotation]: <comments> (true)
 
-> 原文链接：<http://blog.ccyg.studio/article/55ffae4e-64e2-4b8e-bb9d-3ae759b3e223>
-
----
-
 
 ## 关于这篇文章
 
