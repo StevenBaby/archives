@@ -44,3 +44,44 @@ $A \xlongequal [sub 下面要写的字]{sup 上面要写的字} B$
 $A \xlongequal [sub 下面要写的字]{sup 上面要写的字} B$
 
 ---
+
+## 加长绝对值
+
+使用 `\big \Big \bigg \Bigg`
+
+```latex
+$\big| |a| + |b| \big|$
+```
+$\big| |a| + |b| \big|$
+
+---
+
+## 大于等于和小于等于
+
+```latex
+$a \leq b$
+
+$a \geq b$
+
+$a \leqslant b$
+
+$a \geqslant b$
+```
+
+$a \leq b$
+
+$a \geq b$
+
+$a \leqslant b$
+
+$a \geqslant b$
+
+---
+
+## n次根号
+
+```latex
+$\sqrt[n]{a}$
+```
+
+$\sqrt[n]{a}$
