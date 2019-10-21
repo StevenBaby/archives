@@ -29,3 +29,11 @@ ffmpeg -i input.mp4 -vf "transpose=1" out.mov output.mp4
 - 3 = 90Clockwise and Vertical Flip
 
 ---
+
+## 截取视频
+
+```sh
+ffmpeg  -i input.mp4 -c copy -ss 00:00:10 -to 00:00:15 output.mp4 -y
+```
+
+其中 **00:00:10** 和 **00:00:15** 分别为视频开始时间和结束时间。
