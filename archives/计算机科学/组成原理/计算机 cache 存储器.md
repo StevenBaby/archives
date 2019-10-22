@@ -6,6 +6,7 @@
 [annotation]: <category> (计算机科学)
 [annotation]: <tags> (组成原理)
 [annotation]: <comments> (true)
+[annotation]: <url> (http://blog.ccyg.studio/article/ebdf0ad2-dc01-47e6-b203-43d8d37baab7)
 
 
 以前在上学的时候，期末考试时，计算机组成原理这门课中 cache 存储器的分值占到了100分中40分，当时就意识到了这部分内容的重要性，但是对于计算机来说最重要的内容莫过于中央处理器了，但是中央处理器对于考试来说，不太好考，于是考试具有区分性的压力就来到了cache 存储器上面。
