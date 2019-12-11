@@ -95,7 +95,7 @@ $$
 
 ## 测试 Jplayer 播放器 视频
 
-<div class='ui jplayer video' data-url="https://media.w3.org/2010/05/sintel/trailer.mp4"></div>
+<div class='ui jplayer video' data-url="https://media.w3.org/2010/05/sintel/trailer.mp4" format='mp4'></div>
 
 
 ## 测试网易云音乐
