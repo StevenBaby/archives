@@ -109,4 +109,4 @@ $$
 
 ## 测试哔哩哔哩视频
 
-<iframe class="video" width="640" height="360" src="//player.bilibili.com/player.html?aid=72017938&cid=124789449&page=1"></iframe>
+<iframe class="video" width="640" height="360" src="//player.bilibili.com/player.html?aid=66928370&cid=116061321&page=1"></iframe>
