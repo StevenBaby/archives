@@ -105,3 +105,8 @@ $$
 ## 测试优酷视频
 
 <iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XMTM2MjE4MzU3Ng=="></iframe>
+
+
+## 测试哔哩哔哩视频
+
+<iframe class="video" width="640" height="360" src="//player.bilibili.com/player.html?aid=72017938&cid=124789449&page=1"></iframe>
