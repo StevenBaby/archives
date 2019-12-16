@@ -10,7 +10,7 @@
 [annotation]: <comments> (true)
 
 
->再次重申：安装过程会格式化U盘，内有资料，请先备份，如有遗失，概不负责！！！
+> 再次重申：安装过程会格式化U盘，内有资料，请先备份，如有遗失，概不负责！！！
 
 ## 启动虚拟机
 
@@ -39,6 +39,42 @@
 ![5](images/install_archlinux_to_usb_4_5.png)
 
 ****
+
+## 温馨提示（非必要）
+
+如果觉得 Vmware 输入命令无法粘贴，特别无聊，如果Windows主机有 ssh 客户端的话，可以如下操作。否则可直接跳过。不过亦然**建议使用该方法**，**防止命令敲错**的可能发生。
+
+---
+
+输入 `systemctl start sshd` 启动 ssh 服务
+
+![add_01](images/install_archlinux_to_usb_4_add_01.jpg)
+
+输入 `passwd` 修改镜像系统 root 密码，然后**输入密码两次**，分别回车，注意输入密码时屏幕没有回显。
+
+![add_02](images/install_archlinux_to_usb_4_add_02.jpg)
+
+输入 `ifconfig` 找到 **192.168.xxx.xxx** 的那个IP地址，这里是 **192.168.111.135**，然后记住IP地址，以备在 SSH 客户端中使用。
+
+![add_03](images/install_archlinux_to_usb_4_add_03.jpg)
+
+然后打开 ssh 客户端，这里以 xshell 为例，输入 ip 地址，用户名 root，以及刚才修改好的密码，就能连接了。
+
+主机IP地址设置：
+
+![add_04](images/install_archlinux_to_usb_4_add_04.jpg)
+
+认证方式（用户名密码）设置：
+
+![add_05](images/install_archlinux_to_usb_4_add_05.jpg)
+
+连接以后，选择 **Accept Once**
+
+![add_06](images/install_archlinux_to_usb_4_add_06.jpg)
+
+然后就能在 ssh 客户端中输入命令了，这时候就可以随意的复制粘贴了，不过复制粘贴的过程中**注意命令和自身系统的适用性**，可能不同系统中的网卡名称、磁盘名称并不一样。
+
+---
 
 ## U盘分区
 
@@ -192,23 +228,27 @@
 
 ****
 
-## 安装系统
+## 安装系统 <sub><small>2019-12-16 更新</small></sub>
 
-输入 `pacstrap -i /mnt base base-devel ntfs-3g` 安装系统，然后点击 `Enter`
+> 温馨提示：安装过程中如有异常发生，还请评论或邮件告知。如不能及时回复，以下为官方安装指导 <https://wiki.archlinux.org/index.php/Installation_guide>  
+<i class="ui pop heart circular small pink icon"></i>
+<span class="ui popup">经某位北京理工大学的同学邮件提醒，安装过程出现了异常，现已修正，特此感谢！<sub><small>2019-12-16</small></sub> </span>
 
-![36](images/install_archlinux_to_usb_4_36.png)
+输入 `pacstrap -i /mnt base base-devel linux linux-firmware` 安装系统，然后点击 `Enter`
+
+![36](images/install_archlinux_to_usb_4_36.jpg)
 
 点击 `Enter`
 
-![37](images/install_archlinux_to_usb_4_37.png)
+![37](images/install_archlinux_to_usb_4_37.jpg)
 
 点击 `Enter`
 
-![38](images/install_archlinux_to_usb_4_38.png)
+![38](images/install_archlinux_to_usb_4_38.jpg)
 
 然后静静地等待安装完成。
 
-![39](images/install_archlinux_to_usb_4_39.png)
+![39](images/install_archlinux_to_usb_4_39.jpg)
 
 ****
 
@@ -271,6 +311,10 @@
 输入 `passwd` 设置 root 用户的密码，注意输入密码时没有回显。
 
 ![52](images/install_archlinux_to_usb_4_52.png)
+
+输入 `pacman -S ntfs-3g` 安装 ntfs 文件系统，以便访问 Windows 磁盘
+
+![add_07](images/install_archlinux_to_usb_4_add_07.jpg)
 
 ### 配置网络
 
