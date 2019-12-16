@@ -230,8 +230,9 @@
 
 ## 安装系统 <sub><small>2019-12-16 更新</small></sub>
 
-> <i class="ui pop heart circular small pink icon"></i>
-<span class="ui popup">经某位北京理工大学的同学邮件提醒，安装过程出现了异常，现已修正，特此感谢！<sub><small>2019-12-16</small></sub> </span> 温馨提示：安装过程中如有异常发生，还请评论或邮件告知。如不能及时回复，以下为官方安装指导 <https://wiki.archlinux.org/index.php/Installation_guide>  
+> 温馨提示：安装过程中如有异常发生，还请评论或邮件告知。如不能及时回复，以下为官方安装指导 <https://wiki.archlinux.org/index.php/Installation_guide>  
+<i class="ui pop heart circular small pink icon"></i>
+<span class="ui popup">经某位北京理工大学的同学邮件提醒，安装过程出现了异常，现已修正，特此感谢！<sub><small>2019-12-16</small></sub> </span>
 
 
 输入 `pacstrap -i /mnt base base-devel linux linux-firmware` 安装系统，然后点击 `Enter`
