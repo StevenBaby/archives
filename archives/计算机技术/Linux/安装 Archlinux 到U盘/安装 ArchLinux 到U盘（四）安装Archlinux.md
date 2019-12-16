@@ -371,7 +371,7 @@
 
 #### 新建测试虚拟机
 
-参考[新建虚拟机](./206f744b-1d67-4afa-b25b-76d66c78e95f)
+参考[新建虚拟机](../206f744b-1d67-4afa-b25b-76d66c78e95f)
 
 选择安装源时，选 I will install the operating system later.
 

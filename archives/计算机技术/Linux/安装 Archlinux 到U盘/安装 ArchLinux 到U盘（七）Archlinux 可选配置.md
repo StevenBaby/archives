@@ -52,7 +52,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Windows 想要访问 Linux 文件
 
-参阅 [samba 配置](./57368d24-03c1-4738-aaac-09d14bcf5314)
+参阅 [samba 配置](../57368d24-03c1-4738-aaac-09d14bcf5314)
 
 ---
 

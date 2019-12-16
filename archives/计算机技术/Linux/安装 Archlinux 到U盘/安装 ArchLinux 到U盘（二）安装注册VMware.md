@@ -10,7 +10,7 @@
 [annotation]: <comments> (true)
 
 
-经过上一篇文章的描述 [准备工作](./55ffae4e-64e2-4b8e-bb9d-3ae759b3e223)，应该已经下载了Vmware，这篇文章就写一下如何安装 Vmware， 如果已经安装好了 VMware 请移步 [新建虚拟机](./206f744b-1d67-4afa-b25b-76d66c78e95f)
+经过上一篇文章的描述 [准备工作](../55ffae4e-64e2-4b8e-bb9d-3ae759b3e223)，应该已经下载了Vmware，这篇文章就写一下如何安装 Vmware， 如果已经安装好了 VMware 请移步 [新建虚拟机](../206f744b-1d67-4afa-b25b-76d66c78e95f)
 
 这里默认大家使用的是Windows系统，以下相同，不再赘述。
 
