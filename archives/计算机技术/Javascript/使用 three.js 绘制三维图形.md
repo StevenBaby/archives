@@ -8,10 +8,6 @@
 [annotation]: <comments> (false)
 [annotation]: <url> (http://blog.ccyg.studio/article/33030a69-774e-4cd1-975e-edae118ed977)
 
-<link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
-<link href="http://blog.ccyg.studio/static/css/markdown-theme.css" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.min.js"></script>
 
@@ -58,7 +54,7 @@ $(document).ready(function () {
 
 这个算是官方的小方块了，说明基本的功能已经是可以实现了，算是一个 hello world 吧。功能简单，代码附在下面。
 
-```js
+```javascript
 $(document).ready(function () {
     var root = $('#cube');
     var ratio = 1.77;
