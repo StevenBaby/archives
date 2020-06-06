@@ -24,6 +24,27 @@
                 }
             ],
             "preLaunchTask": "g++.exe build active file"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "name": "Launch html (disable sourcemaps)",
+            "type": "chrome",
+            "request": "launch",
+            "sourceMaps": false,
+            "file": "${fileDirname}/${fileBasename}"  
         }
     ]
 }
