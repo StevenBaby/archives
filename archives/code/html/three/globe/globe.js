@@ -60,11 +60,36 @@ $(document).ready(function () {
     animate();
 
     $(window).resize(function () {
-        console.log('resize');
         var root = $('#scene');
         var width = root.width();
         var height = width / ratio;
         renderer.setSize(width, height);
+    });
+
+    var fullscreen = false;
+    $(root).dblclick(function () {
+        if (!fullscreen) {
+            var element = renderer.domElement || document.body;
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+            fullscreen = true;
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozExitFullScreen) {
+                document.mozExitFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+            fullscreen = false;
+        }
     });
 
 });
