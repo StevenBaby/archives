@@ -3,9 +3,6 @@ import {
     OrbitControls
 } from "https://cdn.jsdelivr.net/npm/three@0.117.1/examples/jsm/controls/OrbitControls.min.js";
 
-sky_image = './sky.jpg';
-world_image = './sky.jpg';
-
 $(document).ready(function () {
 
     var root = $('#scene');
@@ -25,7 +22,7 @@ $(document).ready(function () {
     var geometry = new THREE.SphereBufferGeometry(1, 32, 32);
 
     const loader = new THREE.TextureLoader();
-    const bg_texture = loader.load(sky_image);
+    const bg_texture = loader.load($("#sky").attr('src'));
     bg_texture.magFilter = THREE.LinearFilter;
     bg_texture.minFilter = THREE.LinearFilter;
 
@@ -42,7 +39,7 @@ $(document).ready(function () {
     var bg_mesh = new THREE.Mesh(plane, bg_material);
     scene.add(bg_mesh);
 
-    var surface = loader.load(world_image);
+    var surface = loader.load($("#world").attr('src'));
     var material = new THREE.MeshBasicMaterial({
         map: surface
     });

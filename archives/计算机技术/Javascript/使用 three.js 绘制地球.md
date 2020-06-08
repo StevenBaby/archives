@@ -13,7 +13,5 @@
 
 <div class="ui segment" id="scene"></div>
 <script type="module" src="./three/globe/globe.js"></script>
-<script>
-    sky_image = './three/globe/sky.jpg';
-    world_image = './three/globe/sky.jpg';
-</script>
+<div id="world" src="./three/globe/world.jpg"></div>
+<div id="sky" src="./three/globe/sky.jpg"></div>
