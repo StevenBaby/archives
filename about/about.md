@@ -16,7 +16,8 @@
 
 ## 友情链接
 
-- [leucinw(一个计算化学家)](https://leucinw.github.io/home/)
+- [leucinw(计算化学家)](https://leucinw.github.io/home/)
+- [hankkin(Android 高级工程师)](http://hankkin.club/)
 
 ---
 
