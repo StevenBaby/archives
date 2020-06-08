@@ -61,7 +61,7 @@ $(document).ready(function () {
 
     $(window).resize(function () {
         console.log('resize');
-        var root = $('#globe');
+        var root = $('#scene');
         var width = root.width();
         var height = width / ratio;
         renderer.setSize(width, height);
