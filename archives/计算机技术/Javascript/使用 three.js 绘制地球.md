@@ -12,6 +12,6 @@
 <script src="https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.min.js"></script>
 
 <div class="ui segment" id="scene"></div>
-<script type="module" src="./three/globe/globe.js"></script>
-<div id="world" src="./three/globe/world.jpg"></div>
-<div id="sky" src="./three/globe/sky.jpg"></div>
+<script type="module" src="../../code/html/three/globe/globe.js"></script>
+<div id="world" src="../../code/html/three/globe/world.jpg"></div>
+<div id="sky" src="../../code/html/three/globe/sky.jpg"></div>
