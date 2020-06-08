@@ -6,7 +6,9 @@ $(document).ready(function () {
 
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75, ratio, 0.1, 1000);
-    var renderer = new THREE.WebGLRenderer();
+    var renderer = new THREE.WebGLRenderer({
+        antialias: true
+    });
 
     renderer.setSize(width, height);
     root.append(renderer.domElement);
@@ -17,7 +19,6 @@ $(document).ready(function () {
     });
     var cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
-
     camera.position.z = 5;
 
     function animate() {
@@ -27,4 +28,13 @@ $(document).ready(function () {
         renderer.render(scene, camera);
     }
     animate();
+
+    $(window).resize(function () {
+        console.log('resize');
+        var root = $('#cube');
+        var width = root.width();
+        var height = width / ratio;
+        renderer.setSize(width, height);
+    });
+
 });
