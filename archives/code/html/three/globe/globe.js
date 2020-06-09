@@ -67,7 +67,7 @@ $(document).ready(function () {
     });
 
     var fullscreen = false;
-    $(document).dblclick(function () {
+    $(root).dblclick(function () {
         if (!fullscreen) {
             var element = renderer.domElement || document.body;
             if (element.requestFullscreen) {
