@@ -113,6 +113,11 @@ Snake.prototype.get_random_food = function () {
         remain.push(this.map[name]);
     }
 
+    if (remain.length == 0) {
+        alert("You win!!!");
+        this.new_game();
+    }
+
     var value = remain[Math.round(Math.random() * (remain.length - 1))];
     var food = new Box(value.x, value.y, orange);
     return food;
