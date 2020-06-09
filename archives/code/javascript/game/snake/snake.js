@@ -5,7 +5,7 @@ var width = 32;
 var height = 18;
 var size = 0;
 var length = 2; // 初始化长度
-var interval = 200;
+var interval = 300;
 
 var fullscreen = false;
 
@@ -74,6 +74,18 @@ Snake.prototype.new_game = function () {
     this.direction = 39;
     this.direct = 39;
     this.running = true;
+    this.draw();
+};
+
+Snake.prototype.get_interval = function () {
+    var result = interval;
+    if (keymap[this.direction])
+        result /= 2;
+    if (this.eaten) {
+        this.eaten = false;
+        result += 50;
+    }
+    return result;
 };
 
 Snake.prototype.clear = function () {
@@ -81,6 +93,7 @@ Snake.prototype.clear = function () {
 };
 
 Snake.prototype.draw = function () {
+    if (snake.death()) return;
     this.clear();
     for (var i = 0; i < this.body.length; i++) {
         this.body[i].draw();
@@ -214,15 +227,10 @@ Snake.prototype.move = function () {
 
 
 Snake.prototype.start = function () {
+    snake.move();
     if (snake.check()) return;
     snake.draw();
-    snake.move();
-    if (snake.eaten) {
-        snake.eaten = false;
-        setTimeout(snake.start, interval + 100);
-    } else {
-        setTimeout(snake.start, interval);
-    }
+    setTimeout(snake.start, snake.get_interval());
 };
 
 Snake.prototype.direct_event = function (direct) {
@@ -261,15 +269,24 @@ $(window).resize(function () {
 $(document).ready(function () {
     resize();
     snake.new_game();
-    snake.start();
+    setTimeout(snake.start, snake.get_interval());
 });
+
+var keymap = {};
 
 $(document).keydown(function (e) {
     // 37 左，38 上，39 右，40 下
     var event = e || window.event;
-    console.debug(e.keyCode);
-    snake.direct_event(e.keyCode);
+    var code = e.keyCode;
+    keymap[code] = true;
+    snake.direct_event(code);
     event.preventDefault();
+});
+
+$(document).keyup(function (e) {
+    var event = e || window.event;
+    var code = e.keyCode;
+    keymap[code] = false;
 });
 
 $('.button.up').click(function (e) {
