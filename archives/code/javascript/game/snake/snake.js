@@ -1,22 +1,3 @@
-# 游戏：贪吃蛇
-
-[annotation]: <id> (bbd8436e-6d48-4848-b10f-e2b8777c6bf6)
-[annotation]: <status> (public)
-[annotation]: <create_time> (2020-06-06 16:35:25)
-[annotation]: <category> (计算机技术)
-[annotation]: <tags> (游戏)
-[annotation]: <comments> (false)
-[annotation]: <url> (http://blog.ccyg.studio/article/bbd8436e-6d48-4848-b10f-e2b8777c6bf6)
-
-<div class="ui segment canvas">
-    <canvas id="canvas" width="600" height="450"> </canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
-<script src="../../code/javascript/game/snake/snake.js"></script>
-
-附上游戏的代码。
-
-```js
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
@@ -260,4 +241,3 @@ $(document).keydown(function (e) {
     snake.direct = event.keyCode;
     event.preventDefault();
 });
-```
