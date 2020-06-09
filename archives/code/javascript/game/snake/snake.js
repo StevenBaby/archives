@@ -71,6 +71,7 @@ Snake.prototype.new_game = function () {
     // 37 左，38 上，39 右，40 下
     this.direction = 39;
     this.direct = 39;
+    this.running = true;
 };
 
 Snake.prototype.draw = function () {
@@ -134,6 +135,7 @@ Snake.prototype.get_random_food = function () {
 Snake.prototype.check = function () {
     if (this.death()) {
         alert('Game Over');
+        this.running = false;
         return true;
     }
     return false;
@@ -219,7 +221,11 @@ Snake.prototype.start = function () {
 
 Snake.prototype.direct_event = function (direct) {
     if (direct == code_restart) { // 如果是Enter，重新开始
+        var running = this.running;
         snake.new_game();
+        if (!running){
+            snake.start();
+        }
         return;
     }
 
