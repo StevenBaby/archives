@@ -1,11 +1,13 @@
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
-var width = 20;
-var height = 15;
-var size = 30;
+var width = 32;
+var height = 18;
+var size = 0;
 var length = 2; // 初始化长度
 var interval = 200;
+
+var fullscreen = false;
 
 var grey = 'grey';
 var green = 'green';
@@ -74,7 +76,12 @@ Snake.prototype.new_game = function () {
     this.running = true;
 };
 
+Snake.prototype.clear = function () {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+};
+
 Snake.prototype.draw = function () {
+    this.clear();
     for (var i = 0; i < this.body.length; i++) {
         this.body[i].draw();
     }
@@ -208,7 +215,6 @@ Snake.prototype.move = function () {
 
 Snake.prototype.start = function () {
     if (snake.check()) return;
-    context.clearRect(0, 0, canvas.width, canvas.height);
     snake.draw();
     snake.move();
     if (snake.eaten) {
@@ -223,7 +229,7 @@ Snake.prototype.direct_event = function (direct) {
     if (direct == code_restart) { // 如果是Enter，重新开始
         var running = this.running;
         snake.new_game();
-        if (!running){
+        if (!running) {
             snake.start();
         }
         return;
@@ -284,4 +290,29 @@ $('.button.right').click(function (e) {
 
 $('.button.restart').click(function (e) {
     snake.direct_event(code_restart);
+});
+
+$(canvas).dblclick(function () {
+    if (!fullscreen) {
+        var element = canvas || document.body;
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+        fullscreen = true;
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozExitFullScreen) {
+            document.mozExitFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        }
+        fullscreen = false;
+    }
 });
