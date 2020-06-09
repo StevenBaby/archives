@@ -116,6 +116,7 @@ Snake.prototype.get_random_food = function () {
     if (remain.length == 0) {
         alert("You win!!!");
         this.new_game();
+        return this.get_random_food();
     }
 
     var value = remain[Math.round(Math.random() * (remain.length - 1))];
