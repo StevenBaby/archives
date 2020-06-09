@@ -20,6 +20,13 @@ var head_color = red;
 var food_color = orange;
 var next_color = pink;
 
+// 37 左，38 上，39 右，40 下
+var code_left = 37;
+var code_up = 38;
+var code_right = 39;
+var code_down = 40;
+var code_restart = 13;
+
 var snake = new Snake();
 
 function Box(x, y, color) {
@@ -210,6 +217,24 @@ Snake.prototype.start = function () {
     }
 };
 
+Snake.prototype.direct_event = function (direct) {
+    if (direct == code_restart) { // 如果是Enter，重新开始
+        snake.new_game();
+        return;
+    }
+
+    changes = {
+        37: [38, 40],
+        39: [38, 40],
+        38: [37, 39],
+        40: [37, 39],
+    };
+
+    change = changes[snake.direction];
+    if (!change.includes(direct)) return;
+    snake.direct = direct;
+};
+
 function resize() {
     size = $('.segment.canvas').width() / width;
     canvas.width = $('.segment.canvas').width();
@@ -230,20 +255,27 @@ $(document).ready(function () {
 $(document).keydown(function (e) {
     // 37 左，38 上，39 右，40 下
     var event = e || window.event;
-    if (e.keyCode == 32) { // 如果是空格，重新开始
-        snake.new_game();
-        return;
-    }
-
-    changes = {
-        37: [38, 40],
-        39: [38, 40],
-        38: [37, 39],
-        40: [37, 39],
-    };
-
-    change = changes[snake.direction];
-    if (!change.includes(event.keyCode)) return;
-    snake.direct = event.keyCode;
+    console.debug(e.keyCode);
+    snake.direct_event(e.keyCode);
     event.preventDefault();
+});
+
+$('.button.up').click(function (e) {
+    snake.direct_event(code_up);
+});
+
+$('.button.down').click(function (e) {
+    snake.direct_event(code_down);
+});
+
+$('.button.left').click(function (e) {
+    snake.direct_event(code_left);
+});
+
+$('.button.right').click(function (e) {
+    snake.direct_event(code_right);
+});
+
+$('.button.restart').click(function (e) {
+    snake.direct_event(code_restart);
 });
