@@ -19,26 +19,28 @@ $(document).ready(function () {
     renderer.setSize(width, height);
     root.append(renderer.domElement);
 
-    var geometry = new THREE.SphereBufferGeometry(1, 32, 32);
+    // sky
 
     const loader = new THREE.TextureLoader();
-    const bg_texture = loader.load($("#sky").attr('src'));
-    bg_texture.magFilter = THREE.LinearFilter;
-    bg_texture.minFilter = THREE.LinearFilter;
+    const sky_image = loader.load($("#sky").attr('src'));
+    sky_image.magFilter = THREE.LinearFilter;
+    sky_image.minFilter = THREE.LinearFilter;
 
     const shader = THREE.ShaderLib.equirect;
-    const bg_material = new THREE.ShaderMaterial({
+    const sky_material = new THREE.ShaderMaterial({
         fragmentShader: shader.fragmentShader,
         vertexShader: shader.vertexShader,
         uniforms: shader.uniforms,
         depthWrite: false,
         side: THREE.BackSide,
     });
-    bg_material.uniforms.tEquirect.value = bg_texture;
-    const plane = new THREE.BoxBufferGeometry(20, 20, 20);
-    var bg_mesh = new THREE.Mesh(plane, bg_material);
-    scene.add(bg_mesh);
+    sky_material.uniforms.tEquirect.value = sky_image;
+    const plane = new THREE.SphereBufferGeometry(100, 32, 32);
+    var sky_mesh = new THREE.Mesh(plane, sky_material);
+    scene.add(sky_mesh);
 
+    // earth
+    var geometry = new THREE.SphereBufferGeometry(1, 32, 32);
     var surface = loader.load($("#world").attr('src'));
     var material = new THREE.MeshBasicMaterial({
         map: surface
