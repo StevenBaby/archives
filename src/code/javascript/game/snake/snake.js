@@ -266,6 +266,8 @@ Snake.prototype.direct_event = function (direct) {
     change = changes[direction];
     if (!change.includes(direct)) return;
 
+    snake.accelerate = false;
+
     if (snake.last_direct_time + interval <= new Date().getTime()) {
         snake.directions[0] = direct;
     } else {
