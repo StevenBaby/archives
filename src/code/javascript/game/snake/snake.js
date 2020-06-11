@@ -220,7 +220,6 @@ Snake.prototype.move = function () {
     if (this.directions.length > 1) {
         this.directions.shift();
     }
-    console.log(snake.directions);
     if (this.check()) return;
 
     if (this.next == null)
@@ -277,7 +276,6 @@ Snake.prototype.direct_event = function (direct) {
         }
     }
     snake.last_direct_time = new Date().getTime();
-    console.log(snake.directions);
 };
 
 function resize() {
