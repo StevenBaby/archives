@@ -90,12 +90,12 @@ $$
 
 ## 测试 Jplayer 播放器 音频
 
-<div class='ui jplayer audio' data-url="https://link.hhtjim.com/kw/1027785.mp3" format='mp3'></div>
+<div class='ui jplayer audio' data-url="https://link.hhtjim.com/kw/1027785.mp3" format='mp3' title="梁静茹 - 情歌"></div>
 
 
 ## 测试 Jplayer 播放器 视频
 
-<div class='ui jplayer video' data-url="https://media.w3.org/2010/05/bunny/movie.mp4" data-placeholder="https://media.w3.org/2010/05/bunny/poster.png" format='webmv'></div>
+<div class='ui jplayer video' data-url="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" data-placeholder="https://media.w3.org/2010/05/bunny/poster.png" format='webmv'></div>
 
 
 ## 测试网易云音乐
