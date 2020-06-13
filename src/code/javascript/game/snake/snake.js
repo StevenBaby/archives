@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
 
@@ -215,11 +217,22 @@ Snake.prototype.get_next_box = function () {
     return new Box(x, y, next_color);
 };
 
-Snake.prototype.move = function () {
-    this.direction = this.directions[0];
+Snake.prototype.get_direction = function () {
+    codes = [code_left, code_right, code_up, code_down];
+    for (var i = 0; i < codes.length; i++)
+    {
+        var code = codes[i];
+        if(keymap[code]) return code;
+    }
+    var direction = this.directions[0];
     if (this.directions.length > 1) {
         this.directions.shift();
     }
+    return direction;
+};
+
+Snake.prototype.move = function () {
+    this.direction = this.get_direction();
     if (this.check()) return;
 
     if (this.next == null)
