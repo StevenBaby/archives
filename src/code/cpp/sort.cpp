@@ -28,15 +28,19 @@ void bubble_sort(int array[], int begin, int end)
     auto temp = 0;
     for (int i = begin; i <= end; i++)
     {
+        auto flag = false;
         for (int j = begin + 1; j <= end - i; j++)
         {
             if (array[j - 1] > array[j])
             {
+                flag = true;
                 temp = array[j - 1];
                 array[j - 1] = array[j];
                 array[j] = temp;
             }
         }
+        if (!flag)
+            return;
     }
 }
 
@@ -47,26 +51,37 @@ void cocktail_sort(int array[], int begin, int end)
 
     while (left < right)
     {
+        auto flag = false;
         for (auto i = left; i < right; i++)
         {
             if (array[i] > array[i + 1])
             {
+                flag = true;
                 auto temp = array[i];
                 array[i] = array[i + 1];
                 array[i + 1] = temp;
             }
         }
         right--;
+
+        if (!flag)
+            return;
+
+        flag = false;
         for (auto i = right; i > left; i--)
         {
             if (array[i] < array[i - 1])
             {
+                flag = true;
                 auto temp = array[i];
                 array[i] = array[i - 1];
                 array[i - 1] = temp;
             }
         }
         left++;
+
+        if (!flag)
+            return;
     }
 }
 
@@ -116,7 +131,7 @@ void heap_sort(int array[], int begin, int end)
         adjust_heap(array, i, end);
 
     for (auto i = end; i > begin; --i)
-    {   
+    {
         auto temp = array[i];
         array[i] = array[begin];
         array[begin] = temp;
@@ -291,7 +306,7 @@ int main()
     // bubble_sort(array, begin, end);
     // cocktail_sort(array, begin, end);
     // select_sort(array, begin, end);
-    heap_sort(array, begin, end);
+    // heap_sort(array, begin, end);
     // quick_sort(array, begin, end);
     // random_quick_sort(array, begin, end);
     // merge_sort_recursive(array, begin, end);

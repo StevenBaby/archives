@@ -54,7 +54,7 @@
 
 - 官方 <https://pypi.org/simple/>
 - 清华大学 <https://pypi.tuna.tsinghua.edu.cn/simple>
-- 豆瓣 <http://pypi.douban.com/simple/>
+- 豆瓣 <https://pypi.douban.com/simple/>
 
 
 ## 设置环境变量 修改默认字符编码

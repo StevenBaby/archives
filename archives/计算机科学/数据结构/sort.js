@@ -283,7 +283,7 @@ var sort = function (sketch) {
     sketch.bubble_sort = async function (sketch, start, end) {
         for (let i = start; i <= end; i++) {
             sketch.set_activate(start, end - i);
-
+            let flag = false;
             for (let j = start + 1; j <= end - i; j++) {
                 if (!await sketch.is_running()) return;
 
@@ -292,8 +292,10 @@ var sort = function (sketch) {
 
                 if (await sketch.compare(sketch, first, second))
                     continue;
+                flag = true;
                 await sketch.swap(sketch, first, second);
             }
+            if (!flag) return;
         }
     };
 
@@ -303,6 +305,7 @@ var sort = function (sketch) {
 
         while (left < right) {
             sketch.set_activate(left, right);
+            let flag = false;
             for (let i = left; i < right; i++) {
                 if (!await sketch.is_running()) return;
 
@@ -311,9 +314,12 @@ var sort = function (sketch) {
 
                 if (await sketch.compare(sketch, first, second))
                     continue;
+                flag = true;
                 await sketch.swap(sketch, first, second);
             }
             right--;
+            if (!flag) return;
+            flag = false;
             sketch.set_activate(left, right);
             for (let i = right; i > left; i--) {
                 if (!await sketch.is_running()) return;
@@ -323,9 +329,11 @@ var sort = function (sketch) {
 
                 if (!await sketch.compare(sketch, first, second))
                     continue;
+                flag = true;
                 await sketch.swap(sketch, first, second);
             }
             left++;
+            if (!flag) return;
         }
     };
 
