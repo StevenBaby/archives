@@ -9,3 +9,4 @@ MNIST
 __data/
 training_data.npy
 *.exe
+archives/temp
