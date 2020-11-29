@@ -37,3 +37,17 @@ ffmpeg  -i input.mp4 -c copy -ss 00:00:10 -to 00:00:15 output.mp4 -y
 ```
 
 其中 **00:00:10** 和 **00:00:15** 分别为视频开始时间和结束时间。
+
+
+## 截取视频中某个区域
+
+```sh
+ffmpeg -i input.mp4 -vf crop=400:400 output.mp4 -y
+ffmpeg -i input.mp4 -vf crop=400:400:0:0 output.mp4 -y
+```
+
+crop的参数格式为 `crop=w:h:x:y`，其中：
+
+- `w:h` 为输出视频的宽和高
+- `x:y` 标记输入视频中的某点，将该点作为基准点，向右下进行裁剪得到输出视频
+- 如果x y不写的话，默认居中剪切
