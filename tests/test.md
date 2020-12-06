@@ -76,16 +76,19 @@ int main()
 
 ## 测试基本公式
 
-$$2 + 3 = \sqrt{5 + 7} \int_{-\infty}^{+\infty } f(x)dx$$
+$$\int_{\partial\Omega} \omega = \int_\Omega d\omega$$
 
-$$\left\{
-\begin{aligned}
-\sqrt{a^2 - x^2}  \rightarrow x &= asin\ t\\
-\sqrt{a^2 + x^2}  \rightarrow x &= atan\ t\\
-\sqrt{x^2 - a^2}  \rightarrow x &= asec\ t\\
-\end{aligned}
-\right.
 $$
+\begin{cases}
+\sqrt{a^2 - x^2}  \Rightarrow x = a\sin t\\
+\sqrt{a^2 + x^2}  \Rightarrow x = a\tan t\\
+\sqrt{x^2 - a^2}  \Rightarrow x = a\sec t\\
+\end{cases}
+$$
+
+## 测试 GeoGebra
+
+<iframe src="https://www.geogebra.org/calculator/vasdtgww?embed" class="video" width="640" height="360"></iframe>
 
 
 ## 测试 Jplayer 播放器 音频
