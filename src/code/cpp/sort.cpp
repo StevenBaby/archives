@@ -295,15 +295,54 @@ void merge_sort_iterate(int array[], int begin, int end)
     delete[] list;
 }
 
+void insert_sort(int array[], int begin, int end)
+{
+    for (int i = begin + 1; i <= end; i++)
+    {
+        auto key = array[i];
+        auto j = i - 1;
+        for (; j >= begin; j--)
+        {
+            if (array[j] <= key)
+                break;
+            array[j + 1] = array[j];
+        }
+        array[j + 1] = key;
+    }
+}
+
+void shell_sort(int array[], int begin, int end)
+{
+    for (int gap = (end - begin) / 2; gap > 0; gap /= 2)
+    {
+        for (int i = begin + gap; i <= end; i++)
+        {
+            auto key = array[i];
+            auto j = i - gap;
+            for (; j >= begin; j -= gap)
+            {
+                if (array[j] <= key)
+                    break;
+                array[j + gap] = array[j];
+            }
+            array[j + gap] = key;
+        }
+    }
+}
+
 int main()
 {
     const auto begin = 0;
     const auto end = LENGTH - 1;
 
     int array[LENGTH];
+    int barray[LENGTH];
+
     generate(array, begin, end);
+    memcpy(barray, array, sizeof(barray));
     print_array(array, begin, end);
-    // bubble_sort(array, begin, end);
+    print_array(barray, begin, end);
+    bubble_sort(barray, begin, end);
     // cocktail_sort(array, begin, end);
     // select_sort(array, begin, end);
     // heap_sort(array, begin, end);
@@ -311,5 +350,8 @@ int main()
     // random_quick_sort(array, begin, end);
     // merge_sort_recursive(array, begin, end);
     // merge_sort_iterate(array, begin, end);
+    // insert_sort(array, begin, end);
+    shell_sort(array, begin, end);
     print_array(array, begin, end);
+    print_array(barray, begin, end);
 }
