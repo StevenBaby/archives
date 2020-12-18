@@ -14,6 +14,10 @@
 
 部分博客内容收集自互联网，如果您的知识产权受到了侵害，请通过邮箱或者再页面下评论联系我，合理的情况下会尽快删除相关内容。
 
+## 相关连接
+
+- [Github](https://github.com/StevenKangWei)
+
 ## 友情链接
 
 - [leucinw(计算化学家)](https://leucinw.github.io/home/)
