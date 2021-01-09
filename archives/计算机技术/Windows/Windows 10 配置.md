@@ -198,6 +198,21 @@ HKEY_CURRENT_USER\Network
 
 ---
 
+## 网络磁盘超时时间设置
+
+修改注册表
+
+```reg
+Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters
+```
+
+创建DWORD  **SessTimeout** = 1
+
+可以将超时时间设为 1 秒，这样可以避免开机启动的时候，Explorer 的相应故障
+
+
+---
+
 ## 去掉Python 右键 **Edit With IDLE**
 
 修改注册表
