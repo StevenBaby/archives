@@ -31,7 +31,7 @@
 
     git update-index --assume-unchanged filename
 
-执行命令将 `filename` p取消加入不提交队列
+执行命令将 `filename` 取消加入不提交队列
 
     git update-index --no-assume-unchanged filename
 
