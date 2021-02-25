@@ -8,6 +8,23 @@
 [annotation]: <comments> (false)
 [annotation]: <url> (http://blog.ccyg.studio/article/fadb1d61-b9d0-49ae-bbce-57bb68b524d9)
 
+
+## git 撤销提交
+
+撤回最近一次的commit(撤销commit，不撤销git add)
+
+    git reset --soft HEAD~1 
+
+撤回最近一次的commit(撤销commit，撤销git add)
+
+    git reset --mixed HEAD~1 
+
+撤回最近一次的commit(撤销commit，撤销git add,还原改动的代码)
+
+    git reset --hard HEAD~1 
+
+---
+
 ## git 不提交指定文件
 
 执行命令将 `filename` 加入不提交队列
@@ -23,3 +40,4 @@
 ## 参考资料
 
 - <https://www.liangjucai.com/article/83>
+- <https://www.cnblogs.com/maycpou/p/11506844.html>
