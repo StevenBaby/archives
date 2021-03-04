@@ -37,6 +37,15 @@
 
 ---
 
+## Linux samba 分享目录 Windows 数据不一致的问题
+
+执行命令忽略文件模式和行结束符
+
+```sh
+git config --global core.filemode false
+git config --global core.autocrlf true
+```
+
 ## 参考资料
 
 - <https://www.liangjucai.com/article/83>
