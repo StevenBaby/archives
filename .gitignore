@@ -10,3 +10,4 @@ __data/
 training_data.npy
 *.exe
 archives/temp
+src/code/c/test
