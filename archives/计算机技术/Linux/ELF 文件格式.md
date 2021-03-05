@@ -75,8 +75,63 @@ typedef struct {
 } Elf32_Ehdr;
 ```
 
-- e_ident：最开头的16字节，其中包含用以表示 ELF 文件的字符，及其它与机器无关的信息。
-- 
+- **e_ident**：最开头的16字节，其中包含用以表示 ELF 文件的字符，及其它与机器无关的信息。
+- **e_type**：它标识的是改文件的类型，具体类型如下：
+    | 名称      | 值     | 含义               |
+    | --------- | ------ | ------------------ |
+    | ET_NONE   | 0      | 无文件类型         |
+    | ET_REL    | 1      | 可重定位文件       |
+    | ET_EXEC   | 2      | 可执行文件         |
+    | ET_DYN    | 3      | 可共享文件         |
+    | ET_CORE   | 4      | 核心文件           |
+    | ET_LOPROC | 0xff00 | Processor-specific |
+    | ET_HIPROC | 0xffff | Processor-specific |
+
+    ET_LOPROC 和 ET_HIPROC 之间的取值用来标识与处理器相关的文件格式
+
+- **e_machine**：表示文件的体系结构
+
+    | 名称           | 值    | 含义                    |
+    | -------------- | ----- | ----------------------- |
+    | ET_NONE        | 0     | No machine              |
+    | EM_M32         | 1     | AT&T WE 32100           |
+    | EM_SPARC       | 2     | SPARC                   |
+    | EM_386         | 3     | Intel Architecture      |
+    | EM_68K         | 4     | Motorola 68000          |
+    | EM_88K         | 5     | Motorola 88000          |
+    | EM_860         | 7     | Intel 80860             |
+    | EM_MIPS        | 8     | MIPS RS3000 Big-Endian  |
+    | EM_MIPS_RS4_BE | 10    | MIPS RS4000 Big-Endian  |
+    | RESERVED       | 11-16 | Reserved for future use |
+- **e_version**：文件版本，一般为常数 1
+- **e_entry**：程序的入口地址
+- **e_phoff**：程序头部表在文件中的偏移量（以字节计数）
+- **e_shoff**：节头部表在文件中的偏移量（以字节计数）
+- **e_flags**：ELF 标志位，用来标识一些 ELF 文件平台相关的属性。
+- **e_ehsize**：ELF header 的大小（以字节计数）
+- **e_phentsize**：程序头部表中每一个条目的大小
+- **e_phnum**：程序头部表中有多少个条目
+- **e_shentsize**：节头部表中每一个条目的大小
+- **e_shnum**：节头部表中有多少个条目
+- **e_shstrndx**：包含节名称的字符串表是第几个节（从零开始数）
+
+## ELF 标志
+
+## 程序头部表
+
+```c
+typedef struct {
+    Elf32_Word p_type;
+    Elf32_Off p_offset;
+    Elf32_Addr p_vaddr;
+    Elf32_Addr p_paddr;
+    Elf32_Word p_filesz;
+    Elf32_Word p_memsz;
+    Elf32_Word p_flags;
+    Elf32_Word p_align;
+} Elf32_Phdr;
+```
+
 ## 参考资料
 
 - [ELF.pdf](https://refspecs.linuxfoundation.org/elf/elf.pdf)
