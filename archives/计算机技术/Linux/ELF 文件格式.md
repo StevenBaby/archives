@@ -27,13 +27,57 @@ ELF 的全程是 **Executable and Linking Format** 也就是可执行和链接�
 ELF 文件由四部分组成：
 
 - ELF 头 (ELF header)
-- 程序头表 (Program header table)
+- 程序头部表 (Program header table)
 - 节 (Sections)
-- 节头表 (Section header table)
+- 节头部表 (Section header table)
 
-实际上一个文件中不一定全部包含这些内容，而且它们的位置也不一定，只有 ELF 头的位置是固定的，其余各部分的位置、大小等信息由 ELF 头中的各项值来决定。
+实际上一个文件中不一定全部包含这些内容，而且它们的位置也不一定，只有 ELF 头的位置是固定的，在文件的头部；其余各部分的位置、大小等信息由 ELF 头中的各项值来决定。
 
 
+程序头部表：如果存在的话，告诉系统如何创建进程映像，一个可执行文件必须有一个**程序头部表**；重定位文件不需要程序头部表；
+
+节头部表：包含描述文件节的信息，每个节在表中有一个入口；每个入口包含一些关于节的信息，比如名称、大小等等。可链接文件必须有一个节头部表；其他的文件可能有也可能没有。
+
+---
+
+由于 ELF 文件力求支持从 8 位到 32 位不同架构的处理器，所以才定义了下表中这些数据类型，而且，ELF 还可能扩展到更大的架构；因此文件中有一些控制数据，从而让文件格式与机器无关。使得文件可以以一种通用的方式来表示内容。剩下的内容用来给目标处理器编码，无关文件是在什么机器上创建的。
+
+| 名称          | 大小 | 对齐 | 用途               |
+| ------------- | ---- | ---- | ------------------ |
+| Elf32_Addr    | 4    | 4    | 无符号程序地址     |
+| Elf32_Half    | 2    | 2    | 无符号中等大小整数 |
+| Elf32_Off     | 4    | 4    | 无符号文件偏移     |
+| Elf32_Sword   | 4    | 4    | 有符号大整数       |
+| Elf32_Word    | 4    | 4    | 无符号大整数       |
+| unsigned char | 1    | 1    | 无符号小整数       |
+
+----
+
+ELF header 的格式如下代码所示。
+
+```c
+#define EI_NIDENT 16
+typedef struct {
+    unsigned char e_ident[EI_NIDENT];
+    Elf32_Half e_type;
+    Elf32_Half e_machine;
+    Elf32_Word e_version;
+    Elf32_Addr e_entry;
+    Elf32_Off e_phoff;
+    Elf32_Off e_shoff;
+    Elf32_Word e_flags;
+    Elf32_Half e_ehsize;
+    Elf32_Half e_phentsize;
+    Elf32_Half e_phnum;
+    Elf32_Half e_shentsize;
+    Elf32_Half e_shnum;
+    Elf32_Half e_shstrndx;
+} Elf32_Ehdr;
+```
+
+- e_ident：最开头的16字节，其中包含用以表示 ELF 文件的字符，及其它与机器无关的信息。
+- 
 ## 参考资料
 
 - [ELF.pdf](https://refspecs.linuxfoundation.org/elf/elf.pdf)
+- [ELF文件格式解析](https://blog.csdn.net/mergerly/article/details/94585901)
