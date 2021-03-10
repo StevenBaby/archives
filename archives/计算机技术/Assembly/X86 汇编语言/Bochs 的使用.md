@@ -5,7 +5,7 @@
 [annotation]: <create_time> (2021-03-10 14:34:27)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (汇编语言)
-[annotation]: <comments> (true)
+[annotation]: <comments> (false)
 [annotation]: <topic> (x86汇编语言)
 [annotation]: <index> (1)
 [annotation]: <url> (http://blog.ccyg.studio/article/eedcc300-35f4-4174-9622-c336aa8d7881)
