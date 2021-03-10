@@ -1,4 +1,4 @@
-# Bochs 的使用
+# X86汇编语言 - Bochs 的使用
 
 [annotation]: <id> (eedcc300-35f4-4174-9622-c336aa8d7881)
 [annotation]: <status> (public)
