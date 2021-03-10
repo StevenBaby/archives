@@ -204,7 +204,8 @@
 
 ![30](images/install_archlinux_to_usb_4_30.png)
 
-输入 `cat mirrorlist.bk | grep China -A 1 | grep -v '-' > mirrorlist` 将所有中国的镜像写入 mirrorlist
+输入 `cat mirrorlist.bk | grep China -A 1 | grep -v '-' > mirrorlist` 将所有中国的镜像写入 mirrorlist <i class="ui pop heart circular small pink icon"></i>
+<span class="ui popup">这里的命令可以根据实际情况执行，因为 mirrorlist 中组织结构可能会发生变化<sub><small>2021-03-10</small></sub> </span>
 
 ![31](images/install_archlinux_to_usb_4_31.png)
 
@@ -349,6 +350,12 @@
 ![58](images/install_archlinux_to_usb_4_58.png)
 
 这里 UUID 是 97b5e415-46ab-4e35-a804-6ddaez5793ac，每个分区的UUID应该都是不同的，下面具体根据自己的UUID来做修改，这是为了用 UUID 做标识来启动操作系统，否则换了电脑硬盘标签变化就不能启动了
+
+如果没有文件 `/boot/grub/grub.cfg` 可以使用如下命令生成该文件：
+
+```sh
+grub-mkconfig -o /boot/grub/grub.cfg
+```
 
 输入 `nano /boot/grub/grub.cfg` , 修改grub配置文件
 
