@@ -333,6 +333,15 @@
 
 ![55](images/install_archlinux_to_usb_4_55.png)
 
+## 其他配置
+
+可以根据 [安装 ArchLinux 到U盘（五）配置系统](./973c0463-de5a-48d8-8463-ffde83dcb230/) 来进行配置，这样可以省去一些工作，比如：
+
+- NetworkManager：自动配置网络，省去了一些复杂的操作
+- openssh: 支持 ssh 可以远程操作 Archlinux
+- 添加用户: ssh 默认不支持 root 登录，所以有必要新加一个普通用户
+- sudo: 普通用户可能需要以 root 用户的身份执行命令，所以这个必不可少 
+
 ## 配置引导
 
 ### 配置BIOS(legacy)引导
