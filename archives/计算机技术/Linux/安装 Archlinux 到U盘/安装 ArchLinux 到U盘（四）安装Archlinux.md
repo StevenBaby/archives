@@ -204,7 +204,9 @@
 
 ![30](images/install_archlinux_to_usb_4_30.png)
 
-输入 `cat mirrorlist.bk | grep China -A 1 | grep -v '-' > mirrorlist` 将所有中国的镜像写入 mirrorlist <i class="ui pop heart circular small pink icon"></i>
+输入 `cat mirrorlist.bk | grep China -A 1 | grep -v '-' > mirrorlist` 将所有中国的镜像写入 mirrorlist
+
+<i class="ui pop heart circular small pink icon"></i>
 <span class="ui popup">这里的命令可以根据实际情况执行，因为 mirrorlist 中组织结构可能会发生变化<sub><small>2021-03-10</small></sub> </span>
 
 ![31](images/install_archlinux_to_usb_4_31.png)
