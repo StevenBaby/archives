@@ -12,6 +12,8 @@
 
 > 再次重申：安装过程会格式化U盘，内有资料，请先备份，如有遗失，概不负责！！！
 
+<iframe class="video" width="640" height="360" src="https//player.bilibili.com/player.html?aid=544597377&bvid=BV1Pi4y1K7DS&cid=309752144&page=1"></iframe>
+
 ## 启动虚拟机
 
 点击 Power on this virtual machine 启动 Installer 虚拟机
