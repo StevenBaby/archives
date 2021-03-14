@@ -24,7 +24,13 @@
 
 ![2](images/install_archlinux_to_usb_4_2.png)
 
-等待启动完毕，输入 `lsblk` 应该显示下面的内容
+等待启动完毕，输入命令
+
+```sh
+lsblk
+```
+
+应该显示下面的内容
 
 ![3](images/install_archlinux_to_usb_4_3.png)
 
@@ -36,7 +42,13 @@
 
 ![4](images/install_archlinux_to_usb_4_4.png)
 
-然后输入 `lsblk` 应该显示下面的内容，可以看到已经有 `sdb` 这个磁盘了
+然后输入命令
+
+```sh
+lsblk
+```
+
+应该显示下面的内容，可以看到已经有 `sdb` 这个磁盘了
 
 ![5](images/install_archlinux_to_usb_4_5.png)
 
@@ -48,31 +60,46 @@
 
 ---
 
-输入 `systemctl start sshd` 启动 ssh 服务
+输入命令
+
+```sh
+systemctl start sshd
+```
+
+启动 ssh 服务
 
 ![add_01](images/install_archlinux_to_usb_4_add_01.jpg)
 
-输入 `passwd` 修改镜像系统 root 密码，然后**输入密码两次**，分别回车，注意输入密码时屏幕没有回显。
+输入命令 
+
+```sh
+passwd
+```
+
+修改镜像系统 root 密码，然后**输入密码两次**，分别回车，注意输入密码时屏幕没有回显。
 
 ![add_02](images/install_archlinux_to_usb_4_add_02.jpg)
 
-输入 `ifconfig` 找到 **192.168.xxx.xxx** 的那个IP地址，这里是 **192.168.111.135**，然后记住IP地址，以备在 SSH 客户端中使用。
+输入命令
+
+```sh
+ifconfig
+```
+
+找到 **192.168.xxx.xxx** 的那个IP地址，这里是 **192.168.111.135**，然后记住IP地址，以备在 SSH 客户端中使用。
 
 ![add_03](images/install_archlinux_to_usb_4_add_03.jpg)
 
-然后打开 ssh 客户端，这里以 xshell 为例，输入 ip 地址，用户名 root，以及刚才修改好的密码，就能连接了。
+然后在主机打开控制台，输入命令
 
-主机IP地址设置：
-
+```sh
+ssh root@192.168.111.135
+```
 ![add_04](images/install_archlinux_to_usb_4_add_04.jpg)
 
-认证方式（用户名密码）设置：
+然后输入 `yes`，然后输入刚才设置的密码，就能登录了
 
 ![add_05](images/install_archlinux_to_usb_4_add_05.jpg)
-
-连接以后，选择 **Accept Once**
-
-![add_06](images/install_archlinux_to_usb_4_add_06.jpg)
 
 然后就能在 ssh 客户端中输入命令了，这时候就可以随意的复制粘贴了，不过复制粘贴的过程中**注意命令和自身系统的适用性**，可能不同系统中的网卡名称、磁盘名称并不一样。
 
@@ -88,7 +115,13 @@
 - 根分区，用于安装Archlinux
 - U盘分区，可当作U盘使用，便于在Windows系统中安全的移除U盘
 
-输入 `fdisk /dev/sdb` 进入分区程序
+输入命令
+
+```sh
+fdisk /dev/sdb
+```
+
+进入分区程序
 
 ![6](images/install_archlinux_to_usb_4_6.png)
 
@@ -160,15 +193,27 @@
 
 ## 格式化分区
 
-输入 `mkfs.fat -F 32 /dev/sdb1` 格式化 `sdb1` 为FAT32格式
+输入如下命令，格式化 `sdb1` 为FAT32格式
+
+```sh
+mkfs.fat -F 32 /dev/sdb1
+```
 
 ![23](images/install_archlinux_to_usb_4_23.png)
 
-输入 `mkfs.fat -F 32 /dev/sdb3` 格式化 `sdb3` 为FAT32格式
+格式化 `sdb3` 为FAT32格式
+
+```sh
+mkfs.fat -F 32 /dev/sdb3
+```
 
 ![24](images/install_archlinux_to_usb_4_24.png)
 
-输入 `mkfs.ext4 /dev/sdb2` 格式化 `sdb2` 为ext4格式，如果出现 *Proceed anyway?*，输入y继续格式化
+格式化 `sdb2` 为ext4格式，如果出现 *Proceed anyway?*，输入y继续格式化
+
+```sh
+mkfs.ext4 /dev/sdb2
+```
 
 ![25](images/install_archlinux_to_usb_4_25.png)
 
@@ -176,15 +221,23 @@
 
 ## 挂载分区
 
-输入 `mount /dev/sdb2 /mnt` 挂载 `sdb2` 到 `/mnt`
+挂载 `sdb2` 到 `/mnt`
+
+```sh
+mount /dev/sdb2 /mnt
+```
 
 ![26](images/install_archlinux_to_usb_4_26.png)
 
-输入 `mkdir -p /mnt/boot/efi` 创建 `/mnt/boot/efi` 目录
+创建 `/mnt/boot/efi` 目录
+
+    mkdir -p /mnt/boot/efi
 
 ![27](images/install_archlinux_to_usb_4_27.png)
 
-输入 `mount /dev/sdb1 /mnt/boot/efi` 挂载 `sdb1` 到 `/mnt/boot/efi`
+挂载 `sdb1` 到 `/mnt/boot/efi`
+
+    mount /dev/sdb1 /mnt/boot/efi
 
 ![28](images/install_archlinux_to_usb_4_28.png)
 
@@ -198,22 +251,30 @@
 
 > 这步非必选，可以直接跳转至下一步进行安装，如果发现下载速度不是很快，可以再回到这里编辑镜像，然后再试。
 
-输入 `cd /etc/pacman.d` 选择目录
+选择目录
+
+    cd /etc/pacman.d
 
 ![29](images/install_archlinux_to_usb_4_29.png)
 
-输入 `cp mirrorlist mirrorlist.bk` 将 mirrorlist 拷贝到 mirrorlist.bk
+将 mirrorlist 拷贝到 mirrorlist.bk
+
+    cp mirrorlist mirrorlist.bk
 
 ![30](images/install_archlinux_to_usb_4_30.png)
 
-输入 `cat mirrorlist.bk | grep China -A 1 | grep -v '-' > mirrorlist` 将所有中国的镜像写入 mirrorlist
+将所有中国的镜像写入 mirrorlist
 
 <i class="ui pop heart circular small pink icon"></i>
 <span class="ui popup">这里的命令可以根据实际情况执行，因为 mirrorlist 中组织结构可能会发生变化<sub><small>2021-03-10</small></sub> </span>
 
+    cat mirrorlist.bk | grep China -A 1 | grep -v '-' > mirrorlist
+
 ![31](images/install_archlinux_to_usb_4_31.png)
 
-输入 `nano mirrorlist` 编辑镜像列表
+编辑镜像列表
+
+    nano mirrorlist
 
 ![32](images/install_archlinux_to_usb_4_32.png)
 
@@ -240,7 +301,9 @@
 <span class="ui popup">经某位北京理工大学的同学邮件提醒，安装过程出现了异常，现已修正，特此感谢！<sub><small>2019-12-16</small></sub> </span>
 
 
-输入 `pacstrap -i /mnt base base-devel linux linux-firmware` 安装系统，然后点击 `Enter`
+输入命令，安装系统，然后点击 `Enter`
+
+    pacstrap -i /mnt base base-devel linux linux-firmware
 
 ![36](images/install_archlinux_to_usb_4_36.jpg)
 
@@ -262,42 +325,57 @@
 
 ### 基本配置
 
-输入 `genfstab -U -p /mnt > /mnt/etc/fstab` 生成文件系统表
+生成文件系统表
+
+    genfstab -U -p /mnt > /mnt/etc/fstab
 
 ![40](images/install_archlinux_to_usb_4_40.png)
 
-输入 `arch-chroot /mnt` 进入新系统
+进入新系统
+
+    arch-chroot /mnt
 
 ![41](images/install_archlinux_to_usb_4_41.png)
 
-输入 `nano /etc/locale.gen` 选择文字编码
+选择文字编码
+
+    nano /etc/locale.gen
 
 ![42](images/install_archlinux_to_usb_4_42.png)
 
 将 zh_CN 开头的行全部取消注释，再找到 en_US.UTF-8 UTF-8也取消注释。 编辑完成之后保存。nano 的使用方法不再赘述
 
-输入 `locale-gen`
+输入命令
+
+    locale-gen
 
 ![43](images/install_archlinux_to_usb_4_43.png)
 
-输入 `nano /etc/locale.conf` 在文件中写入 `LANG=en_US.UTF-8` 保存
+在文件 `/etc/locale.conf` 中写入 `LANG=en_US.UTF-8` 保存
 
-![44](images/install_archlinux_to_usb_4_44.png)
+    echo LANG=en_US.UTF-8 > /etc/locale.conf
 
-输入 `rm /etc/localtime` 删除原 UTC 时区
+删除原 UTC 时区
+
+    rm -f /etc/localtime
 
 ![45](images/install_archlinux_to_usb_4_45.png)
 
-输入 `ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime`
 设置计算机系统时区为上海
+
+    ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 ![46](images/install_archlinux_to_usb_4_46.png)
 
-输入 `hwclock --systohc --localtime` 设置硬件时间为本地时间
+设置硬件时间为本地时间
+
+    hwclock --systohc --localtime
 
 ![47](images/install_archlinux_to_usb_4_47.png)
 
-输入 `echo steven > /etc/hostname` 将主机名配置成 steven，这个名称可以自行更改
+将主机名配置成 steven，这个名称可以自行更改
+
+    echo steven > /etc/hostname
 
 ![48](images/install_archlinux_to_usb_4_48.png)
 
@@ -309,31 +387,35 @@
 
 ![50](images/install_archlinux_to_usb_4_50.png)
 
-输入 `mkinitcpio -p linux` ，生成启动镜像
+生成启动镜像
 
+    mkinitcpio -p linux
 
 ![51](images/install_archlinux_to_usb_4_51.png)
 
-输入 `passwd` 设置 root 用户的密码，注意输入密码时没有回显。
+设置 root 用户的密码，注意输入密码时没有回显
+
+    passwd
 
 ![52](images/install_archlinux_to_usb_4_52.png)
 
-输入 `pacman -S ntfs-3g` 安装 ntfs 文件系统，以便访问 Windows 磁盘
+安装 ntfs 文件系统，以便访问 Windows 磁盘
+
+    pacman -S ntfs-3g
 
 ![add_07](images/install_archlinux_to_usb_4_add_07.jpg)
 
 ### 配置网络
 
-输入 `pacman -S zd1211-firmware` 安装无线网卡驱动
+安装网络工具
 
-![53](images/install_archlinux_to_usb_4_53.png)
-
-
-输入 `pacman -S iw wpa_supplicant wireless_tools net-tools` 安装网络工具
+    pacman -S iw wpa_supplicant wireless_tools net-tools
 
 ![54](images/install_archlinux_to_usb_4_54.png)
 
-输入 `pacman -S dialog` 安装终端对话框
+安装终端对话框
+
+    pacman -S dialog
 
 ![55](images/install_archlinux_to_usb_4_55.png)
 
@@ -350,11 +432,15 @@
 
 ### 配置BIOS(legacy)引导
 
-输入 `pacman -S grub` 安装引导程序
+安装引导程序
+
+    pacman -S grub
 
 ![56](images/install_archlinux_to_usb_4_56.png)
 
-输入 `grub-install --target=i386-pc /dev/sdb` 安装BIOS引导
+安装 BIOS 引导
+
+    grub-install --target=i386-pc /dev/sdb
 
 ![57](images/install_archlinux_to_usb_4_57.png)
 
@@ -381,11 +467,15 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ### 测试BIOS(legacy)引导
 
-输入 `exit` 退出新系统
+退出新系统
+
+    exit
 
 ![61](images/install_archlinux_to_usb_4_61.png)
 
-输入 `shutdown -h now` 关闭 Installer 虚拟机
+关闭 Installer 虚拟机
+
+    shutdown -h now
 
 ![62](images/install_archlinux_to_usb_4_62.png)
 
@@ -427,7 +517,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ![70](images/install_archlinux_to_usb_4_70.png)
 
-如果有USB的无线网卡，挂到虚拟机里，输入 `wifi-menu` 就可以选择无线网络了
+如果有USB的无线网卡，挂到虚拟机里，输入如下命令就可以选择无线网络了
+
+    wifi-menu
 
 ![71](images/install_archlinux_to_usb_4_71.png)
 
@@ -455,17 +547,29 @@ grub-mkconfig -o /boot/grub/grub.cfg
 和前文一样
 
 - 启动 Installer 虚拟机
-- 输入 `mount /dev/sdb2 /mnt`，挂载根分区
-- 输入 `mount /dev/sdb1 /mnt/boot/efi`，挂载EFI分区
-- 输入 `arch-chroot /mnt` 进入新系统
+- 挂载根分区
 
-输入 `grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable` 安装UEFI启动项
+        mount /dev/sdb2 /mnt
+
+- 挂载EFI分区
+
+        mount /dev/sdb1 /mnt/boot/efi
+
+- 进入新系统
+
+        arch-chroot /mnt
+
+安装UEFI启动项
+
+    grub-install --target=x86_64-efi --efi-directory=/boot/efi --removable
 
 ![75](images/install_archlinux_to_usb_4_75.png)
 
 ### 测试UEFI引导
 
-输入 `shutdown -h now` 关闭 Installer 虚拟机
+关闭 Installer 虚拟机
+
+    shutdown -h now
 
 和前文一样，修改 Boot 虚拟机的启动模式为 UEFI，**不要勾选 Enable Secure Boot**
 
