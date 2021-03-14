@@ -13,7 +13,9 @@
 ![1](images/install_archlinux_to_usb_7_1.png)
 
 ## ibus输入法只能双拼
-如果ibus 输入法只能双拼的话 ，在终端输入 `ibus-daemon -drx` 重启即可
+如果ibus 输入法只能双拼的话 ，在终端输入如下命令，重启即可
+
+    ibus-daemon -drx
 
 ---
 
@@ -66,8 +68,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 [archlinuxcn]
 Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 ```
-- 执行 `pacman -Syu` 同步系统
-- 执行 `pacman -S netease-cloud-music` 安装网易云音乐
+- 同步系统
+
+        pacman -Syu
+
+- 安装网易云音乐
+
+        pacman -S netease-cloud-music
 
 ---
 
@@ -75,7 +82,9 @@ Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
 
 - 下载包快照 (snapshots)
 - 解压包到任意目录
-- 执行 `makepkg -si`  安装包
+- 执行命令，安装包
+
+        makepkg -si
 
 ---
 
