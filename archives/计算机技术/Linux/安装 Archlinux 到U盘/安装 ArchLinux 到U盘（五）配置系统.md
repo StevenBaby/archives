@@ -42,11 +42,15 @@
 
 目前Archlinux只有root用户，可以新建一个用户，这样操作起来安全一点。
 
-以root用户登陆，输入 `useradd -G root -m steven`，新建用户名为 steven，用户名可以自行修改，并且加入root用户组
+以root用户登陆，输入命令，新建用户名为 steven，用户名可以自行修改，并且加入root用户组
+
+    useradd -G root -m steven
 
 ![5](images/install_archlinux_to_usb_5_5.png)
 
-输入 `passwd steven` 修改 steven 用户的密码
+修改 steven 用户的密码
+
+    passwd steven
 
 ![6](images/install_archlinux_to_usb_5_6.png)
 
@@ -60,7 +64,9 @@
 
 一些操作需要使用root权限来操作，这时可以使用sudo来操作
 
-以root用户登陆，输入 `chmod +w /etc/sudoers`，取消文件只读
+以root用户登陆，输入命令，取消文件只读
+
+    chmod +w /etc/sudoers
 
 ![8](images/install_archlinux_to_usb_5_8.png)
 
@@ -68,7 +74,9 @@
 
 ![9](images/install_archlinux_to_usb_5_9.png)
 
-输入 `chmod -w /etc/sudoers`，文件只读
+输入命令，文件只读
+
+    chmod -w /etc/sudoers
 
 ![10](images/install_archlinux_to_usb_5_10.png)
 
@@ -82,11 +90,17 @@
 
 ## 禁止bell警告音
 
-root用户输入 `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`
+root 用户输入
+
+    echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf
 
 ![12](images/install_archlinux_to_usb_5_12.png)
 
-然后输入 `reboot`, 重新启动 Archlinux
+然后输入
+
+    reboot
+
+重新启动 Archlinux
 
 ***
 
@@ -96,19 +110,27 @@ root用户输入 `echo "blacklist pcspkr" > /etc/modprobe.d/nobeep.conf`
 
 ![13](images/install_archlinux_to_usb_5_13.png)
 
-输入 `ifconfig -a` 查看网卡名，可以看到这里是 **ens33**
+查看网卡名，可以看到这里是 **ens33**
+
+    ifconfig -a
 
 ![14](images/install_archlinux_to_usb_5_14.png)
 
-输入 `systemctl start dhcpcd@ens33` 启动DHCP服务
+启动DHCP服务
+
+    systemctl start dhcpcd@ens33
 
 ![15](images/install_archlinux_to_usb_5_15.png)
 
-输入 `ping www.baidu.com` 可以发现已经可以连接百度了
+输入命令，可以发现已经可以连接百度了
+
+    ping www.baidu.com
 
 ![16](images/install_archlinux_to_usb_5_16.png)
 
-输入 `systemctl enable dhcpcd@ens33` 设置开机启动DHCP服务
+设置开机启动DHCP服务
+
+    systemctl enable dhcpcd@ens33
 
 ![17](images/install_archlinux_to_usb_5_17.png)
 
@@ -138,15 +160,21 @@ systemctl enable NetworkManager
 
 ## 配置SSH
 
-输入 `pacman -S openssh` 安装 openssh
+安装 openssh
+
+    pacman -S openssh
 
 ![18](images/install_archlinux_to_usb_5_18.png)
 
-输入 `systemctl start sshd` 启动ssh服务
+启动ssh服务
+
+    systemctl start sshd
 
 ![19](images/install_archlinux_to_usb_5_19.png)
 
-输入 `systemctl enable sshd` 设置开机启动ssh服务
+设置开机启动ssh服务
+
+    systemctl enable sshd
 
 ![20](images/install_archlinux_to_usb_5_20.png)
 
@@ -158,6 +186,7 @@ systemctl enable NetworkManager
 ## 以太网支持
 
 安装 **ifplugd** 会在自动配置以太网
+
 ```
 pacman -S ifplugd
 ```
