@@ -12,17 +12,27 @@
 
 ## 安装 gnome
 
-输入 `pacman -Syu` 更新系统
+更新系统
+
+    pacman -Syu
 
 ![1](images/install_archlinux_to_usb_6_1.png)
 
-输入 `pacman -S gnome gnome-extra` 安装 gnome，出现选项之后点击 `Enter`，时间较长，请耐心等待
+安装 gnome，出现选项之后点击 `Enter`，时间较长，请耐心等待
 
-输入 `pacman -S xorg xorg-xinit` 安装驱动
+    pacman -S gnome gnome-extra
+
+安装驱动
+
+    pacman -S xorg xorg-xinit
 
 编辑文件 `~/.xinitrc` 输入 `exec gnome-session` 保存
 
-然后在虚拟机中输入 `startx`，稍等片刻，就可以启动 gnome 图形界面了
+    echo "exec gnome-session" > ~/.xinitrc
+
+然后在虚拟机中输入命令，稍等片刻，就可以启动 gnome 图形界面了
+
+    startx
 
 ![2](images/install_archlinux_to_usb_6_2.png)
 
@@ -39,11 +49,17 @@
 
 强烈建议开启 **NetworkManager** 这样可以在图形界面中设置网络
 
-输入 `systemctl disable dhcpcd@ens33` 禁用DHCP服务
+禁用DHCP服务
 
-输入 `systemctl start NetworkManager` 启动网络管理工具
+    systemctl disable dhcpcd@ens33
 
-输入 `systemctl enable NetworkManager` 设为开机启动
+启动网络管理工具
+
+    systemctl start NetworkManager
+
+设为开机启动
+
+    systemctl enable NetworkManager
 
 ***
 
@@ -69,7 +85,9 @@ ttf-fireflysung | 解决flash乱码
 
 ## 默认启动 gnome
 
-如果想要默认启动 gnome 而不是使用 `startx` 的方式，输入 `systemctl enable gdm` 即可
+如果想要默认启动 gnome 而不是使用 `startx` 的方式，输入如下即可
+
+    systemctl enable gdm
 
 ***
 
