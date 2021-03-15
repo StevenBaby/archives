@@ -190,3 +190,50 @@ export https_proxy=https://192.169.2.201:1080
 ## VMWare 虚拟机自动适配分辨率
 
 参阅 [VMWare 自动适配 Archlinux 分辨率](/article/4a73a69f-2aaf-4c50-89a8-0bdd0149f7d8)
+
+## 配置蓝牙
+
+安装蓝牙
+
+    sudo pacman -S bluez bluez-utils
+
+安装图形界面工具
+
+    sudo pacman -S bluedevil
+
+启动服务
+
+    sudo systemctl start bluetooth
+    sudo systemctl enable bluetooth
+
+安装蓝牙音频
+
+    sudo pacman -S pulseaudio-bluetooth
+
+---
+
+如果启动图形界面需要 root 权限
+
+编辑文件 `/etc/polkit-1/rules.d/81-blueman.rules`，写入如下内容
+
+```txt
+polkit.addRule(function(action, subject) {
+    if ((action.id == "org.blueman.rfkill.setstate" ||
+         action.id == "org.blueman.network.setup") &&
+         subject.local && subject.active && subject.isInGroup("wheel")) {
+
+        return polkit.Result.YES;
+    }
+});
+```
+----
+
+然后将用户添加到 `wheel` 用户组，假设用户名为 `steven`
+
+    sudo usermod -a -G wheel steven
+
+---
+
+## 参考资料
+
+- <https://wiki.archlinux.org/index.php/Blueman>
