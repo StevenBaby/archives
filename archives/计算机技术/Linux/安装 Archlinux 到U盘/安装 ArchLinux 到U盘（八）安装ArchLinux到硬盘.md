@@ -42,13 +42,13 @@ pacman -S devtools
 ```
 
 - 格式化分区为 ext4 格式，其中xxx是分区名称，**注意一定要写对，如有数据遗失，概不负责**
-```
-mkfs.ext4 /dev/xxx
-```
+
+        mkfs.ext4 /dev/xxx
+
 - mount 分区到 /mnt
-```
-mount /dev/xxx /mnt
-```
+
+        mount /dev/xxx /mnt
+
 - 安装 Archlinux，参考 [安装Archlinux](../4f6cfa0a-ad98-4adb-af08-79a8a5b1d674) 从 **选择镜像** 开始
 
 正常情况下系统就可以启动了，下面配置从VMWare 启动
@@ -58,8 +58,9 @@ mount /dev/xxx /mnt
 - 新建虚拟磁盘，大小随意，可以写小数。比如 0.1G
 - arch-choot 到系统，安装grub引导就可以了。
 
->grub-install --target=x86_64-efi --efi-directory=/boot/efi  --bootloader-id=grub
-
+```
+grub-install --target=x86_64-efi --efi-directory=/boot/efi  --bootloader-id=grub
+```
 
 ## 防止VMWare 自动挂起
 
@@ -79,14 +80,14 @@ Windows 关机的时候，默认情况下VMware会挂起虚拟机，如果直接
 
 保存至 **/boot/EFI/grub**
 
-执行如下命令
+执行如下命令，注意修改磁盘符号
 
->efibootmgr --disk /dev/sdX --part Y --create --label "Archlinux" --loader /EFI/grub/PreLoader.efi
+    efibootmgr --disk /dev/sda1 --create --label "Archlinux" --loader /EFI/grub/PreLoader.efi
 
 其中X为EFI分区所在的磁盘, Y为EFI分区的编号。其中 Archlinux 可以任意修改。
 
 拷贝grub启动项到loader.efi
 
->cp /boot/EFI/grub/grubx64.efi /boot/EFI/grub/loader.efi
+    cp /boot/EFI/grub/grubx64.efi /boot/EFI/grub/loader.efi
 
 重启打开Secure Boot功能，首次使用，PreLoader加载loader.efi时会发现hash认证失败，因为我们没有把它的hash加入白名单，于是它会提示启动Hashtool.efi（就是蓝色的只有一个OK选项的界面。），选择OK，选择Enroll Hash，再选择loader.efi，最后选择yes，此时应该就能进grub了。

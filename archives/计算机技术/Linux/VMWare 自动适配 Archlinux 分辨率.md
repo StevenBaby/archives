@@ -1,4 +1,4 @@
-# VMWare 自动适配 Archlinux 图形界面
+# VMWare 自动适配 Archlinux 分辨率
 
 [annotation]: <id> (4a73a69f-2aaf-4c50-89a8-0bdd0149f7d8)
 [annotation]: <status> (public)

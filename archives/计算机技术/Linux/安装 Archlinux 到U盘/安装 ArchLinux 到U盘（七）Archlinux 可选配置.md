@@ -186,3 +186,7 @@ export https_proxy=https://192.169.2.201:1080
 修改 `/etc/ssh/sshd_config`
 
 把 **PermitRootLogin yes** 改为 **PermitRootLogin no**
+
+## VMWare 虚拟机自动适配分辨率
+
+参阅 [VMWare 自动适配 Archlinux 分辨率](/article/4a73a69f-2aaf-4c50-89a8-0bdd0149f7d8)
