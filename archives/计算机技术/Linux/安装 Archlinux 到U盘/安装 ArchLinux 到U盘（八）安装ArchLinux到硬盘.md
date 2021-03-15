@@ -35,9 +35,12 @@
 - 安装之前自行找一个硬盘分区，用于安装系统。
 
 -  执行下面的命令，安装 Archlinux 维护工具包
+
 ```
+pacman -S arch-install-scripts
 pacman -S devtools
 ```
+
 - 格式化分区为 ext4 格式，其中xxx是分区名称，**注意一定要写对，如有数据遗失，概不负责**
 ```
 mkfs.ext4 /dev/xxx
