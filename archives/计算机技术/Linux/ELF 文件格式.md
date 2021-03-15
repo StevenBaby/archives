@@ -77,6 +77,7 @@ typedef struct {
 
 - **e_ident**：最开头的16字节，其中包含用以表示 ELF 文件的字符，及其它与机器无关的信息。
 - **e_type**：它标识的是改文件的类型，具体类型如下：
+
     | 名称      | 值     | 含义               |
     | --------- | ------ | ------------------ |
     | ET_NONE   | 0      | 无文件类型         |
@@ -103,6 +104,7 @@ typedef struct {
     | EM_MIPS        | 8     | MIPS RS3000 Big-Endian  |
     | EM_MIPS_RS4_BE | 10    | MIPS RS4000 Big-Endian  |
     | RESERVED       | 11-16 | Reserved for future use |
+
 - **e_version**：文件版本，一般为常数 1
 - **e_entry**：程序的入口地址
 - **e_phoff**：程序头部表在文件中的偏移量（以字节计数）
@@ -135,6 +137,7 @@ typedef struct {
 实际上程序头部表描述的是，系统准备运行所需的一个段或其他信息。其中各项意义如下：
 
 - p_type：当前程序头部表所描述的段的类型
+
     | 名称       | 值         | 含义                 |
     | ---------- | ---------- | -------------------- |
     | PT_NULL    | 0          | 未使用               |
@@ -146,6 +149,7 @@ typedef struct {
     | PT_PHDR    | 6          | 程序头部表自己的信息 |
     | PT_LOPROC  | 0x70000000 | 预留低位             |
     | PT_HIPROC  | 0x7fffffff | 预留高位             |
+
 - p_offset：段的第一个字节在文件中的偏移
 - p_vaddr：段的第一个字节在内存中的虚拟地址
 - p_paddr：在物理地址定位相关的系统中，此项是为物理地址保留的
