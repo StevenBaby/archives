@@ -130,8 +130,6 @@ gcc count_words.o lexer.o -lfl -ocount_words
 
 make 如何决定要做什么？让我们更详细地了解之前执行的情况，来一窥究竟。
 
-First make notices that the command line contains no targets so it decides to make the default goal, count_words. It checks for prerequisites and sees three: count_words.o, lexer.o, and -lfl. make now considers how to build count_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count_words.c has no rules but that the file exists, so make executes the commands to transform count_words.c into count_words.o by executing the command:
-
 首先，注意命令行中没有目标，因此它决定设置默认的目标 count_words。检查依赖并看到了以下三个依赖：`count_words.o`, `lexer.o`，和 `-lfl`。现在 make 考虑构建 `count_words.o` 并且查看构建它的规则。再一次，它检查依赖，注意到 `count_words.c` 没有规则并且文件已经存在，所以 make 执行下面的命令来将 `count_words.c` 转换成 `count_words.o`：
 
     gcc -c count_words.c
