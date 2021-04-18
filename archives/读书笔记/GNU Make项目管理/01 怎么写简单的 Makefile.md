@@ -47,4 +47,4 @@ gcc hello.c -o hello
  
 ## 参考资料
 
-- Managing Projects with GNU Make
+- [Managing Projects with GNU Make](https://book.douban.com/subject/1850994/)ke
