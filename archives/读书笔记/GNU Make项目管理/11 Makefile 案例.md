@@ -1,4 +1,4 @@
-# GNU Make项目管理 第十一章 Makefile 案例
+# GNU Make 项目管理 第十一章 Makefile 案例
 
 [annotation]: <id> (2ab7517a-9d9d-4adc-9f7a-a8c5fcdbfa82)
 [annotation]: <status> (public)

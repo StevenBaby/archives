@@ -1,4 +1,4 @@
-# GNU Make项目管理 第一章 怎样写简单的 Makefile
+# GNU Make 项目管理 第一章 怎样写简单的 Makefile
 
 [annotation]: <id> (5bddf3e8-f84d-4111-b8dc-9ff18943f299)
 [annotation]: <status> (public)
