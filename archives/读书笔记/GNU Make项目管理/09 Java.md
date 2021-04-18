@@ -1,7 +1,7 @@
 # GNU Make 项目管理 第九章 Java
 
 [annotation]: <id> (0f80e21a-79ca-401a-a92c-d89967364b12)
-[annotation]: <status> (public)
+[annotation]: <status> (protect)
 [annotation]: <create_time> (2021-04-18 19:21:47)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Make|Makefile|GNU)

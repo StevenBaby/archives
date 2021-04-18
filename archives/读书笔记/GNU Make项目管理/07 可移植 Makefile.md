@@ -1,7 +1,7 @@
 # GNU Make 项目管理 第七章 可移植 Makefile
 
 [annotation]: <id> (0e8c3ad6-c989-4ed5-8dec-eb535bc0352f)
-[annotation]: <status> (public)
+[annotation]: <status> (protect)
 [annotation]: <create_time> (2021-04-18 19:20:06)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (Make|Makefile|GNU)
