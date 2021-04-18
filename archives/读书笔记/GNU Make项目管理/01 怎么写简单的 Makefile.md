@@ -179,7 +179,37 @@ $ count_words < lexer.l
 
 ## 调用 make
 
+前面的示例假定:
+
+- 所有项目源文件和 make 描述文件都存储在同一个目录中
+- make 描述文件是 `makefile`, `Makefile`, 或者 `GNUMakefile`
+- 在执行 make 命令时，makefile 处于用户的当前目录
+
+在上述条件下调用 make 时，它将自动地创建 makefile 中第一个目标，为了更新不同的目标（或者更新更多的目标），那么将目标的名字写在命令行中：
+
+    $ make lexer.c
+
+当 make 执行后，他将读取描述文件和定位哪个目标将被更新。如果目标或任何的依赖文件过期或者丢失，将会在 shell 一次执行一个规则中的命令。命令执行后，make 假设目标时最新的，然后继续执行下一个命令或退出。
+
+如果指定的目标已存在并且是最新的，make 会显示下面的文字并理解退出，什么都不会干。
+
+```text
+$ make lexer.c
+make: `lexer.c' is up to date.
+```
+
+如果指定的目标没有在 makefile 中指出而且没有隐式规则可用，make 将会报错：
+
+```text
+$ make non-existent-target
+make: *** No rule to make target `non-existent-target'. Stop.
+```
+
+make 有众多命令行参数，其中一个有用的参数是 `--just-print(-n)`，它让 make 显示对特定目标要执行的命令，而不真正执行该命令。这个对写 makefile 特别有用。也可以在命令行生设置任何 makefile 变量以覆盖默认值或在 makefile 中设置的值。
+
 ## 基础 Makefile 语法
+
+
 
 ## 参考资料
 
