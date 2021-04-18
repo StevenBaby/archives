@@ -128,7 +128,54 @@ gcc count_words.o lexer.o -lfl -ocount_words
 
 ## 依赖检查
 
+make 如何决定要做什么？让我们更详细地了解之前执行的情况，来一窥究竟。
+
+First make notices that the command line contains no targets so it decides to make the default goal, count_words. It checks for prerequisites and sees three: count_words.o, lexer.o, and -lfl. make now considers how to build count_words.o and sees a rule for it. Again, it checks the prerequisites, notices that count_words.c has no rules but that the file exists, so make executes the commands to transform count_words.c into count_words.o by executing the command:
+
+首先，注意命令行中没有目标，因此它决定设置默认的目标 count_words。检查依赖并看到了以下三个依赖：`count_words.o`, `lexer.o`，和 `-lfl`。现在 make 考虑构建 `count_words.o` 并且查看构建它的规则。再一次，它检查依赖，注意到 `count_words.c` 没有规则并且文件已经存在，所以 make 执行下面的命令来将 `count_words.c` 转换成 `count_words.o`：
+
+    gcc -c count_words.c
+
+这种目标到依赖，依赖到目标，目标到依赖的链式模式，典型地说明了 make 怎样解析 makefile 文件来决定执行哪一个的命令。
+
+然后 make 考虑构建下一个依赖 `lexer.o`，然后按图索骥找 `lexer.c`，但是此文件不存在，于是找对应生成此文件的规则，通过运行 `flex` 程序来生成 `lexer.c`，现在，有了 `lexer.c`，然后执行 gcc 命令。
+
+最后，make 检查 `-lfl`，`-l` 选项为 `gcc` 指示一个必须要链接到程序中的系统库。这里的库名字指示 `fl` 是库 `libfl.a` 文件，GNU make 包含对改语法特殊的支持。当一个依赖是 -l<NAME> 的形式，make 将搜索一个名为 `libNAME.so` 的文件，如果没找到，然后搜索 `libNAME.a` 的文件。这里 make 找到了 `/usr/lib/libfl.a`，然后处理最后的命令，连接程序。
+
 ## 最小化重新构建
+
+当我们运行程序时，我们发现除了 fee,fie,foe 和 fum，它同样打印输入文件中的文本。这不是我们想要的，问题在于我们忘记了词法分析器一些规则，而 flex 正在将无法识别的文本传递到其输出。为了解决这个问题，我们秩序添加一个任何字符的规则和一个换行规则：
+
+```flex
+    int fee_count = 0;
+    int fie_count = 0;
+    int foe_count = 0;
+    int fum_count = 0;
+%%
+fee fee_count++;
+fie fie_count++;
+foe foe_count++;
+fum fum_count++;
+.
+\n
+
+```
+
+编辑完成之后，我们需要重新编译程序来测试我们的修复是否正确。
+
+```shell
+$ make
+flex -t lexer.l > lexer.c
+gcc -c lexer.c
+gcc count_words.o lexer.o -lfl -ocount_words
+```
+
+注意到这次 `count_words.c` 并没有被重新编译。当 make 解析到这个规则时，发现 `count_words.o` 已经存在并且比他的依赖都要更新，所以无需任何操作，该文件已是最新。当解析到 `lexer.c` 时，make 看到依赖 `lexer.l` 比目标文件要更新，所以必须更新 lexer.c 文件，然后更新 `lexer.o`, `count_words`，现在我们的单词计数程序就正确了。
+
+```text
+$ count_words < lexer.l
+3 3 3 3
+```
 
 ## 调用 make
 

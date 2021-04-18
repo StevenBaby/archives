@@ -13,3 +13,4 @@ lexer.c: lexer.l
 clean:
 	rm -rf lexer.c
 	rm -rf *.o
+	rm -rf count_words
