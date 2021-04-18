@@ -11,7 +11,8 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "D:\\Program Files\\mingw64\\posix\\bin\\g++.exe",
+            "compilerPath": "g++",
+            // "compilerPath": "D:\\Program Files\\mingw64\\posix\\bin\\g++.exe",
             "intelliSenseMode": "gcc-x64",
             "browse": {
                 "path": [
