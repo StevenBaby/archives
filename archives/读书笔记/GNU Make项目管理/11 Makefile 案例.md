@@ -3,7 +3,7 @@
 [annotation]: <id> (2ab7517a-9d9d-4adc-9f7a-a8c5fcdbfa82)
 [annotation]: <status> (public)
 [annotation]: <create_time> (2021-04-17 23:47:31)
-[annotation]: <category> (计算机技术)
+[annotation]: <category> (读书笔记)
 [annotation]: <tags> (Make|Makefile|GNU)
 [annotation]: <topic> (GNU Make项目管理)
 [annotation]: <index> (11)
