@@ -13,7 +13,9 @@
 
 ## Linux 内核 Makefile
 
-Linux 内核的 **Makefile** 是在复杂的构建环境中使用 **make** 的绝佳案例。 尽管解释 Linux 内核是如何组织以及构建的有点超纲，但我们依然可以研究 Linux 内核构建系统中，采用 make 的几个有意思的用法。有关 2.5/2.6 内核构建过程及其从 2.4 方法演变而来的更完整的讨论，参见 http://macarchive.linuxsymposium.org/ols2003/Proceedings/All-Reprints/Reprint-Germaschewski-OLS2003.pdf
+Linux 内核的 **Makefile** 是在复杂的构建环境中使用 **make** 的绝佳案例。 尽管解释 Linux 内核是如何组织以及构建的有点超纲，但我们依然可以研究 Linux 内核构建系统中，采用 make 的几个有意思的用法。有关 2.5/2.6 内核构建过程及其从 2.4 方法演变而来的更完整的讨论，参见 ~~<http://macarchive.linuxsymposium.org/ols2003/Proceedings/All-Reprints/Reprint-Germaschewski-OLS2003.pdf>~~ 
+
+> 以上文件失效，参见 <https://www.kernel.org/doc/mirror/ols2003.pdf>，不过我不知道这个是不是一致的。
 
 由于这里 makefile 有诸多方面，我们将仅讨论一些适用于多种应用程序的功能。首先，我们将研究如何使用单字母生成变量来模拟单字母命令行选项。我们将看到源码和二进制树以一种方式分开，以允许用户从源代码树中调用 **make**。接下来，我们研究 makefile 控制输出详细程度的方式。然后，我们将回顾用户自定义函数最有趣的部分和他们如何减少代码冗余，提高可读性，并提供封装。最后，我们将研究 makefile 实现一个简单的帮助工具的方式。
 
