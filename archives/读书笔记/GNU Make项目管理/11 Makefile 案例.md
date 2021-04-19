@@ -5,7 +5,7 @@
 [annotation]: <create_time> (2021-04-17 23:47:31)
 [annotation]: <category> (读书笔记)
 [annotation]: <tags> (Make|Makefile|GNU)
-[annotation]: <topic> (GNU Make项目管理)
+[annotation]: <topic> (GNU Make 项目管理)
 [annotation]: <index> (11)
 [annotation]: <comments> (true)
 [annotation]: <url> (http://blog.ccyg.studio/article/2ab7517a-9d9d-4adc-9f7a-a8c5fcdbfa82)
