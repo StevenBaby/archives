@@ -1,7 +1,7 @@
 # GNU Make 项目管理 第十章 提升 make 性能
 
 [annotation]: [id] (512cbd16-8d7d-40d4-9daf-3dff0daa72b3)
-[annotation]: [status] (protect)
+[annotation]: [status] (public)
 [annotation]: [create_time] (2021-04-18 19:22:43)
 [annotation]: [category] (读书笔记)
 [annotation]: [tags] (Make|Makefile|GNU)
