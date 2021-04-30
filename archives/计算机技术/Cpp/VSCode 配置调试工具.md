@@ -1,12 +1,34 @@
-# VSCode 配置C++ 调试工具
+# VSCode 配置调试工具
 
-[annotation]: <id> (1b1ed6ff-325b-4b79-afb6-b8b1e5b6899a)
-[annotation]: <status> (public)
-[annotation]: <create_time> (2019-04-26 15:54:43)
-[annotation]: <category> (计算机技术)
-[annotation]: <tags> (C/C++)
-[annotation]: <comments> (true)
+[annotation]: [id] (1b1ed6ff-325b-4b79-afb6-b8b1e5b6899a)
+[annotation]: [status] (protect)
+[annotation]: [create_time] (2019-04-26 15:54:43)
+[annotation]: [category] (计算机技术)
+[annotation]: [tags] (C/C++)
+[annotation]: [comments] (false)
+[annotation]: [url] (http://blog.ccyg.studio/article/1b1ed6ff-325b-4b79-afb6-b8b1e5b6899a)
 
+## 预定义变量
+
+- ${workspaceFolder} - the path of the folder opened in VS Code
+- ${workspaceFolderBasename} - the name of the folder opened in VS Code without any slashes (/)
+- ${file} - the current opened file
+- ${fileWorkspaceFolder} - the current opened file's workspace folder
+- ${relativeFile} - the current opened file relative to workspaceFolder
+- ${relativeFileDirname} - the current opened file's dirname relative to workspaceFolder
+- ${fileBasename} - the current opened file's basename
+- ${fileBasenameNoExtension} - the current opened file's basename with no file extension
+- ${fileDirname} - the current opened file's dirname
+- ${fileExtname} - the current opened file's extension
+- ${cwd} - the task runner's current working directory on startup
+- ${lineNumber} - the current selected line number in the active file
+- ${selectedText} - the current selected text in the active file
+- ${execPath} - the path to the running VS Code executable
+- ${defaultBuildTask} - the name of the default build task
+- ${pathSeparator} - the character used by the operating system to separate components in file paths
+
+
+## 样例
 
 launch.json
 
@@ -96,3 +118,7 @@ c_cpp_properties.json
     "version": 4
 }
 ```
+
+## 参考资料
+
+- <https://code.visualstudio.com/docs/editor/variables-reference>
