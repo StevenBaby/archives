@@ -76,7 +76,7 @@ resultui\index.css
 
 ## Potplayer Windows10皮肤
 
-<https://github.com/stevenkangwei/blogfile/tree/master/software/potplayer%20skins>
+<https://github.com/StevenBaby/blogfile/tree/master/software/potplayer%20skins>
 
 
 ## Potplayer 语言问题
