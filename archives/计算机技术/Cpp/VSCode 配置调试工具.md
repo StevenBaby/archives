@@ -8,6 +8,18 @@
 [annotation]: [comments] (false)
 [annotation]: [url] (http://blog.ccyg.studio/article/1b1ed6ff-325b-4b79-afb6-b8b1e5b6899a)
 
+## 汇编语言调试
+
+如果需要调试汇编程序，则需打开 `settings.json` 中，
+
+```json
+{
+    "debug.allowBreakpointsEverywhere": true,
+}
+```
+
+然后就可以打断点了。
+
 ## 预定义变量
 
 - ${workspaceFolder} - the path of the folder opened in VS Code
