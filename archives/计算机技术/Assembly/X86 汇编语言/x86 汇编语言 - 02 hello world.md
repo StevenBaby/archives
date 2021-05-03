@@ -7,7 +7,7 @@
 [annotation]: <tags> (汇编语言)
 [annotation]: <comments> (false)
 [annotation]: <topic> (x86 汇编语言)
-[annotation]: <index> (1)
+[annotation]: <index> (2)
 [annotation]: <url> (http://blog.ccyg.studio/article/b5387ae1-00df-4c1d-ad2b-ee87682f6a90)
 
 ## 重新编译 bochs
