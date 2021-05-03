@@ -1,13 +1,13 @@
 # X86汇编语言 - 硬盘读写 PIO Mode
 
 [annotation]: <id> (6ad8c31c-1bd6-4827-b35c-688b0a068d8b)
-[annotation]: <status> (public)
+[annotation]: <status> (protect)
 [annotation]: <create_time> (2021-03-10 13:03:39)
 [annotation]: <category> (计算机技术)
 [annotation]: <tags> (汇编语言)
 [annotation]: <comments> (false)
-[annotation]: <topic> (x86汇编语言)
-[annotation]: <index> (1)
+[annotation]: <topic> (x86 汇编语言)
+[annotation]: <index> (2)
 [annotation]: <url> (http://blog.ccyg.studio/article/6ad8c31c-1bd6-4827-b35c-688b0a068d8b)
 
 一般来说，我们把这些设备分成两种，一种是输入设备，比如键盘、鼠标、麦克风、摄像头等；另一种是输出设备，比如显示器、打印机、扬声器等。输入设备和输出
