@@ -51,3 +51,9 @@ crop的参数格式为 `crop=w:h:x:y`，其中：
 - `w:h` 为输出视频的宽和高
 - `x:y` 标记输入视频中的某点，将该点作为基准点，向右下进行裁剪得到输出视频
 - 如果x y不写的话，默认居中剪切
+
+## 合并视频
+
+```sh
+ffmpeg -i 1.mp4 -i 2.mp4 -filter_complex "[0:v] [0:a] [1:v] [1:a] concat=n=2:v=1:a=1 [v] [a]" -map "[v]" -map "[a]"  -c copy output.mp4
+```
