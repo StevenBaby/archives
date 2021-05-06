@@ -1,0 +1,160 @@
+# x86 汇编语言 - 05 nasm 数据类型
+
+[annotation]: [id] (5573aed6-b46e-48d3-b8a5-701f3cb0df98)
+[annotation]: [status] (protect)
+[annotation]: [create_time] (2021-05-06 15:12:50)
+[annotation]: [category] (计算机技术)
+[annotation]: [tags] (汇编语言)
+[annotation]: [comments] (false)
+[annotation]: <topic> (x86 汇编语言)
+[annotation]: <index> (5)
+[annotation]: [url] (http://blog.ccyg.studio/article/5573aed6-b46e-48d3-b8a5-701f3cb0df98)
+
+
+## 数据伪指令
+
+| 数据  | 长度 (比特) |
+| ----- | ----------- |
+| byte  | 8           |
+| word  | 16          |
+| dword | 32          |
+| qword | 64          |
+| tword | 80          |
+| oword | 128         |
+| yword | 256         |
+
+`tword`，`oword`, `yword` 用于浮点数类型。
+
+## 数据定义
+
+| 数据类型 | 描述              |
+| -------- | ----------------- |
+| db       | define byte       |
+| dw       | define word       |
+| dd       | define doubleword |
+| dq       | define quadword   |
+| dt       | define tword      |
+| do       | define oword      |
+| dy       | define yword      |
+
+## 未初始化的数据
+
+| 指令 | 描述               |
+| ---- | ------------------ |
+| resb | reserve byte       |
+| resw | reserve word       |
+| resd | reserve doubleword |
+| resq | reserve quadword   |
+| rest | reserve tword      |
+| reso | reserve oword      |
+| resy | reserve yword      |
+
+## 其他指令
+
+`equ` 伪指令
+
+```s
+number equ 0x10
+```
+
+`times` 伪指令，用于重复指令或数据
+
+## 数字常量
+
+`nasm` 数字常量有四种，
+
+- decimal 十进制，默认就是十进制数，或者以 `0d` 开始，或者以 `d` 结束
+
+```s
+mov ax, 200
+mov ax, 0200
+mov ax, 0200d
+mov ax, 0d200
+```
+
+- hex 十六进制 以 `0x` 开始，或者以 `h` 结束
+
+```s
+mov ax, 200h
+mov ax, 0x200
+```
+
+- binary 二进制，以 `0b` 开始，或者以 `b` 结束，为了方便阅读，二进制数可以用下划线隔开
+
+```s
+mov ax, 0b1000
+mov ax, 1000b
+mov ax, 10_00b
+mov ax, 0b10_00
+```
+
+- octal 八进制 以 `0o` 或 `0q` 开始，或者以 `o` 或 `q` 结束，八进制用的不多
+
+```s
+mov ax, 0q100
+mov ax, 0o100
+mov ax, 100q
+mov ax, 100o
+```
+
+## 字符常量
+
+字符可以用三种方式来表示，分别用 单引号 ', 双引号 " 或者 反引号 `。
+
+```s
+db 'hello world'
+db "hello world"
+db `hello world`
+```
+
+## 转义字符
+
+nasm 中的转义与 C 语言类似，使用反斜杠 + 转义码。
+
+nasm 中转义字符必须用 反引号 `` 来引用。
+
+```s
+db  `/x61`     ; right!  'a'
+db  '/x61'     ; wrong!  '/' , 'x' , '6', '1'
+```
+
+十六进制转义码以 `x` 或 `X` 开头，如下所示：
+
+```s
+db `/x61`               ; 'a'
+db `/x61/x62/x63/x64`   ; 'abcd'
+```
+
+## 标号
+
+- `$` 表示当前指令位置
+- `$$` 表示当前 section 其实位置
+
+## 算术运算符
+
+| 算术运算符 | 描述             |
+| ---------- | ---------------- |
+| +          | 加               |
+| -          | 减               |
+| *          | 乘               |
+| /          | 除（无符号数）   |
+| //         | 除（符号数）     |
+| %          | 取模（无符号数） |
+| %%         | 取模（符号数）   |
+
+
+## 位运算符
+
+| 位运算符 | 描述        |
+| -------- | ----------- |
+| &        | 位与: AND   |
+| &#124;   | 位或：OR    |
+| ~        | 位非: NOT   |
+| ^        | 位异或: XOR |
+| <<       | 左移        |
+| >>       | 右移        |
+
+## 参考资料
+
+- <https://www.cnblogs.com/jiu0821/p/4422464.html>
+- <https://www.csie.ntu.edu.tw/~comp03/nasm/nasmdoc3.html>
