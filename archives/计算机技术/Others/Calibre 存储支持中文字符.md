@@ -20,8 +20,8 @@ Calibre 无疑是管理书籍很强大的工具，无需赘言，但是存在一
 
 ```python
 def ascii_filename(filename):
-    itab = r'<>:*"?\'
-    otab = r'()_____'
+    itab = r'\/:*?"<>|'
+    otab = r'______()_'
     trans = str.maketrans(itab, otab)
     return filename.translate(trans)
 ```
