@@ -20,7 +20,7 @@
 
 ## 友情链接
 
-- [leucinw(计算化学家)](https://leucinw.github.io/home/)
+- [leucinw(计算化学家)](https://biomol.bme.utexas.edu/~liuchw)
 - [hankkin(Android 高级工程师)](http://hankkin.club/)
 
 ---
