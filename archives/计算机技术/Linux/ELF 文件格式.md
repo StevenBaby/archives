@@ -10,9 +10,9 @@
 
 ## ELF 文件简介
 
-ELF 文件是用来干什么的呢？实际上它和 `.exe` 文件类型差不多，都是用来存储可执行程序的，不过 ELF 文件广泛应用于 **Linux** 操作系统，而非 **Windows**。
+ELF 文件是用来干什么的呢？实际上它和 `.exe` 文件类型差不多，都是用来存储可执行程序的，不过 ELF 文件广泛应用于 **Linux** 操作系统，而非 **Windows**。不过 Windows 的可执行文件内省准确的说是 PE 文件，而 .exe 只不过是文件名后缀。
 
-ELF 的全程是 **Executable and Linking Format** 也就是可执行和链接的格式，那么这种格式的文件主要有三种类型：
+ELF 的全称是 **Executable and Linking Format** 也就是可执行和链接的格式，那么这种格式的文件主要有三种类型：
 
 1. 可重定位的文件 (Relocatable file)  
     也就是静态链接库，是由汇编器汇编产生的 `.o` 文件，可以用来生成动态链接库，或者可执行文件。
@@ -56,22 +56,24 @@ ELF 文件由四部分组成：
 ELF header 的格式如下代码所示。
 
 ```c
-#define EI_NIDENT 16
-typedef struct {
-    unsigned char e_ident[EI_NIDENT];
-    Elf32_Half e_type;
-    Elf32_Half e_machine;
-    Elf32_Word e_version;
-    Elf32_Addr e_entry;
-    Elf32_Off e_phoff;
-    Elf32_Off e_shoff;
-    Elf32_Word e_flags;
-    Elf32_Half e_ehsize;
-    Elf32_Half e_phentsize;
-    Elf32_Half e_phnum;
-    Elf32_Half e_shentsize;
-    Elf32_Half e_shnum;
-    Elf32_Half e_shstrndx;
+#define EI_NIDENT (16)
+
+typedef struct
+{
+  unsigned char	e_ident[EI_NIDENT];	/* Magic number and other info */
+  Elf32_Half	e_type;			/* Object file type */
+  Elf32_Half	e_machine;		/* Architecture */
+  Elf32_Word	e_version;		/* Object file version */
+  Elf32_Addr	e_entry;		/* Entry point virtual address */
+  Elf32_Off	e_phoff;		/* Program header table file offset */
+  Elf32_Off	e_shoff;		/* Section header table file offset */
+  Elf32_Word	e_flags;		/* Processor-specific flags */
+  Elf32_Half	e_ehsize;		/* ELF header size in bytes */
+  Elf32_Half	e_phentsize;		/* Program header table entry size */
+  Elf32_Half	e_phnum;		/* Program header table entry count */
+  Elf32_Half	e_shentsize;		/* Section header table entry size */
+  Elf32_Half	e_shnum;		/* Section header table entry count */
+  Elf32_Half	e_shstrndx;		/* Section header string table index */
 } Elf32_Ehdr;
 ```
 
@@ -117,7 +119,60 @@ typedef struct {
 - **e_shnum**：节头部表中有多少个条目
 - **e_shstrndx**：包含节名称的字符串表是第几个节（从零开始数）
 
-## ELF 标志
+## 节 Section
+
+```c
+typedef struct
+{
+  Elf32_Word	sh_name;		/* Section name (string tbl index) */
+  Elf32_Word	sh_type;		/* Section type */
+  Elf32_Word	sh_flags;		/* Section flags */
+  Elf32_Addr	sh_addr;		/* Section virtual addr at execution */
+  Elf32_Off	sh_offset;		/* Section file offset */
+  Elf32_Word	sh_size;		/* Section size in bytes */
+  Elf32_Word	sh_link;		/* Link to another section */
+  Elf32_Word	sh_info;		/* Additional section information */
+  Elf32_Word	sh_addralign;		/* Section alignment */
+  Elf32_Word	sh_entsize;		/* Entry size if section holds table */
+} Elf32_Shdr;
+```
+
+- sh_name: 节名称，值是字符串表的索引。
+- sh_type: 节类型
+
+    | 名字         | 值         | 描述                                   |
+    | ------------ | ---------- | -------------------------------------- |
+    | SHT_NULL     | 0          | 不可用                                 |
+    | SHT_PROGBITS | 1          | 程序定义的                             |
+    | SHT_SYMTAB   | 2          | 符号表                                 |
+    | SHT_STRTAB   | 3          | 字符串表                               |
+    | SHT_RELA     | 4          | 有附加的可重定位入口表，可能有多个     |
+    | SHT_HASH     | 5          | 符号哈希表 动态链接必须有              |
+    | SHT_DYNAMIC  | 6          | 动态链接信息                           |
+    | SHT_NOTE     | 7          | 一些信息，暂缺                         |
+    | SHT_NOBITS   | 8          | 不占用文件空间，                       |
+    | SHT_REL      | 9          | 无附加的可重定位入口表                 |
+    | SHT_SHLIB    | 10         | 保留                                   |
+    | SHT_DYNSYM   | 11         | 符号表                                 |
+    | SHT_LOPROC   | 0x70000000 | 这个范围内的值为特定于处理器的语义保留 |
+    | SHT_HIPROC   | 0x7fffffff | 同上                                   |
+    | SHT_LOUSER   | 0x80000000 | 此值指定为应用程序保留的索引范围的下界 |
+    | SHT_HIUSER   | 0xffffffff | 同上，上界                             |
+
+- sh_flags: 
+    
+    - SHF_WRITE: 可写
+    - SHF_ALLOC: 占用内存
+    - SHF_EXECINSTR: 包含可执行指令
+    - SHF_MASKPROC: 掩码中包含的所有位都为特定于处理器的语义保留
+
+- sh_addr: 如果该节出现在进程的内存映像中，则该成员给出该节的第一个字节应该驻留的地址。否则，成员为 0
+- sh_offset: 该节的从文件开头的偏移值
+- sh_size: 该节的尺寸
+- sh_link: 节头表的索引链接，
+- sh_info: 额外的信息，依赖于节类型
+- sh_addralign: 一些节有对齐的限制，
+- sh_entsize: 有些 section 保存着一个由固定大小的条目组成的表，比如符号表。对于这样的 section，该成员给出每个条目的大小(以字节为单位)。如果 section 没有包含固定大小的表项，则成员包含0。
 
 ## 程序头部表
 
