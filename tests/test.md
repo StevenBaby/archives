@@ -86,6 +86,16 @@ $$
 \end{cases}
 $$
 
+## 测试 mermaid
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
+
 ## 测试 GeoGebra
 
 <iframe src="https://www.geogebra.org/calculator/vasdtgww?embed" class="video" width="640" height="360"></iframe>
