@@ -2,10 +2,10 @@
 	"folders": [
         {
             "name": "archives",
-            "path": "Z:\\github\\archives\\archives"
+            "path": "github\\archives\\archives"
         },
         {
-            "path": "Z:\\github\\archives\\tests"
+            "path": "github\\archives\\tests"
         },
         {
             "path": "github\\archives\\about"
