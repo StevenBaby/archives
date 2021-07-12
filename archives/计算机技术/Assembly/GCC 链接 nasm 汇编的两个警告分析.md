@@ -83,12 +83,27 @@ section .data
 
 这种问题，可以简单的用两种方式解决，
 
+---
+
 一种是静态链接，链接时加上 `-static` 选项。
 
-另一种是，链接时加上 `-no-pie` 选项，去掉位置无关的功能。
+或者，链接时加上 `-no-pie` 选项，去掉位置无关的功能。
 
-但总体来说，两种方法殊途同归。
+但总体来说，两种选项殊途同归。
+
+---
+
+另一种是，写代码时写成位置无关的代码，可以参考如下信息：
+
+<https://www.nasm.us/doc/nasmdoc8.html#section-8.9.3>
+
+<https://www.nasm.us/doc/nasmdo10.html#section-10.2>
+
+但是，这样的话代码的复杂度就会提高，感觉不是一个可行的方案。
 
 ## 参考资料
 
 - <https://docs.oracle.com/cd/E19683-01/816-7529/chapter6-42444/index.html>
+- <https://www.nasm.us/doc/nasmdoc8.html#section-8.9.3>
+- <https://www.nasm.us/doc/nasmdo10.html#section-10.2>
+
