@@ -667,9 +667,169 @@ main:
 
 C 语言函数的参数和局部变量，都存储在栈中，这也就很容易理解局部变量的生命周期了，函数返回之后，栈的值就恢复到了刚开始的状态，所以，函数调用结束后，存储局部变量的位置，会被其他的调用参数和局部变量覆盖，也就结束了生命周期。
 
+## 堆栈保护
+
+最后再看一段代码，这是把上面的全局变量全部移到了函数中。
+
+```cpp
+int main(int argc, char const *argv[])
+{
+    char message[] = "hello world!!!\n";
+    return 0;
+}
+```
+
+生成汇编代码：
+
+```s
+	.file	"variable.c"
+	.intel_syntax noprefix
+	.text
+	.globl	main
+	.type	main, @function
+main:
+	push	ebp
+	mov	ebp, esp
+	sub	esp, 24
+	mov	eax, DWORD PTR [ebp+12]
+	mov	DWORD PTR [ebp-24], eax
+	mov	eax, DWORD PTR gs:20
+	mov	DWORD PTR [ebp-4], eax
+	xor	eax, eax
+	mov	DWORD PTR [ebp-20], 1819043176
+	mov	DWORD PTR [ebp-16], 1870078063
+	mov	DWORD PTR [ebp-12], 560229490
+	mov	DWORD PTR [ebp-8], 663841
+	mov	eax, 0
+	mov	edx, DWORD PTR [ebp-4]
+	sub	edx, DWORD PTR gs:20
+	je	.L3
+	call	__stack_chk_fail
+.L3:
+	leave
+	ret
+	.size	main, .-main
+	.ident	"GCC: (GNU) 11.1.0"
+	.section	.note.GNU-stack,"",@progbits
+```
+
+其他的还好，主要的问题是一个比较扎眼的调用 `call __stack_chk_fail`，那研究一下这个调用是用来干嘛的吧。
+
+> __stack_chk_fail -- terminate a function in case of stack overflow
+
+主要是用来保护栈的，由于局部变量存储在栈中，所以如果局部变量过大，就可能造成堆栈溢出，那么这个函数就是用来检测堆栈是否溢出的。
+
+当然这个对于理解程序执行的逻辑也是没有用的，我们仍然可以去掉。
+
+    -fno-stack-protector
+
+最后生成的代码如下：
+
+```s
+	.file	"variable.c"
+	.intel_syntax noprefix
+	.text
+	.globl	main
+	.type	main, @function
+main:
+	push	ebp
+	mov	ebp, esp
+	sub	esp, 16
+	mov	DWORD PTR [ebp-16], 1819043176 # hell
+	mov	DWORD PTR [ebp-12], 1870078063 # o wo
+	mov	DWORD PTR [ebp-8], 560229490 # rld!
+	mov	DWORD PTR [ebp-4], 663841 # !!\n0
+	mov	eax, 0
+	leave
+	ret
+	.size	main, .-main
+	.ident	"GCC: (GNU) 11.1.0"
+	.section	.note.GNU-stack,"",@progbits
+```
+
+我把整型值加了注释，应该很好理解。
+
+---
+
+另外我们还看到，在堆栈保护的时候用到了 `gs` 段寄存器，我们还有必要了解一下为什么需要这个段寄存器。
+
+`gs` 寄存器存储了 Thread Control Block(TCB) header ，也就是线程控制块头，存储了线程的本地数据。
+
+例如如下的代码：
+
+```cpp
+#include <string.h>
+
+int main()
+{
+    char buffer[4];
+    strcpy(buffer, "hello world!!!");
+    return 0;
+}
+```
+
+如果我们编译执行，会得到如下的结果。
+
+```text
+*** stack smashing detected ***: terminated
+[1]    12024 abort (core dumped)
+```
+
+去掉堆栈保护之后，同样会报错，只不过会没有堆栈信息。
+
+显然，这段代码在执行 `strcpy` 函数时，应该出错，可是程序是如何报错的呢？
+
+也就是编译器插入了一些指令，
+
+那我们来解析一下这段代码吧：
+
+```s
+main:
+	pushl	%ebp
+	movl	%esp, %ebp # 保存栈顶指针
+
+	subl	$24, %esp # 扩展局部变量空间
+
+	# (%ebp) eip
+	# 4(%ebp) argc
+	# 8(%ebp) argv
+
+	movl	12(%ebp), %eax # 调用该函数的前的栈顶值
+	movl	%eax, -24(%ebp) # 存储栈顶值，目前看不出有什么用
+	# 使用新函数测试时，这两行代码消失了
+
+	# 设置 栈 保护
+	movl	%gs:20, %eax # 加载随机数
+	movl	%eax, -4(%ebp) # 保存值最为保护变量
+	xorl	%eax, %eax # 清空 eax 确保随机数之后不可读
+
+	# char message[] = "hello world!!!\n";
+	movl	$1819043176, -20(%ebp) # hell
+	movl	$1870078063, -16(%ebp) # o wo
+	movl	$560229490, -12(%ebp) # rld!
+	movl	$663841, -8(%ebp) # !!\n0
+
+	; | esp | hell|o wo|rld!|!!\n0| TCB | esp |
+	; | -24 | -20 |-16 |-12 |-8   | -4  |
+
+	# 函数返回值
+	movl	$0, %eax 
+
+	# 通过 TCB 来检查栈保护
+	movl	-4(%ebp), %edx # 加载之前存储的值
+	subl	%gs:20, %edx # 检查是否相等
+	je	.L3 # 如果相等则跳转到函数返回
+	call	__stack_chk_fail # 否则报错
+.L3:
+	leave # 恢复栈顶指针
+	ret # 函数返回
+```
+
 ## 其他
 
-当前 C/C++ 语言还有众多的其他特性，比如结构体，函数重载，虚基类，等等，后面再分析吧。
+当然 C/C++ 语言还有众多的其他特性，比如结构体，函数重载，虚基类，等等，后面再分析吧。
+
+另外，这种按图索骥的方法来学习也是一种不错的选择，遇到的问题就像是在解密一样。充满了挑战，但又不那么难，随时都可以化解。
 
 ## 参考资料
 
@@ -678,5 +838,11 @@ C 语言函数的参数和局部变量，都存储在栈中，这也就很容易
 - <https://www.cnblogs.com/friedCoder/articles/12374666.html>
 - <https://baike.baidu.com/item/puts>
 - <https://stackoverflow.com/questions/23309863/why-does-gcc-produce-andl-16>
-- <https://research.csiro.au/tsblog/debugging-stories-stack-alignment-matters/> 强烈推荐 ❤❤❤❤❤
+- <https://research.csiro.au/tsblog/debugging-stories-stack-alignment-matters/>
 - <https://stackoverflow.com/questions/1061818/stack-allocation-padding-and-alignment>
+- <http://refspecs.linux-foundation.org/LSB_4.0.0/LSB-Core-generic/LSB-Core-generic/libc---stack-chk-fail-1.html>
+- <https://gcc.gnu.org/onlinedocs/gcc-11.1.0/gccint/Stack-Smashing-Protection.html#Stack-Smashing-Protection>
+- <https://wiki.osdev.org/Stack_Smashing_Protector>
+- <https://embeddedartistry.com/blog/2020/05/18/implementing-stack-smashing-protection-for-microcontrollers-and-embedded-artistrys-libc/>
+- <https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html>
+- <https://www.labcorner.de/the-gs-segment-and-stack-smashing-protection/>
