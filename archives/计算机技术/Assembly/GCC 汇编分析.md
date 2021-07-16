@@ -321,6 +321,12 @@ main:
 	.section	.note.GNU-stack,"",@progbits
 ```
 
+> 为什么需要栈对齐？
+
+这是由于部分指令如 `movaps` 在执行时，需要内存地址是对齐到 16 字节的，不然就会报 `13` 号异常，也就是 GP(General Protection) 异常，程序就会出错。这是一个浮点数操作的指令，这里按下不表。
+
+> The SSEx family of instructions REQUIRES packed 128-bit vectors to be aligned to 16 bytes - otherwise you get a segfault trying to load/store them. I.e. if you want to safely pass 16-byte vectors for use with SSE on the stack, the stack needs to be consistently kept aligned to 16. GCC accounts for that by default.
+
 ## 函数框架与返回值
 
 现在，没多少代码了，前面的数据定义很好理解，我们直接从 `main` 函数开始分析。
@@ -347,7 +353,221 @@ main:
 	ret # 函数返回
 ```
 
+## 全局变量
+
+下面我们分析一下全局变量：
+
+```cpp
+int a = 0;
+int b = 5;
+static int c = 8;
+static const int d = 8;
+
+int array[5];
+int iarray[] = {1, 2, 3, 4, 5};
+
+char message[] = "hello world!!!\n";
+```
+
+生成汇编代码：
+
+    gcc -m32 -fno-asynchronous-unwind-tables -fno-pic -mpreferred-stack-boundary=2 -masm=intel -O0  -S variable.c -o variable.s
+
+内容如下：
+
+```s
+	.file	"variable.c"
+	.intel_syntax noprefix
+	.text
+
+	.globl	a
+	.bss
+	.align 4
+	.type	a, @object
+	.size	a, 4
+a:
+	.zero	4
+
+	.globl	b
+	.data
+	.align 4
+	.type	b, @object
+	.size	b, 4
+b:
+	.long	5
+	.align 4
+
+	.type	c, @object
+	.size	c, 4
+c:
+	.long	8
+
+	.section	.rodata
+	.align 4
+	.type	d, @object
+	.size	d, 4
+d:
+	.long	8
+
+	.globl	array
+	.bss
+	.align 4
+	.type	array, @object
+	.size	array, 20
+array:
+	.zero	20
+
+	.globl	iarray
+	.data
+	.align 4
+	.type	iarray, @object
+	.size	iarray, 20
+iarray:
+	.long	1
+	.long	2
+	.long	3
+	.long	4
+	.long	5
+
+	.globl	message
+	.align 4
+	.type	message, @object
+	.size	message, 16
+message:
+	.string	"hello world!!!\n"
+	.ident	"GCC: (GNU) 11.1.0"
+	.section	.note.GNU-stack,"",@progbits
+```
+
+可以很清楚的看到具体对应的 `section`，具体如下：
+
+| 变量      | 类型      | 初始化 | 对应 section | 约束             | 标记               |
+| --------- | --------- | ------ | ------------ | ---------------- | ------------------ |
+| `a`       | `int`     | 否     | `.bss`       | 无               | `.globl` `.zero`   |
+| `b`       | `int`     | 是     | `.data`      | 无               | `.globl` `.long`   |
+| `c`       | `int`     | 是     | `.data`      | `static`         | `.long`            |
+| `d`       | `int`     | 是     | `.rodata`    | `static` `const` | `.long`            |
+| `array`   | `int [5]` | 否     | `.bss`       | 无               | `.globl` `.zero`   |
+| `iarray`  | `int [5]` | 是     | `.data`      | 无               | `.globl` `.long`   |
+| `message` | `char []` | 是     | `.data`      | 无               | `.globl` `.string` |
+
 ## 局部变量
+
+现在分析如下代码：
+
+```cpp
+int main()
+{
+    int a1 = 0;
+    int b1 = 5;
+    return 0;
+}
+```
+
+代码本身没有难度，但是里面有两个局部变量，生成的汇编代码如下：
+
+```s
+main:
+	push	ebp
+	mov	ebp, esp # 保存栈顶指针
+
+	sub	esp, 8 # 从栈顶预留一段内存区域
+
+	mov	DWORD PTR [ebp-8], 0 # 变量 `a1`
+	mov	DWORD PTR [ebp-4], 5 # 变量 `b1`
+
+	mov	eax, 0 # 设置返回值
+	leave # 恢复栈顶指针
+	ret
+```
+
+显然，局部变量保存在栈中，函数调用结束之后，局部变量就结束了生命，因为存储局部变量的栈会被其他调用覆盖。这也就是局部变量生命周期的来历。
+
+---
+
+现在分析如下代码：
+
+```s
+void func1()
+{
+    static int a1 = 7;
+    a1 = 6;
+}
+
+void func2()
+{
+    static int a1 = 7;
+    a1 = 6;
+}
+
+int main()
+{
+    static int a1 = 0;
+    a1 = 9;
+    int b1 = 5;
+
+    return 0;
+}
+```
+
+主要的问题在于不同的函数中有一个相同的 `static int a1` 变量，那么生成汇编代码，代码如下： 
+
+```s
+	.file	"variable.c"
+	.intel_syntax noprefix
+	.text
+	.globl	func1
+	.type	func1, @function
+func1:
+	push	ebp
+	mov	ebp, esp
+	mov	DWORD PTR a1.2, 6
+	nop
+	pop	ebp
+	ret
+	.size	func1, .-func1
+	.globl	func2
+	.type	func2, @function
+func2:
+	push	ebp
+	mov	ebp, esp
+	mov	DWORD PTR a1.1, 6
+	nop
+	pop	ebp
+	ret
+	.size	func2, .-func2
+	.globl	main
+	.type	main, @function
+main:
+	push	ebp
+	mov	ebp, esp
+	sub	esp, 4
+	mov	DWORD PTR a1.0, 9
+	mov	DWORD PTR [ebp-4], 5
+	mov	eax, 0
+	leave
+	ret
+	.size	main, .-main
+	.data
+	.align 4
+	.type	a1.2, @object
+	.size	a1.2, 4
+a1.2:
+	.long	7
+	.align 4
+	.type	a1.1, @object
+	.size	a1.1, 4
+a1.1:
+	.long	7
+	.local	a1.0
+	.comm	a1.0,4,4
+	.ident	"GCC: (GNU) 11.1.0"
+	.section	.note.GNU-stack,"",@progbits
+```
+
+显然，函数中 `static` 的变量会提升为全局变量，而且不同函数中有相同名字的 `static` 对象也不会有冲突。
+
+## 参数传递
 
 下面我们分析一个稍微复杂一点的代码，C 代码如下：
 
@@ -458,3 +678,5 @@ C 语言函数的参数和局部变量，都存储在栈中，这也就很容易
 - <https://www.cnblogs.com/friedCoder/articles/12374666.html>
 - <https://baike.baidu.com/item/puts>
 - <https://stackoverflow.com/questions/23309863/why-does-gcc-produce-andl-16>
+- <https://research.csiro.au/tsblog/debugging-stories-stack-alignment-matters/> 强烈推荐 ❤❤❤❤❤
+- <https://stackoverflow.com/questions/1061818/stack-allocation-padding-and-alignment>
