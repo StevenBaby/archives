@@ -174,6 +174,125 @@ typedef struct
 - sh_addralign: 一些节有对齐的限制，
 - sh_entsize: 有些 section 保存着一个由固定大小的条目组成的表，比如符号表。对于这样的 section，该成员给出每个条目的大小(以字节为单位)。如果 section 没有包含固定大小的表项，则成员包含0。
 
+### 特殊的节
+
+| 名称      | 类型         | 属性                      |
+| --------- | ------------ | ------------------------- |
+| .bss      | SHT_NOBITS   | SHF_ALLOC+SHF_WRITE       |
+| .comment  | SHT_PROGBITS | none                      |
+| .data     | SHT_PROGBITS | SHF_ALLOC + SHF_WRITE     |
+| .data1    | SHT_PROGBITS | SHF_ALLOC + SHF_WRITE     |
+| .debug    | SHT_PROGBITS | none                      |
+| .dynamic  | SHT_DYNAMIC  | see below                 |
+| .hash     | SHT_HASH     | SHF_ALLOC                 |
+| .line     | SHT_PROGBITS | none                      |
+| .note     | SHT_NOTE     | none                      |
+| .rodata   | SHT_PROGBITS | SHF_ALLOC                 |
+| .rodata1  | SHT_PROGBITS | SHF_ALLOC                 |
+| .shstrtab | SHT_STRTAB   | none                      |
+| .strtab   | SHT_STRTAB   | see below                 |
+| .symtab   | SHT_SYMTAB   | see below                 |
+| .text     | SHT_PROGBITS | SHF_ALLOC + SHF_EXECINSTR |
+
+- .bss / 包含了未初始化的数据，通常用于缓存。
+- .comment / 版本控制信息
+- .data .data1 / 包含已经初始化的数据
+- .debug / 用于程序调试
+- .dynamic / 包含动态链接信息和一些属性，SHF_WRITE 由操作系统和处理器来决定
+- .hash / 包含符号哈希表
+- .line / 包含了行信息用于调试，描述了源码和机器码之间的关系。
+- .note / 一些辅助信息 #TODO 暂缺
+- .rodata, .rodata1 / 包含了只读的数据
+- .shstrtab / 保存节名称
+- .strtab / 保存字符串，大多数情况下字符串用于表示与符号表相关的名称
+- .symtab / 保存符号表
+- .text / 代码
+
+> 节名称前面加点 `.` 表示该节是系统保留的，如果满意的话应用程序依然可能使用这些节。应用程序可能使用没有前缀的名字来避免名字冲突。目标文件永续定义上面列表中没有的名字，而且同一个名字的节允许有多个。
+
+## 字符串表
+
+字符串表保存了 `\0` 结尾的字符序列，一般称之为字符串。用于表示符号和节的名称。
+
+## 符号表
+
+目标文件的符号表保存了需要定位和重定位的程序符号和引用。符号表索引是一个数组的索引。索引 0 指定了符号表的入口，预留了未定义的符号。初始的符号将在索引 0 之后。
+
+```c
+typedef struct {
+    Elf32_Word st_name;
+    Elf32_Addr st_value;
+    Elf32_Word st_size;
+    unsigned char st_info;
+    unsigned char st_other;
+    Elf32_Half st_shndx;
+} Elf32_Sym;
+```
+
+- st_name : 保存了符号字符串表索引，保存了符号的名称
+- st_value : 给出了符号关联的数据，依赖于上下文，可能是绝对值，一个地址等等
+- st_size : 很多符号有关联的尺寸，例如一个数据对象的尺寸是这个对象包含的字节数，如果为 0 则表示没有尺寸或者尺寸未知。
+- st_info : 指定了符号类型和绑定的属性，下面的代码指明了如可操作。
+
+    ```cpp
+    #define ELF32_ST_BIND(i) ((i)>>4)
+    #define ELF32_ST_TYPE(i) ((i)&0xf)
+    #define ELF32_ST_INFO(b,t) (((b)<<4)+((t)&0xf))
+    ```
+- st_other : 目前没有意义
+- st_shndx : 每个符号表入口与某些 section 有关联；这个属性确定了关联的 section 头在头表中的索引。
+
+### 符号绑定
+
+| 名称       | 值  |
+| ---------- | --- |
+| STB_LOCAL  | 0   |
+| STB_GLOBAL | 1   |
+| STB_WEAK   | 2   |
+| STB_LOPROC | 13  |
+| STB_HIPROC | 15  |
+
+- STB_LOCAL: 本地符号对于外部目标文件不可见，多个目标文件中可能存在同名的本地符号，但是并不会相互影响。
+- STB_GLOBAL: 全局符号对于所有的目标文件在组合时都是可见的，不同文件可能使用同一个符号，该符号定义在一个特定的目标文件中。
+- STB_WEAK: 弱符号比较像全局符号，但是他们有更低的优先级。例如，可以在库文件中定义弱符号，应用程序可以定义全局符号来覆盖这个弱符号，如果应用程序没有定义，那么就会自动使用库文件中的符号。
+
+在每个符号表中，所有带有 `STB_LOCAL` 绑定的符号的优先级都位于弱符号和全局符号之前。符号的类型为关联的实体提供了一般的分类。
+
+### 符号类型
+
+| 名称        | 值  |
+| ----------- | --- |
+| STT_NOTYPE  | 0   |
+| STT_OBJECT  | 1   |
+| STT_FUNC    | 2   |
+| STT_SECTION | 3   |
+| STT_FILE    | 4   |
+| STT_LOPROC  | 13  |
+| STT_HIPROC  | 15  |
+
+- STT_NOTYPE : 符号类型未定义
+- STT_OBJECT : 符号与一个数据对象关联，比如 变量，数组等等
+- STT_FUNC : 符号与一个函数或者可执行的代码关联
+- STT_SECTION : 符号与一个 section 关联。符号表书体，这种类型的符号表项，主要是为了重定位而存在的，通常由 `STB_LOCAL` 绑定
+- STT_FILE : 文件符号有 `STB_LOCAL` 绑定，它的 section 索引是 `SHN_ABS`，并且它优先于其他文件中的 `STB_LOCAL` 符号，如果存在的话。
+
+---
+
+
+
+### st_value
+
+符号表的 `st_value` 对于不同的目标文件类型有着不同的意义。
+
+- 在可重定位文件中 `st_value`，符号的 section index 是 `SHN_COMMON` 保存了对齐约束
+- 在可重定位文件中 `st_value`，保存了定义的符号的 section 的偏移，也就是说，`st_value` 是从 section 开始用 `st_shndx` 定位的偏移
+- 在可执行文件和动态链接文件中，`st_value` 保存了虚拟地址，使得文件的符号对动态链接器更有用。section 偏移 给出了一种方式，与 section 相关的 虚拟地址。
+
+但是，符号表 values 对不同的目标文件有着相似的意义，通过适当的程序，数据允许更有效率的访问。
+
+## 重定位
+
+
 ## 程序头部表
 
 ```c
