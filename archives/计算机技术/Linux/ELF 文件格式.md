@@ -234,11 +234,12 @@ typedef struct {
 - st_size : 很多符号有关联的尺寸，例如一个数据对象的尺寸是这个对象包含的字节数，如果为 0 则表示没有尺寸或者尺寸未知。
 - st_info : 指定了符号类型和绑定的属性，下面的代码指明了如可操作。
 
-    ```cpp
-    #define ELF32_ST_BIND(i) ((i)>>4)
-    #define ELF32_ST_TYPE(i) ((i)&0xf)
-    #define ELF32_ST_INFO(b,t) (((b)<<4)+((t)&0xf))
-    ```
+```cpp
+#define ELF32_ST_BIND(i) ((i)>>4)
+#define ELF32_ST_TYPE(i) ((i)&0xf)
+#define ELF32_ST_INFO(b,t) (((b)<<4)+((t)&0xf))
+```
+
 - st_other : 目前没有意义
 - st_shndx : 每个符号表入口与某些 section 有关联；这个属性确定了关联的 section 头在头表中的索引。
 
@@ -314,11 +315,11 @@ typedef struct {
 - `r_offset`: 给出了需要执行重定位操作的地址，对于一个可重定位文件，值是从 `section` 开头到存储单元受重定位影响的字节偏移值，对于可执行文件和动态链接库文件，值是存储单元受重定位影响的虚拟地址。
 - `r_info`: 该成员给出了必须进行重定位的符号表索引，以及要应用的重定位类型。例如，`call` 指令的重定位表项将保存被调用函数的符号表索引。如果索引是 `STN_UNDEF`，即未定义的符号索引，则重定位使用 `0` 作为“符号值”。“重定位类型是特定于处理器的;对它们行为的描述出现在处理器补充文件中。当处理器补充中的文本指向重定位表项的重定位类型或符号表索引时，它表示分别对重定位表项的 `r_info` 成员应用 `ELF32_R_TYPE` 或 `ELF32_R_SYM` 的结果。
 
-    ```cpp
-    #define ELF32_R_SYM(i) ((i)>>8)
-    #define ELF32_R_TYPE(i) ((unsigned char)(i))
-    #define ELF32_R_INFO(s,t) (((s)<<8)+(unsigned char)(t))
-    ```
+```cpp
+#define ELF32_R_SYM(i) ((i)>>8)
+#define ELF32_R_TYPE(i) ((unsigned char)(i))
+#define ELF32_R_INFO(s,t) (((s)<<8)+(unsigned char)(t))
+```
 
 - `r_addend`: 该成员指定一个常量加数，用于计算要存储到可重定位字段中的值。
 
