@@ -12,3 +12,4 @@ training_data.npy
 archives/temp
 src/code/c/test
 *.class
+*.out
