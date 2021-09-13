@@ -125,7 +125,7 @@ $a^{\varphi(n)} = a \cdot a^{\varphi(n) - 1} \equiv 1(\textrm{mod}\ n)$
 
 5. 计算 $e$ 对于 $\varphi(n)$ 的模反元素 $d$，即满足条件 $e \cdot d \equiv 1 \mod \varphi(n)$
 
-上面的式子等价于 $e \cdot d = k \varphi(n) + 1$, $k \in \mathbb{N}^+$
+上面的式子等价于 $e \cdot d = k \varphi(n) + 1$, $k \in \mathbb{Z}$
 
 找 $d$ 的过程实际上是对以下方程的未知数 $(d, k)$ 求解：
 
@@ -207,7 +207,7 @@ $$c^d \equiv m \ (\textrm{mod}\ n)$$
 
 根据加密规则，$m^e \equiv c \ (\textrm{mod}\ n)$；
 
-于是，$c = m^e - kn, (k \in \mathbb{N^+})$
+于是，$c = m^e - kn, (k \in \mathbb{Z})$
 
 将 $c$ 带入解密规则得 $(m^e - kn)^d \equiv m \ (\textrm{mod}\ n)$
 
@@ -215,7 +215,7 @@ $$c^d \equiv m \ (\textrm{mod}\ n)$$
 
 由于 $ed \equiv 1 \ (\textrm{mod}\ \varphi(n))$
 
-则 $ed = h\varphi(n) + 1, (h \in \mathbb{N^+})$
+则 $ed = h\varphi(n) + 1, (h \in \mathbb{Z})$
 
 将 $ed$ 代入得 
 
