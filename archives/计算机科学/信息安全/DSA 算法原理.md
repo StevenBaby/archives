@@ -1,4 +1,4 @@
-# DSA 算法原理即实例
+# DSA 算法原理及实例
 
 [annotation]: [id] (acb276f0-be38-490e-8fb3-94907d3e997a)
 [annotation]: [status] (public)
