@@ -46,6 +46,34 @@ git config --global core.filemode false
 git config --global core.autocrlf true
 ```
 
+## error: object file ... is empty
+
+删除所有空白文件
+
+```sh
+cd .git
+find . -type f -empty -delete -print
+```
+
+然后，打印出日志文件最后两行：
+
+```sh
+cd ..
+tail -n 1 .git/logs/refs/heads/master
+```
+
+然后，查看版本是否正常，xxxx 是第二个哈希：
+
+    git show xxxx
+
+然后，归档：
+
+    git update-ref HEAD xxxx
+
+检查一下：
+
+    git fsck
+
 ## 参考资料
 
 - <https://www.liangjucai.com/article/83>
