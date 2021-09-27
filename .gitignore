@@ -13,3 +13,4 @@ archives/temp
 src/code/c/test
 *.class
 *.out
+temp.*
