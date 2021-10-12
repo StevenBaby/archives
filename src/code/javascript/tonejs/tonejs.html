@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name='id' content='5141f585-470a-4181-8432-1c2ab47e2605'>
+    <meta name='status' content='public'>
+    <meta name='create_time' content='2021-10-12 22:28:15'>
+    <meta name='category' content='计算机技术'>
+    <meta name='tags' content=''>
+    <meta name='comments' content='true'>
+    <meta name='url' content='http://blog.ccyg.studio/article/5141f585-470a-4181-8432-1c2ab47e2605'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <link href="../static/index.css" rel="stylesheet">
+    <title>tone.js 频率发生器</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="ui container">
+            <div class="ui segment main-content">
+                <button id='tone' class="ui green button">
+                    <span>
+                        点我播放
+                    </span>
+                    A4=440HZ
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jplayer@2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
+    <script src="../static/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.min.js"></script>
+    <script type="text/javascript">
+        const osc = new Tone.Oscillator({
+            type: "sine",
+            frequency: 440,
+            volume: -16
+        }).toDestination();
+
+        let running = false;
+        $("#tone").click(function () {
+            if (running) {
+                running = false
+                osc.stop();
+                $("#tone > span").html('点我开始');
+                $(this).removeClass("red")
+                $(this).addClass("green");
+            } else {
+                osc.start();
+                running = true;
+
+                $("#tone > span").html('点我结束');
+                $(this).removeClass("green")
+                $(this).addClass("red");
+            }
+        });
+    </script>
+</body>
+
+</html>
