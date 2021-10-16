@@ -9,7 +9,7 @@
 [annotation]: [topic] (钢琴谱)
 [annotation]: [url] (http://blog.ccyg.studio/article/2c7e6332-d47d-441f-9ca4-d0a482d38f2a)
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=1336510679&auto=1&height=66"></iframe>
+<iframe class="row" frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="//music.163.com/outchain/player?type=2&id=1336510679&height=66"></iframe>
 
 ![](./images/g小调巴赫平均律变奏曲-1.svg)
 
@@ -18,3 +18,5 @@
 ![](./images/g小调巴赫平均律变奏曲-2.svg)
 
 点击下载 [g 小调巴赫平均律变奏曲.mscz](./mscz/g%20小调巴赫平均律变奏曲.mscz)
+
+> 注：mscz 文件可用 MuseScore 软件打开 <https://musescore.org/>
