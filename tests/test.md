@@ -78,13 +78,11 @@ int main()
 
 $$\int_{\partial\Omega} \omega = \int_\Omega d\omega$$
 
-$$
-\begin{cases}
+$$\begin{cases}
 \sqrt{a^2 - x^2}  \Rightarrow x = a\sin t\\
 \sqrt{a^2 + x^2}  \Rightarrow x = a\tan t\\
 \sqrt{x^2 - a^2}  \Rightarrow x = a\sec t\\
-\end{cases}
-$$
+\end{cases}$$
 
 ## 测试 mermaid
 
@@ -113,7 +111,7 @@ graph TD;
 
 ## 测试网易云音乐
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="http://music.163.com/outchain/player?type=2&id=516719755&height=66"></iframe>
+<iframe class='row' frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="http://music.163.com/outchain/player?type=2&id=516719755&height=66"></iframe>
 
 ## 测试优酷视频
 
