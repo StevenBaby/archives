@@ -41,6 +41,12 @@
         window.addEventListener("load", function () {
             applet.inject('ggb-element');
         });
+
+        $(window).resize(function(){
+            element.width(element.parent().width());
+            element.height(element.parent().width() / 1.77);
+        });
+
     </script>
 </body>
 </html>
