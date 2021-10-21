@@ -17,7 +17,10 @@
 </head>
 
 <body>
-    <div id="ggb-element"></div>
+    <div class="applet">
+        <div id="ggb-element"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
@@ -27,14 +30,21 @@
         var element = $('#ggb-element');
         console.log(element.width());
         var params = {
-            "appName": "3d",
-            "width": element.width(),
-            "height": element.width() / 1.77,
-            "showToolBar": false,
-            "showAlgebraInput": false,
-            "showMenuBar": false,
-            "showNavigationBar": false,
+            appName: "3d",
+            width: element.width(),
+            height: element.width() / 1.77,
+            showMenuBar: false,
+            showToolBar: false,
+            showAlgebraInput: false,
+            showNavigationBar: false,
+            borderColor: "#FFFFFF",
+            allowUpscale: true,
             filename: "graph.ggb",
+            scaleContainerClass: 'applet',
+            // showFullScreenButton: true,
+            enableUndoRedo: false,
+            allowUpscale: true,
+            autoHeight: true,
             appletOnLoad: function (applet) {}
         };
         var applet = new GGBApplet(params, true);
@@ -42,11 +52,11 @@
             applet.inject('ggb-element');
         });
 
-        $(window).resize(function(){
-            element.width(element.parent().width());
-            element.height(element.parent().width() / 1.77);
-        });
-
+        // $(window).resize(function () {
+        //     element.width(element.parent().width());
+        //     element.height(element.parent().width() / 1.77);
+        // });
     </script>
 </body>
+
 </html>
