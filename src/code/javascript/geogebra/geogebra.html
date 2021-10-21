@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name='id' content='c8db3f3f-7bc9-400d-92ee-66acfa1c8a17'>
+    <meta name='status' content='public'>
+    <meta name='create_time' content='2021-10-12 22:28:15'>
+    <meta name='category' content='计算机技术'>
+    <meta name='tags' content=''>
+    <meta name='comments' content='true'>
+    <meta name='url' content='http://blog.ccyg.studio/article/c8db3f3f-7bc9-400d-92ee-66acfa1c8a17'>
+    <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
+    <title>嵌入 Geogebra</title>
+</head>
+
+<body>
+    <div id="ggb-element"></div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jplayer@2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <script>
+        var element = $('#ggb-element');
+        console.log(element.width());
+        var params = {
+            "appName": "3d",
+            "width": element.width(),
+            "height": element.width() / 1.77,
+            "showToolBar": false,
+            "showAlgebraInput": false,
+            "showMenuBar": false,
+            "showNavigationBar": false,
+            filename: "graph.ggb",
+            appletOnLoad: function (applet) {}
+        };
+        var applet = new GGBApplet(params, true);
+        window.addEventListener("load", function () {
+            applet.inject('ggb-element');
+        });
+    </script>
+</body>
+</html>
