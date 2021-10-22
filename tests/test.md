@@ -96,8 +96,7 @@ graph TD;
 
 ## 测试 GeoGebra
 
-<iframe src="https://www.geogebra.org/calculator/vasdtgww?embed" class="video" width="640" height="360"></iframe>
-
+<div class='geogebra' data-url="./static/test-sin-series.ggb" format='graphing'></div>
 
 ## 测试 Jplayer 播放器 音频
 
