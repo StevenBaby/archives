@@ -98,15 +98,27 @@ graph TD;
 
 <div class='geogebra' data-url="./static/test-sin-series.ggb" format='graphing'></div>
 
+## 测试函数图像
+
+$$z = {1 \over 4} x^2 + { 1 \over 8}y^2$$
+
+```plot=3d
+z = 1 / 4 * x^2 + 1 / 8 * y^2
+```
+
+---
+
+```plot=graphing
+f(t)=Curve[3 cos(t) abs(tan(t))^abs(1/tan(t)), 3 sin(t) abs(tan(t))^abs(1/tan(t)) ,t,0,pi]
+```
+
 ## 测试 Jplayer 播放器 音频
 
 <div class='ui jplayer audio' data-url="https://link.hhtjim.com/kw/1027785.mp3" format='mp3' title="梁静茹 - 情歌"></div>
 
-
 ## 测试 Jplayer 播放器 视频
 
 <div class='ui jplayer video' data-url="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" data-placeholder="https://media.w3.org/2010/05/bunny/poster.png" format='webmv'></div>
-
 
 ## 测试网易云音乐
 
@@ -115,7 +127,6 @@ graph TD;
 ## 测试优酷视频
 
 <iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XMTM2MjE4MzU3Ng=="></iframe>
-
 
 ## 测试哔哩哔哩视频
 
