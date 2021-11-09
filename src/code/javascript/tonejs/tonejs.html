@@ -14,19 +14,59 @@
     <meta name='url' content='http://blog.ccyg.studio/article/5141f585-470a-4181-8432-1c2ab47e2605'>
     <link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" rel="stylesheet">
     <link href="../static/index.css" rel="stylesheet">
-    <title>tone.js 频率发生器</title>
+    <title>频率发生器</title>
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="ui container">
-            <div class="ui segment main-content">
-                <button id='tone' class="ui green button">
-                    <span>
-                        点我播放
-                    </span>
-                    A4=440HZ
-                </button>
+        <div class="ui container" style="margin-top: 1rem;">
+            <div class="ui tones form">
+                <div class="tone fields">
+                    <div class="field">
+                        <button class="ui mute circular orange icon button">
+                            <i class="volume off icon"></i>
+                        </button>
+                    </div>
+                    <div class="field">
+                        <button class="ui solo circular orange icon button">
+                            <i class="volume up icon"></i>
+                        </button>
+                    </div>
+                    <div class="field" style="min-width: 15rem;">
+                        <input class="frequency" type="number" placeholder="频率" value="440" />
+                    </div>
+                    <div class="field">
+                        <select class="ui dropdown wave">
+                            <option value="sine">正弦波</option>
+                            <option value="square">方波</option>
+                            <option value="sawtooth">锯齿波</option>
+                            <option value="triangle">三角波</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <input class="volume" type="number" placeholder="音量" value="0" />
+                    </div>
+                    <div class="field">
+                        <button class="ui remove circular orange icon button">
+                            <i class="remove icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="ui form">
+                <div class="fields">
+                    <div class="field">
+                        <button id='add' class="ui circular blue icon button">
+                            <i class="add icon"></i>
+                        </button>
+                        <button id='play' class="ui circular green icon button">
+                            <i class="play icon"></i>
+                        </button>
+                        <button id='stop' class="ui circular red icon button">
+                            <i class="stop icon"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -36,30 +76,117 @@
     <script src="https://cdn.jsdelivr.net/npm/jplayer@2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
     <script src="../static/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tone@14.7.77/build/Tone.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@0.8.0/lib/p5.min.js"></script>
     <script type="text/javascript">
-        const osc = new Tone.Oscillator({
-            type: "sine",
-            frequency: 440,
-            volume: -16
-        }).toDestination();
+        let tones = [];
 
-        let running = false;
-        $("#tone").click(function () {
-            if (running) {
-                running = false
-                osc.stop();
-                $("#tone > span").html('点我开始');
-                $(this).removeClass("red")
-                $(this).addClass("green");
-            } else {
-                osc.start();
-                running = true;
+        function make_tone(tone) {
+            var frequency = tone.find('.frequency').val();
+            var wave = tone.find('select').val();
+            var volume = tone.find('.volume').val();
 
-                $("#tone > span").html('点我结束');
-                $(this).removeClass("green")
-                $(this).addClass("red");
+            console.log(frequency);
+            console.log(wave);
+            console.log(volume);
+
+            let osc = new Tone.Oscillator({
+                type: wave,
+                frequency: frequency,
+                volume: volume
+            }).toDestination();
+            return osc;
+        }
+
+        function stop() {
+            tones.forEach(tone => {
+                tone.stop();
+            });
+        }
+
+        function play() {
+            tones.forEach(tone => {
+                tone.start();
+            });
+        }
+
+        function remove(tone) {
+            if ($('.tone').length == 1) {
+                return;
             }
+            stop();
+            tone.remove();
+        }
+
+        function prepare_tone(tone) {
+            function get_index() {
+                return $('.tone').index(tone);
+            }
+
+            tone.find('.frequency').val(440);
+            tone.find('.dropdown').val('sine');
+            tone.find('.volume').val(0);
+
+            tone.find("button.remove").click(function () {
+                remove(tone);
+            })
+
+            tone.find("button.mute").click(function () {
+                var index = get_index();
+                tones[index].stop();
+            })
+
+            tone.find("button.solo").click(function () {
+                var index = get_index();
+                tones[index].start();
+                $('.tone').each(function (idx, tone) {
+                    if (index != idx) {
+                        tones[idx].stop();
+                    }
+                })
+            })
+
+            tone.find('.frequency').change(function () {
+                var value = $(this).val();
+                var idx = get_index();
+                tones[idx].frequency.value = value;
+            });
+
+            tone.find('.volume').change(function () {
+                var value = $(this).val();
+                var idx = get_index();
+                tones[idx].volume.value = value;
+            });
+
+            tone.find('.dropdown').change(function () {
+                var value = $(this).val();
+                var idx = get_index();
+                tones[idx].type = value;
+            });
+
+            tone.find(".dropdown").dropdown();
+
+        }
+
+        $("#play").click(function () {
+            play();
         });
+
+        $("#stop").click(function () {
+            stop();
+        })
+
+        $(document).ready(function () {
+            let tone = $(".tone").first();
+            prepare_tone(tone);
+            tones.push(make_tone(tone));
+        })
+
+        $("#add").click(function () {
+            let tone = $(".tone").first().clone();
+            prepare_tone(tone);
+            $(".tones.form").append(tone);
+            tones.push(make_tone(tone));
+        })
     </script>
 </body>
 
