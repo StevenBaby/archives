@@ -19,3 +19,10 @@
 ## torch.utils.data.DataLoader
 
 数据加载器，将数据集和采样器结合，在给定数据集上提供一个可迭代的功能。
+
+## torch.nn.Module
+
+神经网络模块的基类
+
+- `forward(*input)`
+
