@@ -26,3 +26,24 @@
 
 - `forward(*input)`
 
+## torch.nn.Sequential
+
+线性容器
+
+```python
+# Example of using Sequential
+model = nn.Sequential(
+          nn.Conv2d(1,20,5),
+          nn.ReLU(),
+          nn.Conv2d(20,64,5),
+          nn.ReLU()
+        )
+
+# Example of using Sequential with OrderedDict
+model = nn.Sequential(OrderedDict([
+          ('conv1', nn.Conv2d(1,20,5)),
+          ('relu1', nn.ReLU()),
+          ('conv2', nn.Conv2d(20,64,5)),
+          ('relu2', nn.ReLU())
+        ]))
+```
