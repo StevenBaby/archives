@@ -10,6 +10,20 @@
 
 ++ctrl+alt+delete++
 
+## 智能符号
+
+-->
+
+<--
+
+<-->
+
+=/=
+
+## 引用
+
+这里是引用 <sup>[[ref]](#ref)</sup>
+
 ## 参考引用
 
-1. <https://facelessuser.github.io/pymdown-extensions>
+1. <a id='ref'/> <https://facelessuser.github.io/pymdown-extensions>
