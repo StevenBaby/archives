@@ -1,4 +1,4 @@
-# g 小调巴赫平均律变奏曲
+# [钢琴谱] g 小调巴赫平均律变奏曲
 
 [annotation]: [id] (2c7e6332-d47d-441f-9ca4-d0a482d38f2a)
 [annotation]: [status] (public)
