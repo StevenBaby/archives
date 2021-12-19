@@ -6,31 +6,32 @@
 [annotation]: [comments] (false)
 [annotation]: [url] (http://blog.ccyg.studio/article/61ff4bc8-b8e2-4947-b3e8-6eb70626bdf1)
 
-## 按键
+## 测试 GeoGebra
 
-++ctrl+alt+delete++
+<div class='geogebra' data-url="./static/test-sin-series.ggb" format='graphing'></div>
 
-## 智能符号
+## 测试函数图像
 
--->
+$$z = {1 \over 4} x^2 + { 1 \over 8}y^2$$
 
-<--
+```plot=3d
+z = 1 / 4 * x^2 + 1 / 8 * y^2
+```
 
-<-->
+---
 
-=/=
+```plot=graphing
+f(t)=Curve[3 cos(t) abs(tan(t))^abs(1/tan(t)), 3 sin(t) abs(tan(t))^abs(1/tan(t)) ,t,0,pi]
+```
 
-## 引用
+## 测试网易云音乐
 
-这里是引用 <sup>[[ref]](#ref)</sup>
+<iframe class='row' frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="http://music.163.com/outchain/player?type=2&id=516719755&height=66"></iframe>
 
-## 无头表格
+## 测试优酷视频
 
-|                  |          |                  |
-| :--------------- | -------: | :--------------: |
-| 短文本           | 中等文本 | 稍微长一点的文本 |
-| 稍微长一点的文本 |   短文本 |     中等文本     |
+<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XMTM2MjE4MzU3Ng=="></iframe>
 
-## 参考引用
+## 测试哔哩哔哩视频
 
-1. <a id='ref'/> <https://facelessuser.github.io/pymdown-extensions>
+<iframe class="video" width="640" height="360" src="//player.bilibili.com/player.html?aid=66928370&cid=116061321&page=1"></iframe>

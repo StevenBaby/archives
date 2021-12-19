@@ -13,6 +13,14 @@
 | 短文本 | 中等文本 | 稍微长一点的文本 |
 | 稍微长一点的文本 | 短文本 | 中等文本 |
 
+
+## 无头表格
+
+|                  |          |                  |
+| :--------------- | -------: | :--------------: |
+| 短文本           | 中等文本 | 稍微长一点的文本 |
+| 稍微长一点的文本 |   短文本 |     中等文本     |
+
 ## 测试列表
 
 * 测试列表 *
@@ -51,20 +59,21 @@ int main()
 
 > 时间没有等我 是你 忘了带走我 我左手是过目不忘的萤火 右手是十年一个漫长的打坐 命运没有留我 是我 遗弃自己在角落 我左边空想翻腾的生活 右边跌落五年一瞬短暂的因果
 
-
 ## 测试删除线
 
 ~~时光在静静的流淌，离开了家乡，追逐的梦到了远方，却始终捉不住月亮。~~
 
 ## 测试图片重定向
 
-![](static/test-001.png)
+![测试无标题图片](static/test-001.png)
 
+![图 {index} 测试序号图片标题](static/test-001.png)
+
+![{title}测试无序号图片标题](static/test-001.png)
 
 ## 测试svg重定向
 
 <img src='static/test-002.svg?sanitize=true' width=150 height=150/>
-
 
 ## 测试 ALT
 
@@ -94,24 +103,6 @@ graph TD;
     C-->D;
 ```
 
-## 测试 GeoGebra
-
-<div class='geogebra' data-url="./static/test-sin-series.ggb" format='graphing'></div>
-
-## 测试函数图像
-
-$$z = {1 \over 4} x^2 + { 1 \over 8}y^2$$
-
-```plot=3d
-z = 1 / 4 * x^2 + 1 / 8 * y^2
-```
-
----
-
-```plot=graphing
-f(t)=Curve[3 cos(t) abs(tan(t))^abs(1/tan(t)), 3 sin(t) abs(tan(t))^abs(1/tan(t)) ,t,0,pi]
-```
-
 ## 测试 Jplayer 播放器 音频
 
 <div class='ui jplayer audio' data-url="https://link.hhtjim.com/kw/1027785.mp3" format='mp3' title="梁静茹 - 情歌"></div>
@@ -120,14 +111,24 @@ f(t)=Curve[3 cos(t) abs(tan(t))^abs(1/tan(t)), 3 sin(t) abs(tan(t))^abs(1/tan(t)
 
 <div class='ui jplayer video' data-url="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" data-placeholder="https://media.w3.org/2010/05/bunny/poster.png" format='webmv'></div>
 
-## 测试网易云音乐
+## 按键
 
-<iframe class='row' frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=86 src="http://music.163.com/outchain/player?type=2&id=516719755&height=66"></iframe>
+++ctrl+alt+delete++
 
-## 测试优酷视频
+## 智能符号
 
-<iframe class="video" width="640" height="360" src="http://player.youku.com/embed/XMTM2MjE4MzU3Ng=="></iframe>
+-->
 
-## 测试哔哩哔哩视频
+<--
 
-<iframe class="video" width="640" height="360" src="//player.bilibili.com/player.html?aid=66928370&cid=116061321&page=1"></iframe>
+<-->
+
+=/=
+
+## 引用
+
+这里是引用 <sup>[[ref]](#ref)</sup>
+
+## 参考引用
+
+1. <a id='ref'/> <https://facelessuser.github.io/pymdown-extensions>
