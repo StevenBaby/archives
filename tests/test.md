@@ -67,7 +67,7 @@ int main()
 
 ![测试无标题图片](static/test-001.png)
 
-![图 {index} 测试序号图片标题](static/test-001.png)
+![图 {index}. 测试序号图片标题](static/test-001.png)
 
 ![{title}测试无序号图片标题](static/test-001.png)
 
