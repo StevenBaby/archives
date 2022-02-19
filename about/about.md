@@ -19,10 +19,6 @@
 - [Github](https://github.com/StevenBaby)
 - [bilibili](https://space.bilibili.com/491131440)
 
-## 特别感谢
-
-- [充电计划](/article/bf110d77-c03d-4512-9df8-fb2c7eb42d4d/)
-
 ## 友情链接
 
 - [leucinw(计算化学家)](https://biomol.bme.utexas.edu/~liuchw)
