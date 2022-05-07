@@ -14,3 +14,4 @@ src/code/c/test
 *.class
 *.out
 temp.*
+*.log
