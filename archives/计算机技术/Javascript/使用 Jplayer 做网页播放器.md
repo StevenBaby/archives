@@ -13,9 +13,9 @@
 ## 音频播放器
 
 <div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jplayer@2.9.2/dist/skin/blue.monday/css/jplayer.blue.monday.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jplayer@2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/jplayer@2.9.2/dist/skin/blue.monday/css/jplayer.blue.monday.min.css">
+<script src="https://fastly.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/jplayer@2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
 </div>
 
 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -154,9 +154,9 @@
 引入 js 和 css
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jplayer@2.9.2/dist/skin/blue.monday/css/jplayer.blue.monday.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jplayer@2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/jplayer@2.9.2/dist/skin/blue.monday/css/jplayer.blue.monday.min.css">
+<script src="https://fastly.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/jplayer@2.9.2/dist/jplayer/jquery.jplayer.min.js"></script>
 ```
 
 音频播放器 HTML

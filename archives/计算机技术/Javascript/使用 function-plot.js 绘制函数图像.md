@@ -15,7 +15,7 @@
 </div>
 
 <div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/d3@3/d3.min.js"></script>
 <script src="https://unpkg.com/function-plot@1/dist/function-plot.js"></script>
 </div>
@@ -80,7 +80,7 @@ $$
 
 ```html
 <div id="root"></div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
 <script src="https://unpkg.com/d3@3/d3.min.js"></script>
 <script src="https://unpkg.com/function-plot@1/dist/function-plot.js"></script>
 ```

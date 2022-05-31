@@ -8,8 +8,8 @@
 [annotation]: <comments> (false)
 [annotation]: <url> (http://blog.ccyg.studio/article/33030a69-774e-4cd1-975e-edae118ed977)
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/three@0.117.1/build/three.min.js"></script>
 
 
 遥想公瑾当年，小乔初嫁了……，突然想起来我之前做过虚拟现实的一些东西，于是好奇能不能再 h5 上实现，这就试试了。不过之前一直使用 OSG 来做。换到 H5 可能效果不是很好，不过做个简单的东西也行啊。

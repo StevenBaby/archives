@@ -43,7 +43,7 @@ $$
 
 1. 添加js引用
 ```html
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script src="https://fastly.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 ```
 2. 添加Latex设置
 
