@@ -72,7 +72,7 @@ $(".menus.dropdown").dropdown({
 });
 
 $(document).ready(function () {
-    var mathjax_url = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML';
+    var mathjax_url = 'https://fastly.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML';
     $.getScript(mathjax_url, function (script, textStatus, jqXHR) {
         MathJax.Hub.Config({
             tex2jax: {
