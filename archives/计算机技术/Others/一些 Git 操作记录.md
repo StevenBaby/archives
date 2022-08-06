@@ -23,6 +23,11 @@
 
     git reset --hard HEAD~1 
 
+如果不小心因 `git reset --hard` 删掉了 commit，可以通过以下方法找到：
+
+    git reflog show # 显示日志
+    git reset HEAD@{1} # 恢复 commit
+
 ---
 
 ## git 不提交指定文件
@@ -78,3 +83,4 @@ tail -n 1 .git/logs/refs/heads/master
 
 - <https://www.liangjucai.com/article/83>
 - <https://www.cnblogs.com/maycpou/p/11506844.html>
+- <https://stackoverflow.com/questions/5788037/recover-from-losing-uncommitted-changes-by-git-reset-hard>
