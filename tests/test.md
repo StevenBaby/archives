@@ -133,8 +133,8 @@ graph TD;
 
 ## 引用
 
-这里是引用 <sup>[[ref]](#ref)</sup>
+这里是引用 [^ref]
 
 ## 参考引用
 
-1. <a id='ref'/> <https://facelessuser.github.io/pymdown-extensions>
+[^ref]: <https://facelessuser.github.io/pymdown-extensions>
