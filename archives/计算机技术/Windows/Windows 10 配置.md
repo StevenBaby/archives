@@ -1,4 +1,4 @@
-# Windows 10 配置
+# Windows 配置
 
 [annotation]: <id> (009f0e39-37f5-4932-bde8-1ad01483df64)
 [annotation]: <category> (计算机技术)
@@ -356,49 +356,16 @@ Default 中写入:
 
 ---
 
-## Windows 10 Hyper-V 与 VMWare 不兼容问题
+## Windows + R 以管理员运行 [^admin_run]
 
-二者不兼容，只能用其中之一，下面写了开启 Hyper-V 之后，关闭 Hyper-V 的方式。
+1. 打开 Win + R 输入 `secpol.msc` 打开本地策略
 
-1\. Hit the windows key+s for "Search" and type "windows security settings" and press enter. Navigate to:
+2. 本地策略 > 安全选项
 
-Windows Security -->> Device Security -->> Core Isolation -->> Memory Integrity -->> Select Off
+3. 用户账户控制:以管理员批准模式运行所有管理员—改为禁用
 
- 
+4. 保存设置 > 重启电脑
 
-2\. Hit the windows key+r for "Run" and type "gpedit.msc" and press enter. Navigate to:
+## 参考
 
-Local Computer Policy ->> Computer Configuration ->> Administrative Templates ->> System - Device Guard ->> Turn on Virtualization
-
-Double click that .... and select "Disable" ...
-
- 
-
-3\. Go to Control Panel ->> Uninstall a Program ->> Turn Windows features on or off ->> (uncheck/turn off): Hyper-V & Windows Sandbox.
-
-*Click OK
-
-*Select Do not restart.
-
- 
-
-4\. Type the following cmds in cmd prompt.. to Delete the related EFI variables from the BCD file...
-
-Launch cmd as administrator...
-
-```sh
-bcdedit /create {0cb3b571-2f2e-4343-a879-d86a476d7215} /d "DebugTool" /application osloader
-
-bcdedit /set {0cb3b571-2f2e-4343-a879-d86a476d7215} path "\EFI\Microsoft\Boot\SecConfig.efi"
-
-bcdedit /set {bootmgr} bootsequence {0cb3b571-2f2e-4343-a879-d86a476d7215}
-
-bcdedit /set {0cb3b571-2f2e-4343-a879-d86a476d7215} loadoptions DISABLE-LSA-ISO,DISABLE-VBS
-
-bcdedit /set hypervisorlaunchtype off
-
-```
-
-1. Restart your system ...
-
----
+[^admin_run]: <https://www.dgrt.cn/news/show-4448266.html>
