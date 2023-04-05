@@ -366,6 +366,15 @@ Default 中写入:
 
 4. 保存设置 > 重启电脑
 
+## Windows 11 总是显示所有选项 [^options]
+
+1. 启动 `cmd` 执行
+
+    reg add HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32 /ve /d "" /f
+
+2. 重启 Explorer
+
 ## 参考
 
 [^admin_run]: <https://www.dgrt.cn/news/show-4448266.html>
+[^options]: <https://www.winhelponline.com/blog/get-classic-full-context-menu-windows-11/>
