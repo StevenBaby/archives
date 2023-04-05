@@ -374,7 +374,12 @@ Default 中写入:
 
 2. 重启 Explorer
 
+## 修改 OEM(Original Equipment Manufacturer) 信息 [^oem]
+
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation
+
 ## 参考
 
 [^admin_run]: <https://www.dgrt.cn/news/show-4448266.html>
 [^options]: <https://www.winhelponline.com/blog/get-classic-full-context-menu-windows-11/>
+[^oem]: <http://tech.chynews.cn/tech/2023/0104/54533.html>
