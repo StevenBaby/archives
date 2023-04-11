@@ -2,16 +2,16 @@
 	"folders": [
         {
             "name": "archives",
-            "path": "github\\archives\\archives"
+            "path": "..\\archives"
         },
         {
-            "path": "github\\archives\\tests"
+            "path": "..\\tests"
         },
         {
-            "path": "github\\archives\\about"
+            "path": "..\\about"
         },
         {
-            "path": "github\\archives\\src"
+            "path": "..\\src"
         }
     ],
 }
