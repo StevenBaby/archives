@@ -378,6 +378,14 @@ Default 中写入:
 
     HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation
 
+## Windows 10 每次启动都自动检测
+
+进入注册表：
+
+    HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager
+
+修改 BootExecute 的值为空；
+
 ## 参考
 
 [^admin_run]: <https://www.dgrt.cn/news/show-4448266.html>
