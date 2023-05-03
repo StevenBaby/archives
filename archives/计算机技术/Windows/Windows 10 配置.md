@@ -386,6 +386,51 @@ Default 中写入:
 
 修改 BootExecute 的值为空；
 
+## Calibre 扫描手机
+
+Calibre 默认会扫描手机，这点很讨厌，而且无法终止，经过一番研究，需要修改：
+
+```
+ C:\Users\[username]\AppData\Roaming\calibre\mtp_devices.json
+```
+
+在下面 `ignored_folders` 中 `s10001` 的列表里加入不想被扫描的目录，然后就可以了；其中 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 是一种设备编码吧，应该每个手机都不一样。另外 `rules` 是文件导入手机对应的目录。
+
+```json
+{
+  "blacklist": [],
+  "device-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": {
+    "format_map": [
+      "epub",
+      "mobi",
+      "pdf",
+      "txt"
+    ],
+    "ignored_folders": {
+      "s10001": [
+        "ali",
+      ]
+    },
+    "rules": [
+      [
+        "mobi",
+        "!Books"
+      ],
+      [
+        "epub",
+        "!Books"
+      ]
+    ]
+  },
+  "history": {
+    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": [
+      "xxxxxxxxxxxxxxxxxx",
+      "2023-05-02T17:33:51.831394+00:00"
+    ]
+  }
+}
+```
+
 ## 参考
 
 [^admin_run]: <https://www.dgrt.cn/news/show-4448266.html>
